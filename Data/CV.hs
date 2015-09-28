@@ -1,6 +1,8 @@
 module Data.CV where
 
-data Localized a = Localized { en :: a, ru :: a }
+data Language = En | Ru
+
+type Localized a = Language -> a
 
 data Contact  = Bitbucket String
               | EMail String
@@ -24,7 +26,7 @@ data Work = Work  { start :: (Year, Month)
                   , organization :: String
                   , location :: String
                   , title :: String
-                  , description :: String
+                  , description :: [String]
                   }
 
 data Education = Education  { graduated :: Year
@@ -33,4 +35,19 @@ data Education = Education  { graduated :: Year
                             , degree :: String
                             }
 
-data CV = CV { name :: String }
+type TextBlock = [String]
+
+data CV = CV  { name :: Localized String
+              , photo :: String
+              , contacts :: [Contact]
+              , professionalSkills :: TextBlock
+              , technologies :: [(String, TextBlock)]
+                -- ^ lists of technologies in sections
+              , workExperience :: [Work]
+              , education :: [Education]
+              , achievements :: [(Year, Month, TextBlock)]
+              , residence :: TextBlock
+              }
+
+renderCv :: Language -> CV -> String
+renderCv = error "unimplemented renderCv"

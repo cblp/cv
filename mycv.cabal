@@ -1,0 +1,11 @@
+name:           mycv
+version:        2015
+build-type:     Simple
+cabal-version:  >= 1.10
+
+executable mycv
+    main-is:          mycv.hs
+    default-language: Haskell2010
+    build-depends:    base
+                    , blaze-html
+                    , shakespeare

@@ -1,6 +1,11 @@
-import CV
+#!/usr/bin/env runhaskell
+{-# OPTIONS -Wall -Werror #-}
+{-# LANGUAGE RecordWildCards #-}
 
-name = T{en="Yuriy Syrovetskiy", ru="Юрий Сыровецкий"}
+import Data.CV
+import Data.Monoid
+
+name = Localized { en = "Yuriy Syrovetskiy", ru = "Юрий Сыровецкий" }
 
 photo = "Yuriy_Syrovetskiy.jpg"
 
@@ -22,15 +27,15 @@ professionalSkills =
     , "Coding, project management, deployment, staff training."
     ]
 
-technologies = Technologies
-    { goodAt  = [ "C", "C++", "English", "git", "Haskell"
-                , "Linux [Debian, Ubuntu]", "Mercurial", "Python", "Qt"
-                , "Russian", "Subversion" ]
-    , canUse  = [ "Boost", "HTML", "JavaScript", "Java", "Perl", "PHP"
-                , "Windows", "XML" ]
-    , canRead = [ "Assembler", "Erlang", ".NET/C#", "LISP/Clojure/Scheme"
-                , "Ruby", "Scala", "Smalltalk", "other cool stuff" ]
-    }
+technologies =
+    [ ( "good in",  [ "C", "C++", "English", "git", "Haskell"
+                    , "Linux [Debian, Ubuntu]", "Mercurial", "Python", "Qt"
+                    , "Russian", "Subversion" ] )
+    , ( "can use",  [ "Boost", "HTML", "JavaScript", "Java", "Perl", "PHP"
+                    , "Windows", "XML" ] )
+    , ( "can read", [ "Assembler", "Erlang", ".NET/C#", "LISP/Clojure/Scheme"
+                    , "Ruby", "Scala", "Smalltalk", "other cool stuff" ] )
+    ]
 
 workExperience =
     [ Work  { start = (2015, Jan), end = Nothing, totalTime = "1 semester"
@@ -70,17 +75,17 @@ education =
     [ Education { graduated = 2010
                 , school = "The Moscow Institute of Humanities and Economics"
                 , division = "faculty of law"
-                , degreee = "higher/specialist in jurisprudence, civil law"
+                , degree = "higher/specialist in jurisprudence, civil law"
                 }
     , Education { graduated = 2006
                 , school = "Institute of Cryptography, Communications and Informatics"
                 , division = "faculty of information security"
-                , degreee = "incomplete higher in computer security"
+                , degree = "incomplete higher in computer security"
                 }
     , Education { graduated = 2002
                 , school = "The Moscow Chemical Lyceum"
                 , division = "faculty of physics and mathematics"
-                , degreee = "secondary"
+                , degree = "secondary"
                 }
     ]
 
@@ -97,3 +102,8 @@ achievements =
 residence = [ "Moscow, Russia."
             , "Ready to relocate."
             ]
+
+main = do
+    let cv = CV{..}
+    writeFile "mycv.en.html" $ renderCv "en" cv
+    writeFile "mycv.ru.html" $ renderCv "ru" cv

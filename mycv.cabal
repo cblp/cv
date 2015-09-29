@@ -4,8 +4,13 @@ build-type:     Simple
 cabal-version:  >= 1.10
 
 executable mycv
-    main-is:          mycv.hs
-    default-language: Haskell2010
     build-depends:    base
                     , blaze-html
+                    , filepath
                     , shakespeare
+    default-language: Haskell2010
+    main-is:          mycv.hs
+    ghc-options:      -Wall -Werror
+    other-modules:    Data.CV
+                      Data.CV.Render
+                      Data.CV.Types

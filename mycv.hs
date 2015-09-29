@@ -1,5 +1,3 @@
-#!/usr/bin/env runhaskell
-{-# OPTIONS -Wall -Werror #-}
 {-# LANGUAGE RecordWildCards #-}
 
 import Data.CV
@@ -11,23 +9,23 @@ main = do
     writeFile "mycv.en.html" (renderCv En cv)
     writeFile "mycv.ru.html" (renderCv Ru cv)
   where
-    name En = "Yuriy Syrovetskiy"
-    name Ru = "Юрий Сыровецкий"
+    fullname En = "Yuriy Syrovetskiy"
+    fullname Ru = "Юрий Сыровецкий"
 
     photo = "Yuriy_Syrovetskiy.jpg"
 
-    contacts =  [ Telephone     "+7 905 547 11 98"
-                , Skype         "cblp.su"
-                , EMail         "cblp@cblp.su"
-                -- , Jabber        "cblp@cblp.su"
-                , Telegram      "cblp_su"
-                , PersonalPage  "cblp.su"
-                , LinkedIn      "cblpsu"
-                , Facebook      "cblp.su"
-                , GitHub        "cblp"
-                , Bitbucket     "cblp"
-                , Twitter       "cblp_su"
-                ]
+    contactInfo = [ Telephone     "+7 905 547 11 98"
+                  , Skype         "cblp.su"
+                  , EMail         "cblp@cblp.su"
+                  -- , Jabber        "cblp@cblp.su"
+                  , Telegram      "cblp_su"
+                  , PersonalPage  Http "cblp.su"
+                  , GitHub        "cblp"
+                  , Bitbucket     "cblp"
+                  , LinkedIn      "cblpsu"
+                  , Facebook      "cblp.su"
+                  , Twitter       "cblp_su"
+                  ]
 
     professionalSkills =
         [ "Desktop and server (backend) programming. Data analysis, high load services, user interface design."

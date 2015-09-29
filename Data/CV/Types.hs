@@ -1,19 +1,35 @@
 module Data.CV.Types where
 
-data Language = En | Ru
+import Text.Blaze.Html
 
-type Localized a = Language -> a
+data Scheme = Callto | Http | Https | Mailto | WebTg
 
-data Contact  = Bitbucket String
-              | EMail String
-              | Facebook String
-              | GitHub String
-              | LinkedIn String
-              | PersonalPage String
-              | Skype String
-              | Telegram String
-              | Telephone String
-              | Twitter String
+instance Show Scheme where
+    show Callto = "callto"
+    show Http   = "http"
+    show Https  = "https"
+    show Mailto = "mailto"
+    show WebTg  = "web+tg"
+
+instance ToMarkup Scheme where
+    toMarkup = toMarkup . show
+
+data Locale = En | Ru
+
+type Localized a = Locale -> a
+
+data ContactInfo  = Bitbucket String
+                  | EMail String
+                  | Facebook String
+                  | GitHub String
+                  | LinkedIn String
+                  | PersonalPage  Scheme
+                                  String -- ^ URL without scheme
+                  | Skype String
+                  | Telegram String
+                  | Telephone String
+                  | Twitter String
+    deriving Show
 
 type Year = Int
 
@@ -37,9 +53,9 @@ data Education = Education  { graduated :: Year
 
 type TextBlock = [String]
 
-data CV = CV  { name :: Localized String
+data CV = CV  { fullname :: Localized String
               , photo :: String
-              , contacts :: [Contact]
+              , contactInfo :: [ContactInfo]
               , professionalSkills :: TextBlock
               , technologies :: [(String, TextBlock)]
                 -- ^ lists of technologies in sections

@@ -99,16 +99,16 @@ renderCv locale CV{..} = renderHtml . docTypeHtml $ do
 
 contactMarkup :: ContactInfo -> (String, Html)
 contactMarkup = \case
-    Bitbucket user          -> ("Bitbucket",          ahref Https $ "bitbucket.org" </> user)
-    EMail addr              -> ("e-mail",             ahref Mailto addr)
-    Facebook user           -> ("Facebook",           ahref Https $ "fb.me" </> user)
-    GitHub user             -> ("GitHub",             ahref Https $ "github.com" </> user)
-    LinkedIn short          -> ("LinkedIn",           ahref Https $ "linked.in" </> short)
-    PersonalPage scheme url -> ("Personal web page",  ahref scheme url)
-    Skype user              -> ("Skype",              ahref Callto user)
-    Telegram user           -> ("Telegram",           ahref WebTg user)
+    Bitbucket user          -> ("Bitbucket",          ahref "https://bitbucket.org/" user)
+    EMail addr              -> ("e-mail",             ahref "mailto:" addr)
+    Facebook user           -> ("Facebook",           ahref "https://" ("fb.me" </> user))
+    GitHub user             -> ("GitHub",             ahref "https://github.com/" user)
+    LinkedIn short          -> ("LinkedIn",           ahref "https://" ("linkedin.com/in/" </> short))
+    PersonalPage prefix url -> ("Personal web page",  ahref prefix url)
+    Skype user              -> ("Skype",              ahref "callto:" user)
+    Telegram user           -> ("Telegram",           ahref "https://telegram.me/" user)
     Telephone number        -> ("tel.",               toHtml number)
-    Twitter user            -> ("Twitter",            ahref Https $ "twitter.com" </> user)
+    Twitter user            -> ("Twitter",            ahref "https://twitter.com/" user)
   where
-    ahref :: Scheme -> String -> Html
-    ahref scheme url = a ! href (toValue (show scheme <> ":" <> url)) $ toHtml url
+    ahref :: String -> String -> Html
+    ahref prefix url = a ! href (toValue (prefix <> url)) $ toHtml url

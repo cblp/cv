@@ -19,7 +19,7 @@ main = do
                   , EMail         "cblp@cblp.su"
                   -- , Jabber        "cblp@cblp.su"
                   , Telegram      "cblp_su"
-                  , PersonalPage  Http "cblp.su"
+                  , PersonalPage  "http://" "cblp.su"
                   , GitHub        "cblp"
                   , Bitbucket     "cblp"
                   , LinkedIn      "cblpsu"

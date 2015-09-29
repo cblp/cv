@@ -1,19 +1,5 @@
 module Data.CV.Types where
 
-import Text.Blaze.Html
-
-data Scheme = Callto | Http | Https | Mailto | WebTg
-
-instance Show Scheme where
-    show Callto = "callto"
-    show Http   = "http"
-    show Https  = "https"
-    show Mailto = "mailto"
-    show WebTg  = "web+tg"
-
-instance ToMarkup Scheme where
-    toMarkup = toMarkup . show
-
 data Locale = En | Ru
 
 type Localized a = Locale -> a
@@ -23,8 +9,8 @@ data ContactInfo  = Bitbucket String
                   | Facebook String
                   | GitHub String
                   | LinkedIn String
-                  | PersonalPage  Scheme
-                                  String -- ^ URL without scheme
+                  | PersonalPage  String -- ^ prefix
+                                  String -- ^ URL without prefix
                   | Skype String
                   | Telegram String
                   | Telephone String

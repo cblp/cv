@@ -8,21 +8,24 @@
 module Data.CV.Render where
 
 import Control.Monad
+import Data.ByteString.Lazy
 import Data.CV.Types
+import Data.List as List
 import Data.Monoid
 import System.FilePath
-import Text.Blaze.Html.Renderer.Pretty
-import Text.Blaze.Html5 as Tag
-import Text.Blaze.Html5.Attributes as Attr
+import Text.Blaze.Html.Renderer.Utf8
+import Text.Blaze.Html5 as T -- tags
+import Text.Blaze.Html5.Attributes as A -- attributes
 import Text.Shakespeare.Text
 
-renderCv :: Locale -> CV -> String
+renderCv :: Locale -> CV -> ByteString
 renderCv locale CV{..} = renderHtml . docTypeHtml $ do
-    Tag.head $ do
-        Tag.title . toHtml $ fullname locale
-        Tag.style styles
-    body $
-        Tag.div ! class_ "contact-info" $
+    T.head $ do
+        meta ! charset "UTF-8"
+        T.title . toHtml $ fullname locale
+        T.style styles
+    body $ do
+        T.div ! class_ "contact-info" $
             table $ do
                 tr $ td ! colspan (toValue (2 :: Int)) $
                     img ! src (toValue photo)
@@ -32,7 +35,70 @@ renderCv locale CV{..} = renderHtml . docTypeHtml $ do
                     tr $ do
                         td $ toHtml contactLabel
                         td contactContent
+
+        h1 . toHtml $ fullname locale
+        hr ! A.style "height: 0; border-top: solid 1px black; border-bottom: none;"
+
+        h3 "Professional Skills"
+        professionalSkills
+
+        h4 "Technologies and Languages"
+        ul $ forM_ technologies $ \(techGroup, tech) ->
+            li $ do
+                em $ toHtml techGroup
+                void " "
+                toHtml $ List.intercalate ", " tech <> "."
+
+        h3 "Work Experience"
+        table ! class_ "work" $ forM_ workExperience $ \Work{..} -> tr $ do
+            td $ do
+                case workEnd of
+                    Nothing -> do
+                        void "started "
+                        timeSpan workStart
+                    Just end -> do
+                        timeSpan workStart
+                        void " — "
+                        timeSpan end
+                br
+                toHtml $ "(" <> totalTime <> ")"
+            td $ do
+                toHtml position
+                br
+                void "at "
+                T.span ! class_ "place" $ toHtml organization
+                void ", "
+                toHtml location
+                description
+
+        h3 "Education"
+        table ! class_ "edu" $ forM_ education $ \Education{..} -> tr $ do
+            td $ do
+                void "grad. "
+                T.span ! class_ "time" $ toHtml graduated
+            td $ do
+                T.span ! class_ "place" $ toHtml school
+                void ","
+                br
+                toHtml division
+            td ! class_ "degree" $
+                toHtml degree
+
+        h3 "Achievements"
+        table ! class_ "achiev" $ forM_ achievements $ \(year, month, description) -> tr $ do
+            td $ timeSpan (year, month)
+            td description
+
+        h3 "Residence"
+        dl . dd $
+            residence
   where
+    timeSpan (year, month) =
+        T.span ! class_ "time" $ do
+            toHtml $ show month
+            void " "
+            toHtml year
+
     styles :: Html
     styles = toHtml [st|
         body {
@@ -40,7 +106,7 @@ renderCv locale CV{..} = renderHtml . docTypeHtml $ do
             padding: 3em;
         }
 
-        h1, h2 {
+        h2 {
             font-weight: normal;
         }
 
@@ -79,7 +145,7 @@ renderCv locale CV{..} = renderHtml . docTypeHtml $ do
             font-weight: bold;
         }
 
-        .edu .time {
+        .time {
             white-space: nowrap;
         }
 

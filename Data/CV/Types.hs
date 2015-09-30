@@ -1,5 +1,7 @@
 module Data.CV.Types where
 
+import Text.Blaze.Html
+
 data Locale = En | Ru
 
 type Localized a = Locale -> a
@@ -21,14 +23,15 @@ type Year = Int
 
 data Month =
     Jan | Feb | Mar | Apr | May | Jun | Jul | Aug | Sep | Oct | Nov | Dec
+    deriving Show
 
-data Work = Work  { start :: (Year, Month)
-                  , end :: Maybe (Year, Month)
+data Work = Work  { workStart :: (Year, Month)
+                  , workEnd :: Maybe (Year, Month)
                   , totalTime :: String
                   , organization :: String
                   , location :: String
-                  , title :: String
-                  , description :: [String]
+                  , position :: String
+                  , description :: Html
                   }
 
 data Education = Education  { graduated :: Year
@@ -37,16 +40,14 @@ data Education = Education  { graduated :: Year
                             , degree :: String
                             }
 
-type TextBlock = [String]
-
 data CV = CV  { fullname :: Localized String
               , photo :: String
               , contactInfo :: [ContactInfo]
-              , professionalSkills :: TextBlock
-              , technologies :: [(String, TextBlock)]
+              , professionalSkills :: Html
+              , technologies :: [(String, [String])]
                 -- ^ lists of technologies in sections
               , workExperience :: [Work]
               , education :: [Education]
-              , achievements :: [(Year, Month, TextBlock)]
-              , residence :: TextBlock
+              , achievements :: [(Year, Month, Html)]
+              , residence :: Html
               }

@@ -6,6 +6,7 @@ cabal-version:  >= 1.10
 executable mycv
     build-depends:    base
                     , blaze-html
+                    , bytestring
                     , filepath
                     , shakespeare
     default-language: Haskell2010

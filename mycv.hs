@@ -1,13 +1,16 @@
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE OverloadedStrings, RecordWildCards #-}
 
+import Control.Monad
+import Data.ByteString.Lazy as ByteString
 import Data.CV
-import Data.Monoid
+import Text.Blaze.Html5 ( (!), a, li, p, ul )
+import Text.Blaze.Html5.Attributes
 
 main :: IO ()
 main = do
     let cv = CV{..}
-    writeFile "mycv.en.html" (renderCv En cv)
-    writeFile "mycv.ru.html" (renderCv Ru cv)
+    ByteString.writeFile "mycv.en.html" (renderCv En cv)
+    ByteString.writeFile "mycv.ru.html" (renderCv Ru cv)
   where
     fullname En = "Yuriy Syrovetskiy"
     fullname Ru = "Юрий Сыровецкий"
@@ -27,55 +30,53 @@ main = do
                   , Twitter       "cblp_su"
                   ]
 
-    professionalSkills =
-        [ "Desktop and server (backend) programming. Data analysis, high load services, user interface design."
-        , "Coding, project management, deployment, staff training."
-        ]
+    professionalSkills = ul $ do
+        li "Desktop and server (backend) programming. Data analysis, high load services, user interface design."
+        li "Coding, project management, deployment, staff training."
 
     technologies =
-        [ ( "good in",  [ "C", "C++", "English", "git", "Haskell"
-                        , "Linux [Debian, Ubuntu]", "Mercurial", "Python", "Qt"
-                        , "Russian", "Subversion" ] )
-        , ( "can use",  [ "Boost", "HTML", "JavaScript", "Java", "Perl", "PHP"
-                        , "Windows", "XML" ] )
-        , ( "can read", [ "Assembler", "Erlang", ".NET/C#"
-                        , "LISP/Clojure/Scheme", "Ruby", "Scala", "Smalltalk"
-                        , "other cool stuff" ] )
+        [ ( "I am good in", [ "C", "C++", "English", "git", "Haskell"
+                            , "Linux [Debian, Ubuntu]", "Mercurial", "Python"
+                            , "Qt", "Russian", "Subversion" ] )
+        , ( "I can use",    [ "Boost", "HTML", "JavaScript", "Java", "Perl"
+                            , "PHP", "Windows", "XML" ] )
+        , ( "I can read",   [ "Assembler", "Erlang", ".NET/C#"
+                            , "LISP/Clojure/Scheme", "Ruby", "Scala"
+                            , "Smalltalk", "other cool stuff" ] )
         ]
 
     workExperience =
-        [ Work  { start = (2015, Jan), end = Nothing, totalTime = "1 semester"
+        [ Work  { workStart = (2015, Jan), workEnd = Nothing, totalTime = "1 semester"
                 , organization = "The Moscow Chemical Lyceum"
                 , location = "Moscow, Russia"
-                , title = "teacher of functional programming (Haskell)"
-                , description = []
+                , position = "teacher of functional programming (Haskell)"
+                , description = pure ()
                 }
-        , Work  { start = (2012, Sep), end = Nothing, totalTime = "3 years"
+        , Work  { workStart = (2012, Sep), workEnd = Nothing, totalTime = "3 years"
                 , organization = "The Moscow Chemical Lyceum"
                 , location = "Moscow, Russia"
-                , title = "mentor in science works"
-                , description = []
+                , position = "student scientific works mentor"
+                , description = pure ()
                 }
-        , Work  { start = (2011, Dec), end = Nothing, totalTime = "3½ years"
+        , Work  { workStart = (2011, Dec), workEnd = Nothing, totalTime = "4 years"
                 , organization = "Yandex"
                 , location = "Moscow, Russia"
-                , title = "software developer"
-                , description =
-                      [ "I'm a backend developer of the keyword statistics service"
-                        <> " <a href=\"http://wordstat.yandex.com/\">Wordstat.yandex.com</a>"
-                        <> " and several internal Yandex services."
-                      , "My software successfully stands year-to-year growing data and user traffic."
-                      ]
+                , position = "software developer"
+                , description = do
+                      p $ do
+                          void "I'm a backend developer of the keyword statistics service "
+                          a ! href "http://wordstat.yandex.com/" $ "Wordstat.yandex.com"
+                          " and several internal Yandex services."
+                      p "My software successfully stands year-to-year growing data and user traffic."
                 }
-        , Work  { start = (2006, Nov), end = Just (2011, Oct), totalTime = "5 years"
+        , Work  { workStart = (2006, Nov), workEnd = Just (2011, Oct), totalTime = "5 years"
                 , organization = "Research Institute of Information Technologies"
                 , location = "Moscow, Russia"
-                , title = "engineer"
-                , description =
-                      [ "I was the lead developer of multi-component software system."
-                      , "I've been working on design and code, program and user documentation, deploy and customer support."
-                      , "In my team, I introduced usage of source control tools, issue management, common knowledge system (wiki)."
-                      ]
+                , position = "engineer"
+                , description = do
+                      p "I was the lead developer of multi-component software system."
+                      p "I've been working on design and code, program and user documentation, deploy and customer support."
+                      p "In my team, I introduced usage of source control tools, issue management, common knowledge system (wiki)."
                 }
         ]
 
@@ -99,14 +100,16 @@ main = do
 
     achievements =
         [ ( 2015, Jun
-          , [ "Organized Haskell meetup/conference in Moscow, Russia: 6 talks, 50+ attendees"
-              <> " (schedule in Russian:"
-              <> " <a href=\"https://github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer\">"
-              <> "github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer</a>)."
-            ]
+          , do  p $ do
+                    void "Organized Haskell meetup/conference in Moscow, Russia: 6 talks, 50+ attendees"
+                    void " (schedule in Russian: "
+                    a ! href "https://github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer" $
+                        "github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer"
+                    ")."
+                p "Gave a talk “Haskell for pythonists” there."
           )
         ]
 
-    residence = [ "Moscow, Russia."
-                , "Ready to relocate."
-                ]
+    residence = do
+        p "Moscow, Russia."
+        p "Ready to relocate."

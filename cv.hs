@@ -12,8 +12,8 @@ main = do
     ByteString.writeFile "cv.en.html" (renderCv En cv)
     ByteString.writeFile "cv.ru.html" (renderCv Ru cv)
   where
-    fullname = Localized $ \case  En -> "Yuriy Syrovetskiy"
-                                  Ru -> "Юрий Сыровецкий"
+    fullname En = "Yuriy Syrovetskiy"
+    fullname Ru = "Юрий Сыровецкий"
 
     photo = "Yuriy_Syrovetskiy.jpg"
 
@@ -30,49 +30,46 @@ main = do
                   , Twitter   "cblp_su"
                   ]
 
-    professionalSkills = Localized $ \case
-        En -> ul $ do
-            li "Desktop and server (backend) programming. Data analysis, high load services, user interface design."
-            li "Coding, project management, deployment, staff training."
-        Ru -> ul $ do
-            li "Десктопное и серверное (backend) программирование. Анализ данных, высокие нагрузки, пользовательский интерфейс."
-            li "Кодирование, управление проектом, внедрение, обучение персонала."
+    professionalSkills En = ul $ do
+        li "Desktop and server (backend) programming. Data analysis, high load services, user interface design."
+        li "Coding, project management, deployment, staff training."
+    professionalSkills Ru = ul $ do
+        li "Десктопное и серверное (backend) программирование. Анализ данных, высокие нагрузки, пользовательский интерфейс."
+        li "Кодирование, управление проектом, внедрение, обучение персонала."
 
     technologies =
-        [ ( Localized $ \case En -> "I am good in"; Ru -> "Владею"
+        [ ( \case En -> "I am good in"; Ru -> "Владею"
           , [ "C", "C++", "English", "git", "Haskell", "Linux [Debian, Ubuntu]"
             , "Mercurial", "Python", "Qt"
-            , Localized $ \case En -> "Russian"; Ru -> "Русским"
-            , "Subversion"
+            , \case En -> "Russian"; Ru -> "Русским", "Subversion"
             ]
           )
-        , ( Localized $ \case En -> "I can use"; Ru -> "Разбираюсь в"
+        , ( \case En -> "I can use"; Ru -> "Разбираюсь в"
           , [ "Boost", "HTML", "JavaScript", "Java", "Perl", "PHP", "Windows"
             , "XML"
             ]
           )
-        , ( Localized $ \case En -> "I can read"; Ru -> "Знаком с"
+        , ( \case En -> "I can read"; Ru -> "Знаком с"
           , [ "Assembler", "Erlang", ".NET/C#", "LISP/Clojure/Scheme", "Ruby"
             , "Scala", "Smalltalk"
-            , Localized $ \case En -> "other cool stuff"; Ru -> "другими крутыми штуками"
+            , \case En -> "other cool stuff"; Ru -> "другими крутыми штуками"
             ]
           )
         ]
 
-    mcl = Localized $ \case En -> "The Moscow Chemical Lyceum (School 1303)"
-                            Ru -> "Московский Химический Лицей (школа 1303)"
+    mcl En = "The Moscow Chemical Lyceum (School 1303)"
+    mcl Ru = "Московский Химический Лицей (школа 1303)"
 
-    moscow = Localized $ \case  En -> "Moscow, Russia"
-                                Ru -> "Москва"
+    moscow En = "Moscow, Russia"
+    moscow Ru = "Москва"
 
-    tr en = Localized $ \case
-        En -> en
-        Ru -> case en of
-            "1 semester" -> "1 семестр"
-            "3 years" -> "3 года"
-            "4 years" -> "4 года"
-            "5 years" -> "5 лет"
-            _ -> en
+    tr en En = en
+    tr en Ru = case en of
+        "1 semester" -> "1 семестр"
+        "3 years" -> "3 года"
+        "4 years" -> "4 года"
+        "5 years" -> "5 лет"
+        _ -> en
 
     workExperience =
         [ Work  { workStart = (2015, Jan), workEnd = Nothing
@@ -91,7 +88,7 @@ main = do
                 }
         , Work  { workStart = (2011, Dec), workEnd = Nothing
                 , totalTime = tr "4 years"
-                , organization = Localized $ \case En -> "Yandex"; Ru -> "Яндекс"
+                , organization = \case En -> "Yandex"; Ru -> "Яндекс"
                 , location = moscow
                 , position = "software developer"
                 , description = do

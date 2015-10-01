@@ -22,7 +22,7 @@ renderCv :: Locale -> CV -> ByteString
 renderCv locale CV{..} = renderHtml . docTypeHtml $ do
     T.head $ do
         meta ! charset "UTF-8"
-        T.title . toHtml $ local fullname
+        T.title . toHtml $ localized fullname
         T.style styles
     body $ do
         T.div ! class_ "contact-info" $
@@ -34,23 +34,23 @@ renderCv locale CV{..} = renderHtml . docTypeHtml $ do
                                             Ru -> "Контакты"
                 forM_ contactInfo $ \(contactMarkup -> (contactLabel, contactContent)) ->
                     tr $ do
-                        td $ toHtml $ local contactLabel
+                        td $ toHtml $ localized contactLabel
                         td contactContent
 
-        h1 . toHtml $ local fullname
+        h1 . toHtml $ localized fullname
         hr ! A.style "height: 0; border-top: solid 1px black; border-bottom: none;"
 
         h3 $ localized $ \case  En -> "Professional Skills"
                                 Ru -> "Навыки и умения"
-        local professionalSkills
+        localized professionalSkills
 
         h4 $ localized $ \case  En -> "Technologies and Languages"
                                 Ru -> "Технологии и языки"
         ul $ forM_ technologies $ \(techGroup, tech) ->
             li $ do
-                em . toHtml $ local techGroup
+                em . toHtml $ localized techGroup
                 void " "
-                toHtml $ List.intercalate ", " (List.map local tech) <> "."
+                toHtml $ List.intercalate ", " (List.map localized tech) <> "."
 
         h3 $ localized $ \case  En -> "Work Experience"
                                 Ru -> "Опыт работы"
@@ -74,15 +74,15 @@ renderCv locale CV{..} = renderHtml . docTypeHtml $ do
                             Just end ->
                                 timeSpan end
                 br
-                toHtml $ "(" <> local totalTime <> ")"
+                toHtml $ "(" <> localized totalTime <> ")"
             td $ do
                 toHtml position
                 br
                 void $ localized $ \case  En -> "at "
                                           Ru -> ""
-                T.span ! class_ "place" $ toHtml $ local organization
+                T.span ! class_ "place" $ toHtml $ localized organization
                 void ", "
-                toHtml $ local location
+                toHtml $ localized location
                 description
 
         h3 "Education"
@@ -91,7 +91,7 @@ renderCv locale CV{..} = renderHtml . docTypeHtml $ do
                 void "grad. "
                 T.span ! class_ "time" $ toHtml graduated
             td $ do
-                T.span ! class_ "place" $ toHtml $ local school
+                T.span ! class_ "place" $ toHtml $ localized school
                 void ","
                 br
                 toHtml division
@@ -107,7 +107,6 @@ renderCv locale CV{..} = renderHtml . docTypeHtml $ do
         dl . dd $
             residence
   where
-    local (Localized f) = f locale
     localized f = f locale
 
     timeSpan (year, month) =
@@ -200,12 +199,12 @@ contactMarkup = \case
     Twitter user        -> ("Twitter",    ahref "https://twitter.com/" user)
   where
     ahref prefix url = a ! href (toValue (prefix <> url)) $ toHtml url
-    email = Localized $ \case
-        En -> "E-mail"
-        Ru -> "Эл. почта"
-    personal = Localized $ \case
-        En -> "Personal Web Page"
-        Ru -> "Сайт"
-    tel = Localized $ \case
-        En -> "Tel."
-        Ru -> "Тел."
+
+    email En = "E-mail"
+    email Ru = "Эл. почта"
+
+    personal En = "Personal Web Page"
+    personal Ru = "Сайт"
+
+    tel En = "Tel."
+    tel Ru = "Тел."

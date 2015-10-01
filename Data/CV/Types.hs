@@ -7,10 +7,10 @@ import Text.Blaze.Html
 
 data Locale = En | Ru
 
-newtype Localized a = Localized (Locale -> a)
+type Localized a = Locale -> a
 
 instance IsString (Localized String) where
-    fromString = Localized . const
+    fromString = const
 
 data ContactInfo  = Bitbucket String
                   | EMail String

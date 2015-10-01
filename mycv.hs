@@ -30,9 +30,12 @@ main = do
                   , Twitter       "cblp_su"
                   ]
 
-    professionalSkills = ul $ do
+    professionalSkills En = ul $ do
         li "Desktop and server (backend) programming. Data analysis, high load services, user interface design."
         li "Coding, project management, deployment, staff training."
+    professionalSkills Ru = ul $ do
+        li "Десктопное и серверное (backend) программирование. Анализ данных, высокие нагрузки, пользовательский интерфейс."
+        li "Кодирование, управление проектом, внедрение, обучение персонала."
 
     technologies =
         [ ( "I am good in", [ "C", "C++", "English", "git", "Haskell"

@@ -43,7 +43,7 @@ data Education = Education  { graduated :: Year
 data CV = CV  { fullname :: Localized String
               , photo :: String
               , contactInfo :: [ContactInfo]
-              , professionalSkills :: Html
+              , professionalSkills :: Localized Html
               , technologies :: [(String, [String])]
                 -- ^ lists of technologies in sections
               , workExperience :: [Work]

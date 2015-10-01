@@ -10,6 +10,7 @@ module Data.CV.Render where
 import Control.Monad
 import Data.ByteString.Lazy
 import Data.CV.Types
+import Data.Function
 import Data.List as List
 import Data.Monoid
 import System.FilePath
@@ -30,19 +31,25 @@ renderCv locale CV{..} = renderHtml . docTypeHtml $ do
                 tr $ td ! colspan (toValue (2 :: Int)) $
                     img ! src (toValue photo)
                 tr $ td ! colspan (toValue (2 :: Int)) $
-                    h3 "Contact Info"
+                    h3 $ locale & \case
+                        En -> "Contact Info"
+                        Ru -> "Контакты"
                 forM_ contactInfo $ \(contactMarkup -> (contactLabel, contactContent)) ->
                     tr $ do
-                        td $ toHtml contactLabel
+                        td $ toHtml $ contactLabel locale
                         td contactContent
 
         h1 . toHtml $ fullname locale
         hr ! A.style "height: 0; border-top: solid 1px black; border-bottom: none;"
 
-        h3 "Professional Skills"
+        h3 $ locale & \case
+            En -> "Professional Skills"
+            Ru -> "Умения"
         professionalSkills
 
-        h4 "Technologies and Languages"
+        h4 $ locale & \case
+            En -> "Technologies and Languages"
+            Ru -> "Технологии и языки"
         ul $ forM_ technologies $ \(techGroup, tech) ->
             li $ do
                 em $ toHtml techGroup
@@ -163,18 +170,26 @@ renderCv locale CV{..} = renderHtml . docTypeHtml $ do
         }
         |]
 
-contactMarkup :: ContactInfo -> (String, Html)
+contactMarkup :: ContactInfo -> (Localized String, Html)
 contactMarkup = \case
-    Bitbucket user          -> ("Bitbucket",          ahref "https://bitbucket.org/" user)
-    EMail addr              -> ("e-mail",             ahref "mailto:" addr)
-    Facebook user           -> ("Facebook",           ahref "https://" ("fb.me" </> user))
-    GitHub user             -> ("GitHub",             ahref "https://github.com/" user)
-    LinkedIn short          -> ("LinkedIn",           ahref "https://" ("linkedin.com/in/" </> short))
-    PersonalPage prefix url -> ("Personal web page",  ahref prefix url)
-    Skype user              -> ("Skype",              ahref "callto:" user)
-    Telegram user           -> ("Telegram",           ahref "https://telegram.me/" user)
-    Telephone number        -> ("tel.",               toHtml number)
-    Twitter user            -> ("Twitter",            ahref "https://twitter.com/" user)
+    Bitbucket user          -> (const "Bitbucket",  ahref "https://bitbucket.org/" user)
+    EMail addr              -> (email,              ahref "mailto:" addr)
+    Facebook user           -> (const "Facebook",   ahref "https://" ("fb.me" </> user))
+    GitHub user             -> (const "GitHub",     ahref "https://github.com/" user)
+    LinkedIn short          -> (const "LinkedIn",   ahref "https://" ("linkedin.com/in/" </> short))
+    PersonalPage prefix url -> (personal,           ahref prefix url)
+    Skype user              -> (const "Skype",      ahref "callto:" user)
+    Telegram user           -> (const "Telegram",   ahref "https://telegram.me/" user)
+    Telephone number        -> (tel,                toHtml number)
+    Twitter user            -> (const "Twitter",    ahref "https://twitter.com/" user)
   where
-    ahref :: String -> String -> Html
     ahref prefix url = a ! href (toValue (prefix <> url)) $ toHtml url
+
+    email En = "E-mail"
+    email Ru = "Эл. почта"
+
+    personal En = "Personal Web Page"
+    personal Ru = "Сайт"
+
+    tel En = "Tel."
+    tel Ru = "Тел."

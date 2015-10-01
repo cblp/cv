@@ -76,21 +76,26 @@ main = do
                 , totalTime = tr "1 semester"
                 , organization = mcl
                 , location = moscow
-                , position = "teacher of functional programming (Haskell)"
+                , position = \case
+                      En -> "teacher of functional programming (Haskell)"
+                      Ru -> "преподаватель функционального программирования (Haskell)"
                 , description = pure ()
                 }
         , Work  { workStart = (2012, Sep), workEnd = Nothing
                 , totalTime = tr "3 years"
                 , organization = mcl
                 , location = moscow
-                , position = "student scientific works mentor"
+                , position = \case
+                      En -> "student scientific works mentor"
+                      Ru -> "руководитель научных работ школьников"
                 , description = pure ()
                 }
         , Work  { workStart = (2011, Dec), workEnd = Nothing
                 , totalTime = tr "4 years"
                 , organization = \case En -> "Yandex"; Ru -> "Яндекс"
                 , location = moscow
-                , position = "software developer"
+                , position = \case  En -> "software developer"
+                                    Ru -> "разработчик"
                 , description = do
                       p $ do
                           void "I'm a backend developer of the keyword statistics service "

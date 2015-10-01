@@ -50,7 +50,7 @@ data Work = Work  { workStart :: (Year, Month)
                   , totalTime :: Localized String
                   , organization :: Localized String
                   , location :: Localized String
-                  , position :: String
+                  , position :: Localized String
                   , description :: Html
                   }
 

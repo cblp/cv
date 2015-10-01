@@ -76,7 +76,7 @@ renderCv locale CV{..} = renderHtml . docTypeHtml $ do
                 br
                 toHtml $ "(" <> localized totalTime <> ")"
             td $ do
-                toHtml position
+                toHtml $ localized position
                 br
                 void $ localized $ \case  En -> "at "
                                           Ru -> ""

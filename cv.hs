@@ -9,8 +9,8 @@ import Text.Blaze.Html5.Attributes
 main :: IO ()
 main = do
     let cv = CV{..}
-    ByteString.writeFile "mycv.en.html" (renderCv En cv)
-    ByteString.writeFile "mycv.ru.html" (renderCv Ru cv)
+    ByteString.writeFile "cv.en.html" (renderCv En cv)
+    ByteString.writeFile "cv.ru.html" (renderCv Ru cv)
   where
     fullname = Localized $ \case  En -> "Yuriy Syrovetskiy"
                                   Ru -> "Юрий Сыровецкий"

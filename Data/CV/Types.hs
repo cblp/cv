@@ -34,14 +34,14 @@ data Month =
 data Work = Work  { workStart :: (Year, Month)
                   , workEnd :: Maybe (Year, Month)
                   , totalTime :: String
-                  , organization :: String
-                  , location :: String
+                  , organization :: Localized String
+                  , location :: Localized String
                   , position :: String
                   , description :: Html
                   }
 
 data Education = Education  { graduated :: Year
-                            , school :: String
+                            , school :: Localized String
                             , division :: String
                             , degree :: String
                             }

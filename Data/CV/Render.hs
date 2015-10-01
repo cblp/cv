@@ -21,7 +21,7 @@ import Text.Shakespeare.Text
 renderCv :: Locale -> CV -> ByteString
 renderCv locale CV{..} = renderHtml . docTypeHtml $ do
     let local (Localized f) = f locale
-        local' f = f locale
+        localized f = f locale
     T.head $ do
         meta ! charset "UTF-8"
         T.title . toHtml $ local fullname
@@ -32,9 +32,8 @@ renderCv locale CV{..} = renderHtml . docTypeHtml $ do
                 tr $ td ! colspan (toValue (2 :: Int)) $
                     img ! src (toValue photo)
                 tr $ td ! colspan (toValue (2 :: Int)) $
-                    h3 $ local' $ \case
-                        En -> "Contact Info"
-                        Ru -> "Контакты"
+                    h3 $ localized $ \case  En -> "Contact Info"
+                                            Ru -> "Контакты"
                 forM_ contactInfo $ \(contactMarkup -> (contactLabel, contactContent)) ->
                     tr $ do
                         td $ toHtml $ local contactLabel
@@ -43,26 +42,26 @@ renderCv locale CV{..} = renderHtml . docTypeHtml $ do
         h1 . toHtml $ local fullname
         hr ! A.style "height: 0; border-top: solid 1px black; border-bottom: none;"
 
-        h3 $ local' $ \case
-            En -> "Professional Skills"
-            Ru -> "Умения"
+        h3 $ localized $ \case  En -> "Professional Skills"
+                                Ru -> "Навыки и умения"
         local professionalSkills
 
-        h4 $ local' $ \case
-            En -> "Technologies and Languages"
-            Ru -> "Технологии и языки"
+        h4 $ localized $ \case  En -> "Technologies and Languages"
+                                Ru -> "Технологии и языки"
         ul $ forM_ technologies $ \(techGroup, tech) ->
             li $ do
                 em . toHtml $ local techGroup
                 void " "
                 toHtml $ List.intercalate ", " (List.map local tech) <> "."
 
-        h3 "Work Experience"
+        h3 $ localized $ \case  En -> "Work Experience"
+                                Ru -> "Опыт работы"
         table ! class_ "work" $ forM_ workExperience $ \Work{..} -> tr $ do
             td $ do
                 case workEnd of
                     Nothing -> do
-                        void "started "
+                        void $ localized $ \case  En -> "started "
+                                                  Ru -> "с "
                         timeSpan workStart
                     Just end -> do
                         timeSpan workStart
@@ -73,10 +72,11 @@ renderCv locale CV{..} = renderHtml . docTypeHtml $ do
             td $ do
                 toHtml position
                 br
-                void "at "
-                T.span ! class_ "place" $ toHtml organization
+                void $ localized $ \case  En -> "at "
+                                          Ru -> ""
+                T.span ! class_ "place" $ toHtml $ local organization
                 void ", "
-                toHtml location
+                toHtml $ local location
                 description
 
         h3 "Education"
@@ -85,7 +85,7 @@ renderCv locale CV{..} = renderHtml . docTypeHtml $ do
                 void "grad. "
                 T.span ! class_ "time" $ toHtml graduated
             td $ do
-                T.span ! class_ "place" $ toHtml school
+                T.span ! class_ "place" $ toHtml $ local school
                 void ","
                 br
                 toHtml division

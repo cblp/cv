@@ -59,22 +59,28 @@ main = do
           )
         ]
 
+    mcl = Localized $ \case En -> "The Moscow Chemical Lyceum (School 1303)"
+                            Ru -> "Московский Химический Лицей (школа 1303)"
+
+    moscow = Localized $ \case  En -> "Moscow, Russia"
+                                Ru -> "Москва"
+
     workExperience =
         [ Work  { workStart = (2015, Jan), workEnd = Nothing, totalTime = "1 semester"
-                , organization = "The Moscow Chemical Lyceum"
-                , location = "Moscow, Russia"
+                , organization = mcl
+                , location = moscow
                 , position = "teacher of functional programming (Haskell)"
                 , description = pure ()
                 }
         , Work  { workStart = (2012, Sep), workEnd = Nothing, totalTime = "3 years"
-                , organization = "The Moscow Chemical Lyceum"
-                , location = "Moscow, Russia"
+                , organization = mcl
+                , location = moscow
                 , position = "student scientific works mentor"
                 , description = pure ()
                 }
         , Work  { workStart = (2011, Dec), workEnd = Nothing, totalTime = "4 years"
-                , organization = "Yandex"
-                , location = "Moscow, Russia"
+                , organization = Localized $ \case En -> "Yandex"; Ru -> "Яндекс"
+                , location = moscow
                 , position = "software developer"
                 , description = do
                       p $ do
@@ -85,7 +91,7 @@ main = do
                 }
         , Work  { workStart = (2006, Nov), workEnd = Just (2011, Oct), totalTime = "5 years"
                 , organization = "Research Institute of Information Technologies"
-                , location = "Moscow, Russia"
+                , location = moscow
                 , position = "engineer"
                 , description = do
                       p "I was the lead developer of multi-component software system."
@@ -106,7 +112,7 @@ main = do
                     , degree = "incomplete higher in computer security"
                     }
         , Education { graduated = 2002
-                    , school = "The Moscow Chemical Lyceum"
+                    , school = mcl
                     , division = "faculty of physics and mathematics"
                     , degree = "secondary"
                     }

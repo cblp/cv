@@ -20,8 +20,6 @@ import Text.Shakespeare.Text
 
 renderCv :: Locale -> CV -> ByteString
 renderCv locale CV{..} = renderHtml . docTypeHtml $ do
-    let local (Localized f) = f locale
-        localized f = f locale
     T.head $ do
         meta ! charset "UTF-8"
         T.title . toHtml $ local fullname
@@ -58,17 +56,25 @@ renderCv locale CV{..} = renderHtml . docTypeHtml $ do
                                 Ru -> "Опыт работы"
         table ! class_ "work" $ forM_ workExperience $ \Work{..} -> tr $ do
             td $ do
-                case workEnd of
-                    Nothing -> do
-                        void $ localized $ \case  En -> "started "
-                                                  Ru -> "с "
-                        timeSpan workStart
-                    Just end -> do
+                localized $ \case
+                    En -> case workEnd of
+                        Nothing -> do
+                            void "started "
+                            timeSpan workStart
+                        Just end -> do
+                            timeSpan workStart
+                            void " — "
+                            timeSpan end
+                    Ru -> do
                         timeSpan workStart
                         void " — "
-                        timeSpan end
+                        case workEnd of
+                            Nothing ->
+                                abbr ! A.title "настоящее время" $ nobr "н. в."
+                            Just end ->
+                                timeSpan end
                 br
-                toHtml $ "(" <> totalTime <> ")"
+                toHtml $ "(" <> local totalTime <> ")"
             td $ do
                 toHtml position
                 br
@@ -101,14 +107,23 @@ renderCv locale CV{..} = renderHtml . docTypeHtml $ do
         dl . dd $
             residence
   where
+    local (Localized f) = f locale
+    localized f = f locale
+
     timeSpan (year, month) =
         T.span ! class_ "time" $ do
-            toHtml $ show month
+            toHtml $ localized $ \case En -> show month; Ru -> showRu month
             void " "
             toHtml year
 
+    nobr = T.span ! A.style "white-space: nowrap;"
+
     styles :: Html
     styles = toHtml [st|
+        abbr {
+            border-bottom: 1px dotted;
+        }
+
         body {
             font-family: Georgia, serif;
             padding: 3em;

@@ -65,20 +65,32 @@ main = do
     moscow = Localized $ \case  En -> "Moscow, Russia"
                                 Ru -> "Москва"
 
+    tr en = Localized $ \case
+        En -> en
+        Ru -> case en of
+            "1 semester" -> "1 семестр"
+            "3 years" -> "3 года"
+            "4 years" -> "4 года"
+            "5 years" -> "5 лет"
+            _ -> en
+
     workExperience =
-        [ Work  { workStart = (2015, Jan), workEnd = Nothing, totalTime = "1 semester"
+        [ Work  { workStart = (2015, Jan), workEnd = Nothing
+                , totalTime = tr "1 semester"
                 , organization = mcl
                 , location = moscow
                 , position = "teacher of functional programming (Haskell)"
                 , description = pure ()
                 }
-        , Work  { workStart = (2012, Sep), workEnd = Nothing, totalTime = "3 years"
+        , Work  { workStart = (2012, Sep), workEnd = Nothing
+                , totalTime = tr "3 years"
                 , organization = mcl
                 , location = moscow
                 , position = "student scientific works mentor"
                 , description = pure ()
                 }
-        , Work  { workStart = (2011, Dec), workEnd = Nothing, totalTime = "4 years"
+        , Work  { workStart = (2011, Dec), workEnd = Nothing
+                , totalTime = tr "4 years"
                 , organization = Localized $ \case En -> "Yandex"; Ru -> "Яндекс"
                 , location = moscow
                 , position = "software developer"
@@ -89,7 +101,8 @@ main = do
                           " and several internal Yandex services."
                       p "My software successfully stands year-to-year growing data and user traffic."
                 }
-        , Work  { workStart = (2006, Nov), workEnd = Just (2011, Oct), totalTime = "5 years"
+        , Work  { workStart = (2006, Nov), workEnd = Just (2011, Oct)
+                , totalTime = tr "5 years"
                 , organization = "Research Institute of Information Technologies"
                 , location = moscow
                 , position = "engineer"

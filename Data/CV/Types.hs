@@ -1,18 +1,24 @@
+{-# LANGUAGE FlexibleInstances #-}
+
 module Data.CV.Types where
 
+import Data.String
 import Text.Blaze.Html
 
 data Locale = En | Ru
 
-type Localized a = Locale -> a
+newtype Localized a = Localized (Locale -> a)
+
+instance IsString (Localized String) where
+    fromString = Localized . const
 
 data ContactInfo  = Bitbucket String
                   | EMail String
                   | Facebook String
                   | GitHub String
                   | LinkedIn String
-                  | PersonalPage  String -- ^ prefix
-                                  String -- ^ URL without prefix
+                  | Personal  String -- ^ prefix
+                              String -- ^ URL without prefix
                   | Skype String
                   | Telegram String
                   | Telephone String
@@ -44,7 +50,7 @@ data CV = CV  { fullname :: Localized String
               , photo :: String
               , contactInfo :: [ContactInfo]
               , professionalSkills :: Localized Html
-              , technologies :: [(String, [String])]
+              , technologies :: [(Localized String, [Localized String])]
                 -- ^ lists of technologies in sections
               , workExperience :: [Work]
               , education :: [Education]

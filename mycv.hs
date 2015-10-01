@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings, RecordWildCards #-}
+{-# LANGUAGE LambdaCase, OverloadedStrings, RecordWildCards #-}
 
 import Control.Monad
 import Data.ByteString.Lazy as ByteString
@@ -12,40 +12,51 @@ main = do
     ByteString.writeFile "mycv.en.html" (renderCv En cv)
     ByteString.writeFile "mycv.ru.html" (renderCv Ru cv)
   where
-    fullname En = "Yuriy Syrovetskiy"
-    fullname Ru = "Юрий Сыровецкий"
+    fullname = Localized $ \case  En -> "Yuriy Syrovetskiy"
+                                  Ru -> "Юрий Сыровецкий"
 
     photo = "Yuriy_Syrovetskiy.jpg"
 
-    contactInfo = [ Telephone     "+7 905 547 11 98"
-                  , Skype         "cblp.su"
-                  , EMail         "cblp@cblp.su"
-                  -- , Jabber        "cblp@cblp.su"
-                  , Telegram      "cblp_su"
-                  , PersonalPage  "http://" "cblp.su"
-                  , GitHub        "cblp"
-                  , Bitbucket     "cblp"
-                  , LinkedIn      "cblpsu"
-                  , Facebook      "cblp.su"
-                  , Twitter       "cblp_su"
+    contactInfo = [ Telephone "+7 905 547 11 98"
+                  , Skype     "cblp.su"
+                  , EMail     "cblp@cblp.su"
+                  -- , Jabber    "cblp@cblp.su"
+                  , Telegram  "cblp_su"
+                  , Personal  "http://" "cblp.su"
+                  , GitHub    "cblp"
+                  , Bitbucket "cblp"
+                  , LinkedIn  "cblpsu"
+                  , Facebook  "cblp.su"
+                  , Twitter   "cblp_su"
                   ]
 
-    professionalSkills En = ul $ do
-        li "Desktop and server (backend) programming. Data analysis, high load services, user interface design."
-        li "Coding, project management, deployment, staff training."
-    professionalSkills Ru = ul $ do
-        li "Десктопное и серверное (backend) программирование. Анализ данных, высокие нагрузки, пользовательский интерфейс."
-        li "Кодирование, управление проектом, внедрение, обучение персонала."
+    professionalSkills = Localized $ \case
+        En -> ul $ do
+            li "Desktop and server (backend) programming. Data analysis, high load services, user interface design."
+            li "Coding, project management, deployment, staff training."
+        Ru -> ul $ do
+            li "Десктопное и серверное (backend) программирование. Анализ данных, высокие нагрузки, пользовательский интерфейс."
+            li "Кодирование, управление проектом, внедрение, обучение персонала."
 
     technologies =
-        [ ( "I am good in", [ "C", "C++", "English", "git", "Haskell"
-                            , "Linux [Debian, Ubuntu]", "Mercurial", "Python"
-                            , "Qt", "Russian", "Subversion" ] )
-        , ( "I can use",    [ "Boost", "HTML", "JavaScript", "Java", "Perl"
-                            , "PHP", "Windows", "XML" ] )
-        , ( "I can read",   [ "Assembler", "Erlang", ".NET/C#"
-                            , "LISP/Clojure/Scheme", "Ruby", "Scala"
-                            , "Smalltalk", "other cool stuff" ] )
+        [ ( Localized $ \case En -> "I am good in"; Ru -> "Владею"
+          , [ "C", "C++", "English", "git", "Haskell", "Linux [Debian, Ubuntu]"
+            , "Mercurial", "Python", "Qt"
+            , Localized $ \case En -> "Russian"; Ru -> "Русским"
+            , "Subversion"
+            ]
+          )
+        , ( Localized $ \case En -> "I can use"; Ru -> "Разбираюсь в"
+          , [ "Boost", "HTML", "JavaScript", "Java", "Perl", "PHP", "Windows"
+            , "XML"
+            ]
+          )
+        , ( Localized $ \case En -> "I can read"; Ru -> "Знаком с"
+          , [ "Assembler", "Erlang", ".NET/C#", "LISP/Clojure/Scheme", "Ruby"
+            , "Scala", "Smalltalk"
+            , Localized $ \case En -> "other cool stuff"; Ru -> "другими крутыми штуками"
+            ]
+          )
         ]
 
     workExperience =

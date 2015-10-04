@@ -56,7 +56,7 @@ data Work = Work  { workStart :: (Year, Month)
 
 data Education = Education  { graduated :: Year
                             , school :: Localized String
-                            , division :: String
+                            , division :: Localized String
                             , degree :: String
                             }
 

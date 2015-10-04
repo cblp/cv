@@ -100,44 +100,48 @@ main = do
         , position = \case  En -> "software developer"
                             Ru -> "разработчик"
         , description = \case
-          En -> do
-            p $ do
-              void "I'm a backend developer of the keyword statistics service "
-              a ! href "http://wordstat.yandex.com/" $
-                "Wordstat.yandex.com"
-              " and several internal Yandex services."
-            p "My software successfully stands year-to-year growing data and user traffic."
-          Ru -> do
-            p $ do
-              void "Разработчик серверной части сервиса статистики ключевых слов "
-              a ! href "http://wordstat.yandex.ru/" $
-                "Wordstat.yandex.ru"
-              " и некоторых внутренних сервисов Яндекса."
-            p "Мои сервисы успешно справляются с растущей год от года нагрузкой."
+            En -> do
+              p $ do
+                void "I'm a backend developer of the keyword statistics service "
+                a ! href "http://wordstat.yandex.com/" $
+                  "Wordstat.yandex.com"
+                " and several internal Yandex services."
+              p "My software successfully stands year-to-year growing data and user traffic."
+            Ru -> do
+              p $ do
+                void "Разработчик серверной части сервиса статистики ключевых слов "
+                a ! href "http://wordstat.yandex.ru/" $
+                  "Wordstat.yandex.ru"
+                " и некоторых внутренних сервисов Яндекса."
+              p "Мои сервисы успешно справляются с растущей год от года нагрузкой."
         }
       , Work
         { workStart = (2006, Nov), workEnd = Just (2011, Oct)
         , totalTime = tr "5 years"
-        , organization = "Research Institute of Information Technologies"
+        , organization = \case
+            En -> "Research Institute of Information Technologies"
+            Ru -> "НИИ информационных технологий"
         , location = moscow
-        , position = "engineer"
+        , position = \case En -> "engineer"; Ru -> "инженер"
         , description = \case
-          En -> do
-            p "I was the lead developer of multi-component software system."
-            p "I've been working on design and code, program and user documentation, deploy and customer support."
-            p "In my team, I introduced usage of source control tools, issue management, common knowledge system (wiki)."
-          Ru -> do
-            p "Был ведущим разработчиком многокомпонентной системы."
-            p "Занимался проектированием, разработкой, составлением программной и пользовательской документации, внедрением системы в производстве, обучением пользователей и поддержкой."
-            p "Внедрил в команде систему управления исходным кодом (Subversion и позже Mercurial), учёт задач, базу знаний (вики)."
+            En -> do
+              p "I was the lead developer of multi-component software system."
+              p "I've been working on design and code, program and user documentation, deploy and customer support."
+              p "In my team, I introduced usage of source control tools, issue management, common knowledge system (wiki)."
+            Ru -> do
+              p "Был ведущим разработчиком многокомпонентной системы."
+              p "Занимался проектированием, разработкой, составлением программной и пользовательской документации, внедрением системы в производстве, обучением пользователей и поддержкой."
+              p "Внедрил в команде систему управления исходным кодом (Subversion и позже Mercurial), учёт задач, базу знаний (вики)."
         }
       ]
 
     education =
       [ Education
         { graduated = 2010
-        , school = "The Moscow Institute of Humanities and Economics"
-        , division = "faculty of law"
+        , school = \case
+            En -> "The Moscow Institute of Humanities and Economics"
+            Ru -> "Московский гуманитарно-экономический институт"
+        , division = \case En -> "faculty of law"; Ru -> "юридический факультет"
         , degree = "higher/specialist in jurisprudence, civil law"
         }
       , Education

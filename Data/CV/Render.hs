@@ -64,11 +64,11 @@ renderCv locale CV{..} = renderHtml . docTypeHtml $ do
                             timeSpan workStart
                         Just end -> do
                             timeSpan workStart
-                            void " — "
+                            preEscapedString "&nbsp;— "
                             timeSpan end
                     Ru -> do
                         timeSpan workStart
-                        void " — "
+                        preEscapedString "&nbsp;— "
                         case workEnd of
                             Nothing ->
                                 abbr ! A.title "настоящее время" $ nobr "н. в."
@@ -95,7 +95,7 @@ renderCv locale CV{..} = renderHtml . docTypeHtml $ do
                 T.span ! class_ "place" $ toHtml $ localize school
                 void ","
                 br
-                toHtml division
+                toHtml $ localize division
             td ! class_ "degree" $
                 toHtml degree
 

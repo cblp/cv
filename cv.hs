@@ -3,7 +3,7 @@
 import Control.Monad
 import Data.ByteString.Lazy as ByteString
 import Data.CV
-import Text.Blaze.Html5 ( (!), a, li, p, ul )
+import Text.Blaze.Html5 ( (!), a, p )
 import Text.Blaze.Html5.Attributes
 
 main :: IO ()
@@ -30,32 +30,32 @@ main = do
                   , Twitter   "cblp_su"
                   ]
 
-    professionalSkills En = ul $ do
-        li "Desktop and server (backend) programming. Data analysis, high load services, user interface design."
-        li "Coding, project management, deployment, staff training."
-    professionalSkills Ru = ul $ do
-        li "Десктопное и серверное (backend) программирование. Анализ данных, высокие нагрузки, пользовательский интерфейс."
-        li "Кодирование, управление проектом, внедрение, обучение персонала."
+    professionalSkills En = do
+      p "Desktop and server (backend) programming. Data analysis, high load services, user interface design."
+      p "Coding, project management, deployment, staff training."
+    professionalSkills Ru = do
+      p "Десктопное и серверное (backend) программирование. Анализ данных, высокие нагрузки, пользовательский интерфейс."
+      p "Кодирование, управление проектом, внедрение, обучение персонала."
 
     technologies =
-        [ ( \case En -> "I am good in"; Ru -> "Владею"
-          , [ "C", "C++", "English", "git", "Haskell", "Linux [Debian, Ubuntu]"
-            , "Mercurial", "Python", "Qt"
-            , \case En -> "Russian"; Ru -> "Русским", "Subversion"
-            ]
-          )
-        , ( \case En -> "I can use"; Ru -> "Разбираюсь в"
-          , [ "Boost", "HTML", "JavaScript", "Java", "Perl", "PHP", "Windows"
-            , "XML"
-            ]
-          )
-        , ( \case En -> "I can read"; Ru -> "Знаком с"
-          , [ "Assembler", "Erlang", ".NET/C#", "LISP/Clojure/Scheme", "Ruby"
-            , "Scala", "Smalltalk"
-            , \case En -> "other cool stuff"; Ru -> "другими крутыми штуками"
-            ]
-          )
-        ]
+      [ ( \case En -> "I am good in"; Ru -> "Владею"
+        , [ "C", "C++", "English", "git", "Haskell", "Linux [Debian, Ubuntu]"
+          , "Mercurial", "Python", "Qt"
+          , \case En -> "Russian"; Ru -> "Русским", "Subversion"
+          ]
+        )
+      , ( \case En -> "I can use"; Ru -> "Разбираюсь в"
+        , [ "Boost", "HTML", "JavaScript", "Java", "Perl", "PHP", "Windows"
+          , "XML"
+          ]
+        )
+      , ( \case En -> "I can read"; Ru -> "Знаком с"
+        , [ "Assembler", "Erlang", ".NET/C#", "LISP/Clojure/Scheme", "Ruby"
+          , "Scala", "Smalltalk"
+          , \case En -> "other cool stuff"; Ru -> "другими крутыми штуками"
+          ]
+        )
+      ]
 
     mcl En = "The Moscow Chemical Lyceum (School 1303)"
     mcl Ru = "Московский Химический Лицей (школа 1303)"
@@ -65,86 +65,108 @@ main = do
 
     tr en En = en
     tr en Ru = case en of
-        "1 semester" -> "1 семестр"
-        "3 years" -> "3 года"
-        "4 years" -> "4 года"
-        "5 years" -> "5 лет"
-        _ -> en
+      "1 semester" -> "1 семестр"
+      "3 years" -> "3 года"
+      "4 years" -> "4 года"
+      "5 years" -> "5 лет"
+      _ -> en
 
     workExperience =
-        [ Work  { workStart = (2015, Jan), workEnd = Nothing
-                , totalTime = tr "1 semester"
-                , organization = mcl
-                , location = moscow
-                , position = \case
-                      En -> "teacher of functional programming (Haskell)"
-                      Ru -> "преподаватель функционального программирования (Haskell)"
-                , description = pure ()
-                }
-        , Work  { workStart = (2012, Sep), workEnd = Nothing
-                , totalTime = tr "3 years"
-                , organization = mcl
-                , location = moscow
-                , position = \case
-                      En -> "student scientific works mentor"
-                      Ru -> "руководитель научных работ школьников"
-                , description = pure ()
-                }
-        , Work  { workStart = (2011, Dec), workEnd = Nothing
-                , totalTime = tr "4 years"
-                , organization = \case En -> "Yandex"; Ru -> "Яндекс"
-                , location = moscow
-                , position = \case  En -> "software developer"
-                                    Ru -> "разработчик"
-                , description = do
-                      p $ do
-                          void "I'm a backend developer of the keyword statistics service "
-                          a ! href "http://wordstat.yandex.com/" $ "Wordstat.yandex.com"
-                          " and several internal Yandex services."
-                      p "My software successfully stands year-to-year growing data and user traffic."
-                }
-        , Work  { workStart = (2006, Nov), workEnd = Just (2011, Oct)
-                , totalTime = tr "5 years"
-                , organization = "Research Institute of Information Technologies"
-                , location = moscow
-                , position = "engineer"
-                , description = do
-                      p "I was the lead developer of multi-component software system."
-                      p "I've been working on design and code, program and user documentation, deploy and customer support."
-                      p "In my team, I introduced usage of source control tools, issue management, common knowledge system (wiki)."
-                }
-        ]
+      [ Work
+        { workStart = (2015, Jan), workEnd = Nothing
+        , totalTime = tr "1 semester"
+        , organization = mcl
+        , location = moscow
+        , position = \case
+            En -> "teacher of functional programming (Haskell)"
+            Ru -> "преподаватель функционального программирования (Haskell)"
+        , description = ""
+        }
+      , Work
+        { workStart = (2012, Sep), workEnd = Nothing
+        , totalTime = tr "3 years"
+        , organization = mcl
+        , location = moscow
+        , position = \case
+            En -> "student scientific works mentor"
+            Ru -> "руководитель научных работ школьников"
+        , description = ""
+        }
+      , Work
+        { workStart = (2011, Dec), workEnd = Nothing
+        , totalTime = tr "4 years"
+        , organization = \case En -> "Yandex"; Ru -> "Яндекс"
+        , location = moscow
+        , position = \case  En -> "software developer"
+                            Ru -> "разработчик"
+        , description = \case
+          En -> do
+            p $ do
+              void "I'm a backend developer of the keyword statistics service "
+              a ! href "http://wordstat.yandex.com/" $
+                "Wordstat.yandex.com"
+              " and several internal Yandex services."
+            p "My software successfully stands year-to-year growing data and user traffic."
+          Ru -> do
+            p $ do
+              void "Разработчик серверной части сервиса статистики ключевых слов "
+              a ! href "http://wordstat.yandex.ru/" $
+                "Wordstat.yandex.ru"
+              " и некоторых внутренних сервисов Яндекса."
+            p "Мои сервисы успешно справляются с растущей год от года нагрузкой."
+        }
+      , Work
+        { workStart = (2006, Nov), workEnd = Just (2011, Oct)
+        , totalTime = tr "5 years"
+        , organization = "Research Institute of Information Technologies"
+        , location = moscow
+        , position = "engineer"
+        , description = \case
+          En -> do
+            p "I was the lead developer of multi-component software system."
+            p "I've been working on design and code, program and user documentation, deploy and customer support."
+            p "In my team, I introduced usage of source control tools, issue management, common knowledge system (wiki)."
+          Ru -> do
+            p "Был ведущим разработчиком многокомпонентной системы."
+            p "Занимался проектированием, разработкой, составлением программной и пользовательской документации, внедрением системы в производстве, обучением пользователей и поддержкой."
+            p "Внедрил в команде систему управления исходным кодом (Subversion и позже Mercurial), учёт задач, базу знаний (вики)."
+        }
+      ]
 
     education =
-        [ Education { graduated = 2010
-                    , school = "The Moscow Institute of Humanities and Economics"
-                    , division = "faculty of law"
-                    , degree = "higher/specialist in jurisprudence, civil law"
-                    }
-        , Education { graduated = 2006
-                    , school = "Institute of Cryptography, Communications and Informatics"
-                    , division = "faculty of information security"
-                    , degree = "incomplete higher in computer security"
-                    }
-        , Education { graduated = 2002
-                    , school = mcl
-                    , division = "faculty of physics and mathematics"
-                    , degree = "secondary"
-                    }
-        ]
+      [ Education
+        { graduated = 2010
+        , school = "The Moscow Institute of Humanities and Economics"
+        , division = "faculty of law"
+        , degree = "higher/specialist in jurisprudence, civil law"
+        }
+      , Education
+        { graduated = 2006
+        , school = "Institute of Cryptography, Communications and Informatics"
+        , division = "faculty of information security"
+        , degree = "incomplete higher in computer security"
+        }
+      , Education
+        { graduated = 2002
+        , school = mcl
+        , division = "faculty of physics and mathematics"
+        , degree = "secondary"
+        }
+      ]
 
     achievements =
-        [ ( 2015, Jun
-          , do  p $ do
-                    void "Organized Haskell meetup/conference in Moscow, Russia: 6 talks, 50+ attendees"
-                    void " (schedule in Russian: "
-                    a ! href "https://github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer" $
-                        "github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer"
-                    ")."
-                p "Gave a talk “Haskell for pythonists” there."
-          )
-        ]
+      [ ( 2015, Jun
+        , do
+            p $ do
+              void "Organized Haskell meetup/conference in Moscow, Russia: 6 talks, 50+ attendees"
+              void " (schedule in Russian: "
+              a ! href "https://github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer" $
+                "github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer"
+              ")."
+            p "Gave a talk “Haskell for pythonists” there."
+        )
+      ]
 
     residence = do
-        p "Moscow, Russia."
-        p "Ready to relocate."
+      p "Moscow, Russia."
+      p "Ready to relocate."

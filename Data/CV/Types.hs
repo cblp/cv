@@ -9,8 +9,8 @@ data Locale = En | Ru
 
 type Localized a = Locale -> a
 
-instance IsString (Localized String) where
-    fromString = const
+instance IsString string => IsString (Localized string) where
+    fromString = const . fromString
 
 data ContactInfo  = Bitbucket String
                   | EMail String
@@ -51,7 +51,7 @@ data Work = Work  { workStart :: (Year, Month)
                   , organization :: Localized String
                   , location :: Localized String
                   , position :: Localized String
-                  , description :: Html
+                  , description :: Localized Html
                   }
 
 data Education = Education  { graduated :: Year

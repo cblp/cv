@@ -22,7 +22,7 @@ renderCv :: Locale -> CV -> ByteString
 renderCv locale CV{..} = renderHtml . docTypeHtml $ do
     T.head $ do
         meta ! charset "UTF-8"
-        T.title . toHtml $ localized fullname
+        T.title . toHtml $ localize fullname
         T.style styles
     body $ do
         T.div ! class_ "contact-info" $
@@ -30,33 +30,34 @@ renderCv locale CV{..} = renderHtml . docTypeHtml $ do
                 tr $ td ! colspan (toValue (2 :: Int)) $
                     img ! src (toValue photo)
                 tr $ td ! colspan (toValue (2 :: Int)) $
-                    h3 $ localized $ \case  En -> "Contact Info"
-                                            Ru -> "Контакты"
+                    h3 $ localize $ \case En -> "Contact Info"
+                                          Ru -> "Контакты"
                 forM_ contactInfo $ \(contactMarkup -> (contactLabel, contactContent)) ->
                     tr $ do
-                        td $ toHtml $ localized contactLabel
+                        td $ toHtml $ localize contactLabel
                         td contactContent
 
-        h1 . toHtml $ localized fullname
+        h1 . toHtml $ localize fullname
         hr ! A.style "height: 0; border-top: solid 1px black; border-bottom: none;"
 
-        h3 $ localized $ \case  En -> "Professional Skills"
-                                Ru -> "Навыки и умения"
-        localized professionalSkills
+        h3 $ localize $ \case En -> "Professional Skills"
+                              Ru -> "Навыки и умения"
+        dl . dd $
+            localize professionalSkills
 
-        h4 $ localized $ \case  En -> "Technologies and Languages"
-                                Ru -> "Технологии и языки"
+        h4 $ localize $ \case En -> "Technologies and Languages"
+                              Ru -> "Технологии и языки"
         ul $ forM_ technologies $ \(techGroup, tech) ->
             li $ do
-                em . toHtml $ localized techGroup
+                em . toHtml $ localize techGroup
                 void " "
-                toHtml $ List.intercalate ", " (List.map localized tech) <> "."
+                toHtml $ List.intercalate ", " (List.map localize tech) <> "."
 
-        h3 $ localized $ \case  En -> "Work Experience"
-                                Ru -> "Опыт работы"
+        h3 $ localize $ \case En -> "Work Experience"
+                              Ru -> "Опыт работы"
         table ! class_ "work" $ forM_ workExperience $ \Work{..} -> tr $ do
             td $ do
-                localized $ \case
+                localize $ \case
                     En -> case workEnd of
                         Nothing -> do
                             void "started "
@@ -74,16 +75,16 @@ renderCv locale CV{..} = renderHtml . docTypeHtml $ do
                             Just end ->
                                 timeSpan end
                 br
-                toHtml $ "(" <> localized totalTime <> ")"
+                toHtml $ "(" <> localize totalTime <> ")"
             td $ do
-                toHtml $ localized position
+                toHtml $ localize position
                 br
-                void $ localized $ \case  En -> "at "
-                                          Ru -> ""
-                T.span ! class_ "place" $ toHtml $ localized organization
+                void $ localize $ \case En -> "at "
+                                        Ru -> ""
+                T.span ! class_ "place" $ toHtml $ localize organization
                 void ", "
-                toHtml $ localized location
-                description
+                toHtml $ localize location
+                localize description
 
         h3 "Education"
         table ! class_ "edu" $ forM_ education $ \Education{..} -> tr $ do
@@ -91,7 +92,7 @@ renderCv locale CV{..} = renderHtml . docTypeHtml $ do
                 void "grad. "
                 T.span ! class_ "time" $ toHtml graduated
             td $ do
-                T.span ! class_ "place" $ toHtml $ localized school
+                T.span ! class_ "place" $ toHtml $ localize school
                 void ","
                 br
                 toHtml division
@@ -107,11 +108,11 @@ renderCv locale CV{..} = renderHtml . docTypeHtml $ do
         dl . dd $
             residence
   where
-    localized f = f locale
+    localize f = f locale
 
     timeSpan (year, month) =
         T.span ! class_ "time" $ do
-            toHtml $ localized $ \case En -> show month; Ru -> showRu month
+            toHtml $ localize $ \case En -> show month; Ru -> showRu month
             void " "
             toHtml year
 

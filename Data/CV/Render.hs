@@ -5,18 +5,18 @@
             , ViewPatterns
   #-}
 
-module Data.CV.Render where
+module            Data.CV.Render where
 
-import Control.Monad
-import Data.ByteString.Lazy
-import Data.CV.Types
-import Data.List as List
-import Data.Monoid
-import System.FilePath
-import Text.Blaze.Html.Renderer.Utf8
-import Text.Blaze.Html5 as T -- tags
-import Text.Blaze.Html5.Attributes as A -- attributes
-import Text.Shakespeare.Text
+import            Control.Monad                 ( forM_ )
+import            Data.ByteString.Lazy          ( ByteString )
+import            Data.CV.Types
+import qualified  Data.List                     as List
+import            Data.Monoid                   ( (<>) )
+import            System.FilePath               ( (</>) )
+import            Text.Blaze.Html.Renderer.Utf8 ( renderHtml )
+import            Text.Blaze.Html5              as T -- tags
+import            Text.Blaze.Html5.Attributes   as A -- attributes
+import            Text.Shakespeare.Text         ( st )
 
 renderCv :: Locale -> CV -> ByteString
 renderCv locale CV{..} = renderHtml . docTypeHtml $ do

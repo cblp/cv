@@ -1,10 +1,9 @@
 {-# LANGUAGE LambdaCase, OverloadedStrings, RecordWildCards #-}
 
-import Control.Monad
-import Data.ByteString.Lazy as ByteString
-import Data.CV
-import Text.Blaze.Html5 ( (!), a, p )
-import Text.Blaze.Html5.Attributes
+import qualified  Data.ByteString.Lazy         as ByteString
+import            Data.CV
+import            Text.Blaze.Html5             ( (!), Html, a, p )
+import            Text.Blaze.Html5.Attributes  ( href )
 
 main :: IO ()
 main = do
@@ -88,14 +87,14 @@ main = do
         , description = \case
             En -> do
               p $ do
-                void "I'm a backend developer of the keyword statistics service "
+                "I'm a backend developer of the keyword statistics service " :: Html
                 a ! href "http://wordstat.yandex.com/" $
                   "Wordstat.yandex.com"
                 " and several internal Yandex services."
               p "My software successfully stands year-to-year growing data and user traffic."
             Ru -> do
               p $ do
-                void "Разработчик серверной части сервиса статистики ключевых слов "
+                "Разработчик серверной части сервиса статистики ключевых слов " :: Html
                 a ! href "http://wordstat.yandex.ru/" $
                   "Wordstat.yandex.ru"
                 " и некоторых внутренних сервисов Яндекса."
@@ -156,16 +155,14 @@ main = do
         , \case
             En -> do
               p $ do
-                void "Organized Haskell meetup/conference in Moscow, Russia: 6 talks, 50+ attendees"
-                void " (schedule in Russian: "
+                "Organized Haskell meetup/conference in Moscow, Russia: 6 talks, 50+ attendees (schedule in Russian: " :: Html
                 a ! href "https://github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer" $
                   "github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer"
                 ")."
               p "Gave a talk “Haskell for pythonists” there."
             Ru -> do
               p $ do
-                void "Организовал встречу-конференцию о языке Haskell в Москве. 6 докладов, больше 50 слушателей"
-                void " (список докладов: "
+                "Организовал встречу-конференцию о языке Haskell в Москве. 6 докладов, больше 50 слушателей (список докладов: " :: Html
                 a ! href "https://github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer" $
                   "github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer"
                 ")."

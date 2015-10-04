@@ -2,8 +2,8 @@
 
 module Data.CV.Types where
 
-import Data.String
-import Text.Blaze.Html
+import Data.String      ( IsString(..) )
+import Text.Blaze.Html  ( Html )
 
 data Locale = En | Ru
 

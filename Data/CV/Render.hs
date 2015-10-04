@@ -50,7 +50,7 @@ renderCv locale CV{..} = renderHtml . docTypeHtml $ do
         ul $ forM_ technologies $ \(techGroup, tech) ->
             li $ do
                 em . toHtml $ localize techGroup
-                void " "
+                " " :: Html
                 toHtml $ List.intercalate ", " (List.map localize tech) <> "."
 
         h3 $ localize $ \case En -> "Work Experience"
@@ -60,7 +60,7 @@ renderCv locale CV{..} = renderHtml . docTypeHtml $ do
                 localize $ \case
                     En -> case workEnd of
                         Nothing -> do
-                            void "started "
+                            "started " :: Html
                             timeSpan workStart
                         Just end -> do
                             timeSpan workStart
@@ -79,41 +79,40 @@ renderCv locale CV{..} = renderHtml . docTypeHtml $ do
             td $ do
                 toHtml $ localize position
                 br
-                void $ localize $ \case En -> "at "
-                                        Ru -> ""
+                localize $ \case  En -> "at " :: Html
+                                  Ru -> ""
                 T.span ! class_ "place" $ toHtml $ localize organization
-                void ", "
+                ", " :: Html
                 toHtml $ localize location
                 localize description
 
-        h3 "Education"
+        h3 $ localize $ \case En -> "Education"; Ru -> "Образование"
         table ! class_ "edu" $ forM_ education $ \Education{..} -> tr $ do
-            td $ do
-                void "grad. "
+            td $
                 T.span ! class_ "time" $ toHtml graduated
             td $ do
                 T.span ! class_ "place" $ toHtml $ localize school
-                void ","
+                "," :: Html
                 br
                 toHtml $ localize division
             td ! class_ "degree" $
-                toHtml degree
+                toHtml $ localize degree
 
-        h3 "Achievements"
+        h3 $ localize $ \case En -> "Achievements"; Ru -> "Достижения"
         table ! class_ "achiev" $ forM_ achievements $ \(year, month, description) -> tr $ do
-            td $ timeSpan (year, month)
-            td description
+            td . p $ timeSpan (year, month)
+            td $ localize description
 
-        h3 "Residence"
+        h3 $ localize $ \case En -> "Residence"; Ru -> "Место жительства"
         dl . dd $
-            residence
+            localize residence
   where
     localize f = f locale
 
     timeSpan (year, month) =
         T.span ! class_ "time" $ do
             toHtml $ localize $ \case En -> show month; Ru -> showRu month
-            void " "
+            " " :: Html
             toHtml year
 
     nobr = T.span ! A.style "white-space: nowrap;"

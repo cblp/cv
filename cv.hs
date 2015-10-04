@@ -57,25 +57,11 @@ main = do
         )
       ]
 
-    mcl En = "The Moscow Chemical Lyceum (School 1303)"
-    mcl Ru = "Московский Химический Лицей (школа 1303)"
-
-    moscow En = "Moscow, Russia"
-    moscow Ru = "Москва"
-
-    tr en En = en
-    tr en Ru = case en of
-      "1 semester" -> "1 семестр"
-      "3 years" -> "3 года"
-      "4 years" -> "4 года"
-      "5 years" -> "5 лет"
-      _ -> en
-
     workExperience =
       [ Work
         { workStart = (2015, Jan), workEnd = Nothing
         , totalTime = tr "1 semester"
-        , organization = mcl
+        , organization = moscowChemicalLyceum
         , location = moscow
         , position = \case
             En -> "teacher of functional programming (Haskell)"
@@ -85,7 +71,7 @@ main = do
       , Work
         { workStart = (2012, Sep), workEnd = Nothing
         , totalTime = tr "3 years"
-        , organization = mcl
+        , organization = moscowChemicalLyceum
         , location = moscow
         , position = \case
             En -> "student scientific works mentor"
@@ -125,11 +111,11 @@ main = do
         , position = \case En -> "engineer"; Ru -> "инженер"
         , description = \case
             En -> do
-              p "I was the lead developer of multi-component software system."
+              p "I was the lead developer of multi-component software data transfer and processing system."
               p "I've been working on design and code, program and user documentation, deploy and customer support."
               p "In my team, I introduced usage of source control tools, issue management, common knowledge system (wiki)."
             Ru -> do
-              p "Был ведущим разработчиком многокомпонентной системы."
+              p "Был ведущим разработчиком многокомпонентной системы передачи и обработки данных."
               p "Занимался проектированием, разработкой, составлением программной и пользовательской документации, внедрением системы в производстве, обучением пользователей и поддержкой."
               p "Внедрил в команде систему управления исходным кодом (Subversion и позже Mercurial), учёт задач, базу знаний (вики)."
         }
@@ -142,35 +128,65 @@ main = do
             En -> "The Moscow Institute of Humanities and Economics"
             Ru -> "Московский гуманитарно-экономический институт"
         , division = \case En -> "faculty of law"; Ru -> "юридический факультет"
-        , degree = "higher/specialist in jurisprudence, civil law"
+        , degree = \case
+            En -> "higher/specialist in jurisprudence, civil law"
+            Ru -> "высшее/специалист, юриспруденция, гражданское право"
         }
       , Education
         { graduated = 2006
-        , school = "Institute of Cryptography, Communications and Informatics"
-        , division = "faculty of information security"
-        , degree = "incomplete higher in computer security"
+        , school = \case
+            En -> "Institute of Cryptography, Communications and Informatics"
+            Ru -> "Институт криптографии, связи и информатики"
+        , division = \case  En -> "faculty of information security"
+                            Ru -> "факультет информационной безопасности"
+        , degree = \case  En -> "incomplete higher in computer security"
+                          Ru -> "неполное высшее, компьютерная безопасность"
         }
       , Education
         { graduated = 2002
-        , school = mcl
-        , division = "faculty of physics and mathematics"
-        , degree = "secondary"
+        , school = moscowChemicalLyceum
+        , division = \case  En -> "faculty of physics and mathematics"
+                            Ru -> "физико-математический факультет"
+        , degree = \case En -> "secondary"; Ru -> "среднее"
         }
       ]
 
     achievements =
       [ ( 2015, Jun
-        , do
-            p $ do
-              void "Organized Haskell meetup/conference in Moscow, Russia: 6 talks, 50+ attendees"
-              void " (schedule in Russian: "
-              a ! href "https://github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer" $
-                "github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer"
-              ")."
-            p "Gave a talk “Haskell for pythonists” there."
+        , \case
+            En -> do
+              p $ do
+                void "Organized Haskell meetup/conference in Moscow, Russia: 6 talks, 50+ attendees"
+                void " (schedule in Russian: "
+                a ! href "https://github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer" $
+                  "github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer"
+                ")."
+              p "Gave a talk “Haskell for pythonists” there."
+            Ru -> do
+              p $ do
+                void "Организовал встречу-конференцию о языке Haskell в Москве. 6 докладов, больше 50 слушателей"
+                void " (список докладов: "
+                a ! href "https://github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer" $
+                  "github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer"
+                ")."
+              p "Выступил там с докладом «Haskell для питониста»."
         )
       ]
 
-    residence = do
-      p "Moscow, Russia."
+    residence loc = do
+      p $ moscow loc
       p "Ready to relocate."
+
+    moscow En = "Moscow, Russia"
+    moscow Ru = "Москва"
+
+    moscowChemicalLyceum En = "The Moscow Chemical Lyceum (School 1303)"
+    moscowChemicalLyceum Ru = "Московский Химический Лицей (школа 1303)"
+
+    tr en En = en
+    tr en Ru = case en of
+      "1 semester" -> "1 семестр"
+      "3 years" -> "3 года"
+      "4 years" -> "4 года"
+      "5 years" -> "5 лет"
+      _ -> en

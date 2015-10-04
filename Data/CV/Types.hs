@@ -57,17 +57,17 @@ data Work = Work  { workStart :: (Year, Month)
 data Education = Education  { graduated :: Year
                             , school :: Localized String
                             , division :: Localized String
-                            , degree :: String
+                            , degree :: Localized String
                             }
 
 data CV = CV  { fullname :: Localized String
-              , photo :: String
+              , photo :: FilePath
               , contactInfo :: [ContactInfo]
               , professionalSkills :: Localized Html
               , technologies :: [(Localized String, [Localized String])]
-                -- ^ lists of technologies in sections
+                -- ^ lists of technologies in groups
               , workExperience :: [Work]
               , education :: [Education]
-              , achievements :: [(Year, Month, Html)]
-              , residence :: Html
+              , achievements :: [(Year, Month, Localized Html)]
+              , residence :: Localized Html
               }

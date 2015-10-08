@@ -1,8 +1,9 @@
-{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE FlexibleInstances, TypeOperators #-}
 
 module Data.CV.Types where
 
 import Data.String      ( IsString(..) )
+import Data.Tuple.X     ( (:-) )
 import Text.Blaze.Html  ( Html )
 
 data Locale = En | Ru
@@ -68,6 +69,6 @@ data CV = CV  { fullname :: Localized String
                 -- ^ lists of technologies in groups
               , workExperience :: [Work]
               , education :: [Education]
-              , achievements :: [(Year, Month, Localized Html)]
+              , achievements :: [(Year, Month) :- Localized Html]
               , residence :: Localized Html
               }

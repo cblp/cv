@@ -149,23 +149,22 @@ main = do
       ]
 
     achievements =
-      [ ( 2015, Jun
-        , \case
-            En -> do
-              p $ do
-                "Organized Haskell meetup/conference in Moscow, Russia: 6 talks, 50+ attendees (schedule in Russian: " :: Html
-                a ! href "https://github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer" $
-                  "github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer"
-                ")."
-              p "Gave a talk “Haskell for pythonists” there."
-            Ru -> do
-              p $ do
-                "Организовал встречу-конференцию о языке Haskell в Москве. 6 докладов, больше 50 слушателей (список докладов: " :: Html
-                a ! href "https://github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer" $
-                  "github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer"
-                ")."
-              p "Выступил там с докладом «Haskell для питониста»."
-        )
+      [ (2015, Jun) -:
+        \case
+          En -> do
+            p $ do
+              "Organized Haskell meetup/conference in Moscow, Russia: 6 talks, 50+ attendees (schedule in Russian: " :: Html
+              a ! href "https://github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer" $
+                "github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer"
+              ")."
+            p "Gave a talk “Haskell for pythonists” there."
+          Ru -> do
+            p $ do
+              "Организовал встречу-конференцию о языке Haskell в Москве. 6 докладов, больше 50 слушателей (список докладов: " :: Html
+              a ! href "https://github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer" $
+                "github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer"
+              ")."
+            p "Выступил там с докладом «Haskell для питониста»."
       ]
 
     residence loc = do

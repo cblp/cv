@@ -65,7 +65,7 @@ data CV = CV  { fullname :: Localized String
               , photo :: FilePath
               , contactInfo :: [ContactInfo]
               , professionalSkills :: Localized Html
-              , technologies :: [(Localized String, [Localized String])]
+              , technologies :: [Localized String :- [Localized String]]
                 -- ^ lists of technologies in groups
               , workExperience :: [Work]
               , education :: [Education]

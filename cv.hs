@@ -1,9 +1,10 @@
 {-# LANGUAGE LambdaCase, OverloadedStrings, RecordWildCards #-}
 
-import qualified  Data.ByteString.Lazy         as ByteString
+import qualified  Data.ByteString.Lazy        as ByteString
 import            Data.CV
-import            Text.Blaze.Html5             ( (!), Html, a, p )
-import            Text.Blaze.Html5.Attributes  ( href )
+import            Data.Tuple.X                ( (-:) )
+import            Text.Blaze.Html5            ( (!), Html, a, p )
+import            Text.Blaze.Html5.Attributes ( href )
 
 main :: IO ()
 main = do
@@ -37,23 +38,20 @@ main = do
       p "Кодирование, управление проектом, внедрение, обучение персонала."
 
     technologies =
-      [ ( \case En -> "I am good in"; Ru -> "Владею"
-        , [ "C", "C++", "English", "git", "Haskell", "Linux [Debian, Ubuntu]"
-          , "Mercurial", "Python", "Qt"
-          , \case En -> "Russian"; Ru -> "Русским", "Subversion"
-          ]
-        )
-      , ( \case En -> "I can use"; Ru -> "Разбираюсь в"
-        , [ "Boost", "HTML", "JavaScript", "Java", "Perl", "PHP", "Windows"
-          , "XML"
-          ]
-        )
-      , ( \case En -> "I can read"; Ru -> "Знаком с"
-        , [ "Assembler", "Erlang", ".NET/C#", "LISP/Clojure/Scheme", "Ruby"
-          , "Scala", "Smalltalk"
-          , \case En -> "other cool stuff"; Ru -> "другими крутыми штуками"
-          ]
-        )
+      [ (\case En -> "I am good in"; Ru -> "Владею") -:
+        [ "C", "C++", "English", "git", "Haskell", "Linux [Debian, Ubuntu]"
+        , "Mercurial", "Python", "Qt"
+        , \case En -> "Russian"; Ru -> "Русским", "Subversion"
+        ]
+      , (\case En -> "I can use"; Ru -> "Разбираюсь в") -:
+        [ "Boost", "HTML", "JavaScript", "Java", "Perl", "PHP", "Windows"
+        , "XML"
+        ]
+      , (\case En -> "I can read"; Ru -> "Знаком с") -:
+        [ "Assembler", "Erlang", ".NET/C#", "LISP/Clojure/Scheme", "Ruby"
+        , "Scala", "Smalltalk"
+        , \case En -> "other cool stuff"; Ru -> "другими крутыми штуками"
+        ]
       ]
 
     workExperience =

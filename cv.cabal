@@ -1,5 +1,5 @@
 name:           cv
-version:        2015
+version:        2015.10
 build-type:     Simple
 cabal-version:  >= 1.10
 

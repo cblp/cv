@@ -2,7 +2,7 @@ module System.Directory.X ( module System.Directory.X
                           , module System.Directory
                           ) where
 
-import Control.Exception
+import Control.Exception  ( bracket )
 import System.Directory
 
 -- | copied from directory-1.2.3.0

@@ -1,26 +1,30 @@
 module GitHubPages where
 
-import Control.Monad
-import Data.List
-import Data.Monoid
+import Control.Monad      ( unless )
+import Data.List          ( intercalate )
+import Data.Monoid        ( (<>) )
 import System.Directory.X ( doesDirectoryExist, withCurrentDirectory )
-import System.Process
+import System.Process     ( callProcess, readProcess )
 import System.IO.Temp     ( withSystemTempDirectory )
 
-deploy :: (FilePath -> IO ()) -> IO ()
+deploy ::
+    (FilePath -> IO ())
+      -- ^  Site build routine.
+      --    Its argument is the target directory where the site must appear.
+    -> IO ()
 deploy build = do
-    inRepoRoot <- doesDirectoryExist ".git"
-    unless inRepoRoot $ error "must run from git repo root"
-    headValue <- readFile ".git/HEAD"
-    unless (strip headValue == "ref: refs/heads/master") $
-        error ("expected HEAD to be master, but got " ++ show headValue)
+    assertInRepoRoot
+    assertBranchIsMaster
+
     originUrl <- git ["config", "remote.origin.url"]
     userEmail <- git ["config", "user.email"]
     headId <- git ["rev-parse", "HEAD"]
+
     withSystemTempDirectory "github-pages-deploy." $ \tmp -> do
-        git_  [ "clone", ".", tmp
+        git_  [ "clone"
               , "--config=user.email=" <> userEmail
               , "--no-checkout"
+              , ".", tmp
               ]
         build tmp
         withCurrentDirectory tmp $ do
@@ -29,6 +33,17 @@ deploy build = do
             git_ ["push", "--force", originUrl, "master:gh-pages"]
         git_ ["fetch"]
   where
-    strip = intercalate "\n" . lines
+    assertBranchIsMaster = do
+        headValue <- readFile ".git/HEAD"
+        unless (strip headValue == "ref: refs/heads/master") $
+            error ("expected HEAD to be master, but got " ++ show headValue)
+
+    assertInRepoRoot = do
+        inRepoRoot <- doesDirectoryExist ".git"
+        unless inRepoRoot $ error "must run from git repo root"
+
     git args = strip <$> readProcess "git" args ""
+
     git_ = callProcess "git"
+
+    strip = intercalate "\n" . lines

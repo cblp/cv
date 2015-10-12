@@ -6,13 +6,19 @@ import Data.CV
 import Data.Monoid                  ( (<>) )
 import Data.Tuple.X                 ( (-:) )
 import GitHubPages                  ( deploy )
-import System.Directory             ( copyFile )
+import System.Directory             ( copyFile, createDirectoryIfMissing )
+import System.Environment           ( getArgs )
 import System.FilePath              ( (</>) )
 import Text.Blaze.Html5             ( (!), Html, a, p )
 import Text.Blaze.Html5.Attributes  ( href )
 
 main :: IO ()
-main = deploy build
+main = do
+    args <- getArgs
+    case args of
+        ["-d"]  -> deploy build
+        []      -> build "_site"
+        _       -> error "don't know what to do"
   where
     cv = CV{..}
 
@@ -190,10 +196,12 @@ main = deploy build
       _ -> en
 
     build target = do
+        createDirectoryIfMissing True target
         forM_ allValues $ \locale -> do
             let filename = target </> "cv." <> show locale <> ".html"
             ByteString.writeFile filename (renderCv locale cv)
         copyFile photo (target </> photo)
+        putStrLn $ "built site in " <> show target
 
 allValues :: (Bounded a, Enum a) => [a]
 allValues = enumFrom minBound

@@ -7,6 +7,11 @@ import Data.Tuple.X     ( (:-) )
 import Text.Blaze.Html  ( Html )
 
 data Locale = En | Ru
+    deriving (Bounded, Enum)
+
+instance Show Locale where
+    show En = "en"
+    show Ru = "ru"
 
 type Localized a = Locale -> a
 

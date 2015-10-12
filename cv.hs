@@ -1,17 +1,21 @@
 {-# LANGUAGE LambdaCase, OverloadedStrings, RecordWildCards #-}
 
-import qualified  Data.ByteString.Lazy        as ByteString
-import            Data.CV
-import            Data.Tuple.X                ( (-:) )
-import            Text.Blaze.Html5            ( (!), Html, a, p )
-import            Text.Blaze.Html5.Attributes ( href )
+import Control.Monad                ( forM_ )
+import Data.ByteString.Lazy         as ByteString ( writeFile )
+import Data.CV
+import Data.Monoid                  ( (<>) )
+import Data.Tuple.X                 ( (-:) )
+import GitHubPages                  ( deploy )
+import System.Directory             ( copyFile )
+import System.FilePath              ( (</>) )
+import Text.Blaze.Html5             ( (!), Html, a, p )
+import Text.Blaze.Html5.Attributes  ( href )
 
 main :: IO ()
-main = do
-    let cv = CV{..}
-    ByteString.writeFile "cv.en.html" (renderCv En cv)
-    ByteString.writeFile "cv.ru.html" (renderCv Ru cv)
+main = deploy build
   where
+    cv = CV{..}
+
     fullname En = "Yuriy Syrovetskiy"
     fullname Ru = "Юрий Сыровецкий"
 
@@ -184,3 +188,12 @@ main = do
       "4 years" -> "4 года"
       "5 years" -> "5 лет"
       _ -> en
+
+    build target = do
+        forM_ allValues $ \locale -> do
+            let filename = target </> "cv." <> show locale <> ".html"
+            ByteString.writeFile filename (renderCv locale cv)
+        copyFile photo (target </> photo)
+
+allValues :: (Bounded a, Enum a) => [a]
+allValues = enumFrom minBound

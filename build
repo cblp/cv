@@ -1,1 +1,1 @@
-stack exec --package=. -- cv
+stack exec --package=. -- cv "$@"

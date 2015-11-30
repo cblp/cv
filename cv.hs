@@ -193,7 +193,7 @@ main = do
       "3 years" -> "3 года"
       "4 years" -> "4 года"
       "5 years" -> "5 лет"
-      _ -> en
+      _ -> error $ "untranslated: " <> en
 
     build target = do
         createDirectoryIfMissing True target

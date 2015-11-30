@@ -66,16 +66,6 @@ main = do
 
     workExperience =
       [ Work
-        { workStart = (2015, Jan), workEnd = Nothing
-        , totalTime = tr "1 semester"
-        , organization = moscowChemicalLyceum
-        , location = moscow
-        , position = \case
-            En -> "teacher of functional programming (Haskell)"
-            Ru -> "преподаватель функционального программирования (Haskell)"
-        , description = ""
-        }
-      , Work
         { workStart = (2012, Sep), workEnd = Nothing
         , totalTime = tr "3 years"
         , organization = moscowChemicalLyceum
@@ -107,6 +97,18 @@ main = do
                   "Wordstat.yandex.ru"
                 " и некоторых внутренних сервисов Яндекса."
               p "Мои сервисы успешно справляются с растущей год от года нагрузкой."
+        }
+      , Work
+        { workStart = (2015, Jan), workEnd = Just (2015, Jun)
+        , totalTime = tr "1 semester"
+        , organization = moscowChemicalLyceum
+        , location = moscow
+        , position = \case
+            En -> "teacher of functional programming (Haskell)"
+            Ru -> "преподаватель функционального программирования (Haskell)"
+        , description = \case
+            En -> p "Optional subject for 9th, 10th and 11th grade students."
+            Ru -> p "Факультатив для 9, 10 и 11 классов."
         }
       , Work
         { workStart = (2006, Nov), workEnd = Just (2011, Oct)

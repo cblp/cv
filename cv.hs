@@ -160,7 +160,7 @@ main = do
         }
       ]
 
-    achievements =
+    publicActivity =
       [ (2015, Jun) -:
         \case
           En -> do

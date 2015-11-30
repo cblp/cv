@@ -98,8 +98,9 @@ renderCv locale CV{..} = renderHtml . docTypeHtml $ do
             td ! class_ "degree" $
                 toHtml $ localize degree
 
-        h3 $ localize $ \case En -> "Achievements"; Ru -> "Достижения"
-        table ! class_ "achiev" $ forM_ achievements $
+        h3 $ localize $ \case En -> "Public Activity"
+                              Ru -> "Общественная деятельность"
+        table ! class_ "achiev" $ forM_ publicActivity $
             \((year, month), description) -> tr $ do
                 td . p $ timeSpan (year, month)
                 td $ localize description

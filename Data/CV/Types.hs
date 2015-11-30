@@ -3,7 +3,7 @@
 module Data.CV.Types where
 
 import Data.String      ( IsString(..) )
-import Data.Tuple.X     ( (:-) )
+import Data.Tuple.X     ( type (-:) )
 import Text.Blaze.Html  ( Html )
 
 data Locale = En | Ru
@@ -70,10 +70,10 @@ data CV = CV  { fullname :: Localized String
               , photo :: FilePath
               , contactInfo :: [ContactInfo]
               , professionalSkills :: Localized Html
-              , technologies :: [Localized String :- [Localized String]]
+              , technologies :: [Localized String -: [Localized String]]
                 -- ^ lists of technologies in groups
               , workExperience :: [Work]
               , education :: [Education]
-              , achievements :: [(Year, Month) :- Localized Html]
+              , publicActivity :: [(Year, Month) -: Localized Html]
               , residence :: Localized Html
               }

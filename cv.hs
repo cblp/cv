@@ -161,22 +161,49 @@ main = do
       ]
 
     publicActivity =
-      [ (2015, Jun) -:
-        \case
+      [ (2015, Dec) -: \loc -> p $ do
+        case loc of
           En -> do
-            p $ do
-              "Organized Haskell meetup/conference in Moscow, Russia: 6 talks, 50+ attendees (schedule in Russian: " :: Html
-              a ! href "https://github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer" $
-                "github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer"
-              ")."
-            p "Gave a talk “Haskell for pythonists” there."
+            "Organizing RuHaskell community meetup in Moscow, Russia. " :: Html
+            "5 talks, 80+ registrants. Schedule (Russian): " :: Html
           Ru -> do
-            p $ do
-              "Организовал встречу-конференцию о языке Haskell в Москве. 6 докладов, больше 50 слушателей (список докладов: " :: Html
-              a ! href "https://github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer" $
-                "github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer"
-              ")."
-            p "Выступил там с докладом «Haskell для питониста»."
+            "Организую митап сообщества RuHaskell в Москве. " :: Html
+            "5 докладов, больше 80 зарегистрировалось. Список докладов: " :: Html
+        a ! href "http://ruhaskell.org/posts/events/2015/11/05/meetup-winter-register.html" $
+          "ruhaskell.org/posts/events/2015/11/05/meetup-winter-register.html"
+      , (2015, Jun) -: \loc -> p $ do
+        case loc of
+          En -> do
+            "Organized RuHaskell community meetup in Moscow, Russia. " :: Html
+            "6 talks, 50+ attendees. Schedule (Russian): " :: Html
+          Ru -> do
+            "Организовал митап сообщества RuHaskell в Москве. " :: Html
+            "6 докладов, больше 50 слушателей. Список докладов: "
+        a ! href "https://github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer" $
+          "github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer"
+      ]
+
+    talks =
+      [ (2015, Oct) -: \loc -> p $ do
+        case loc of
+          En -> do
+            "“Haskell for Pythonista” at the Python&Admin Party in Novosibirsk. " :: Html
+            "Description (Russian): " :: Html
+          Ru -> do
+            "«Haskell для питониста» на митапе Python&Admin Party в Новосибирске. " :: Html
+            "Описание: " :: Html
+        a ! href "https://events.yandex.ru/lib/talks/3223/" $
+          "events.yandex.ru/lib/talks/3223"
+      , (2015, Jun) -: \loc -> p $ do
+        case loc of
+          En -> do
+            "“Haskell for Pythonista” at the RuHaskell community Meetup in Moscow. " :: Html
+            "Video (Russian): " :: Html
+          Ru -> do
+            "«Haskell для питониста» на московском митапе сообщества RuHaskell. " :: Html
+            "Видео: " :: Html
+        a ! href "http://ruhaskell.org/posts/talks/2015/06/21/haskell-for-pythonista.html" $
+          "ruhaskell.org/posts/talks/2015/06/21/haskell-for-pythonista.html"
       ]
 
     residence loc = do

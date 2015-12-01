@@ -75,5 +75,6 @@ data CV = CV  { fullname :: Localized String
               , workExperience :: [Work]
               , education :: [Education]
               , publicActivity :: [(Year, Month) -: Localized Html]
+              , talks :: [(Year, Month) -: Localized Html]
               , residence :: Localized Html
               }

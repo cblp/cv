@@ -105,6 +105,12 @@ renderCv locale CV{..} = renderHtml . docTypeHtml $ do
                 td . p $ timeSpan (year, month)
                 td $ localize description
 
+        h4 $ localize $ \case En -> "Talks"; Ru -> "Выступления"
+        table ! class_ "achiev" $ forM_ talks $
+            \((year, month), description) -> tr $ do
+                td . p $ timeSpan (year, month)
+                td $ localize description
+
         h3 $ localize $ \case En -> "Residence"; Ru -> "Место жительства"
         dl . dd $
             localize residence

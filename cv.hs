@@ -42,10 +42,10 @@ main = do
 
     professionalSkills En = do
       p "Desktop and server (backend) programming. Data analysis, high load services, user interface design."
-      p "Coding, project management, deployment, staff training."
+      p "Design, coding, project management, deployment, staff training."
     professionalSkills Ru = do
       p "Десктопное и серверное (backend) программирование. Анализ данных, высокие нагрузки, пользовательский интерфейс."
-      p "Кодирование, управление проектом, внедрение, обучение персонала."
+      p "Проектирование, кодирование, управление проектом, внедрение, обучение персонала."
 
     technologies =
       [ (\case En -> "I am good in"; Ru -> "Владею") -:

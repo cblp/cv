@@ -54,12 +54,9 @@ main = do
         , \case En -> "Russian"; Ru -> "Русским", "Subversion"
         ]
       , (\case En -> "I can use"; Ru -> "Разбираюсь в") -:
-        [ "Boost", "HTML", "JavaScript", "Java", "Perl", "PHP", "Windows"
-        , "XML"
-        ]
+        ["Boost", "HTML", "JavaScript", "Java", "Perl", "PHP", "Scala", "Windows", "XML"]
       , (\case En -> "I can read"; Ru -> "Знаком с") -:
-        [ "Assembler", "Erlang", ".NET/C#", "LISP/Clojure/Scheme", "Ruby"
-        , "Scala", "Smalltalk"
+        [ "Assembler", "Erlang", ".NET/C#", "LISP/Clojure/Scheme", "Ruby", "Smalltalk"
         , \case En -> "other cool stuff"; Ru -> "другими крутыми штуками"
         ]
       ]

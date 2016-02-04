@@ -161,11 +161,11 @@ main = do
       [ (2015, Dec) -: \loc -> p $ do
         case loc of
           En -> do
-            "Organizing RuHaskell community meetup in Moscow, Russia. " :: Html
-            "5 talks, 80+ registrants. Schedule (Russian): " :: Html
+            "Organized RuHaskell community meetup in Moscow, Russia. " :: Html
+            "6 talks, 50+ attendees. Schedule (Russian): " :: Html
           Ru -> do
-            "Организую митап сообщества RuHaskell в Москве. " :: Html
-            "5 докладов, больше 80 зарегистрировалось. Список докладов: " :: Html
+            "Организовал митап сообщества RuHaskell в Москве. " :: Html
+            "6 докладов, больше 50 слушателей. Список докладов: " :: Html
         a ! href "http://ruhaskell.org/posts/events/2015/11/05/meetup-winter-register.html" $
           "ruhaskell.org/posts/events/2015/11/05/meetup-winter-register.html"
       , (2015, Jun) -: \loc -> p $ do

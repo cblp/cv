@@ -301,7 +301,10 @@ main = do
         ]
     residence loc = do
         p $ moscow loc
-        p "Ready to relocate."
+        p $
+            case loc of
+                En -> "Able to relocate to Europe or North America."
+                Ru -> "Могу переехать в Европу или Северную Америку."
     moscow En = "Moscow, Russia"
     moscow Ru = "Москва"
     moscowChemicalLyceum En = "The Moscow Chemical Lyceum (School 1303)"

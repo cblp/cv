@@ -1,0 +1,11 @@
+steps:
+  - imports:
+      align: group
+      long_list_align: inline
+      separate_lists: false
+  - language_pragmas:
+      style: vertical
+      align: false
+  - records: {}
+  - trailing_whitespace: {}
+# columns: 80

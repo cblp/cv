@@ -9,3 +9,5 @@ steps:
   - records: {}
   - trailing_whitespace: {}
 # columns: 80
+language_extensions:
+  - ExplicitNamespaces

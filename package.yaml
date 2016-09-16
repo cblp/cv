@@ -1,0 +1,17 @@
+name: cv
+
+ghc-options: -Wall -Werror
+
+executables:
+  cv:
+    source-dirs: .
+    main: cv.hs
+    dependencies:
+      - base
+      - blaze-html
+      - bytestring
+      - directory
+      - filepath
+      - process
+      - shakespeare
+      - temporary

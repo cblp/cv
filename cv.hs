@@ -11,9 +11,11 @@ import System.FilePath             ((</>))
 import Text.Blaze.Html5            (Html, a, p, (!))
 import Text.Blaze.Html5.Attributes (href)
 
-import Data.CV
-import Data.Tuple.X ((-:))
-import GitHubPages  (deploy)
+import Data.CV.Render (renderCv)
+import Data.CV.Types  (CV(..), ContactInfo(..), Education(..), Locale(En, Ru),
+                       Month(..), Work(..))
+import Data.Tuple.X   ((-:))
+import GitHubPages    (deploy)
 
 main :: IO ()
 main = do
@@ -95,9 +97,29 @@ main = do
         ]
     workExperience =
         [ Work
+          { workStart = (2016, Feb)
+          , workEnd = Nothing
+          , totalTime = tr "¹⁄₂ year"
+          , organization =
+                \case
+                    En -> "Kaspersky Lab"
+                    Ru -> "Лаборатория Касперского"
+          , location = moscow
+          , position =
+                \case
+                    En -> "developer"
+                    Ru -> "разработчик"
+          , description =
+                \case
+                    En ->
+                        "As a Kaspersky OS and Kaspersky Security System development team member, I implement security configuration compiler and various security policies, using Haskell (primarily) and C."
+                    Ru ->
+                        "В команде разработки Kaspersky OS и безопасной платформы Kaspersky Security System я разрабатываю транслятор для языка конфигурации безопасности и реализую различные политики безопасности, используя языки Haskell (большей частью) и C."
+          }
+        , Work
           { workStart = (2012, Sep)
           , workEnd = Nothing
-          , totalTime = tr "3 years"
+          , totalTime = tr "4 years"
           , organization = moscowChemicalLyceum
           , location = moscow
           , position =
@@ -108,7 +130,7 @@ main = do
           }
         , Work
           { workStart = (2011, Dec)
-          , workEnd = Nothing
+          , workEnd = Just (2016, Feb)
           , totalTime = tr "4 years"
           , organization =
                 \case
@@ -313,10 +335,11 @@ main = do
     tr en Ru =
         case en of
             "1 semester" -> "1 семестр"
+            "¹⁄₂ year" -> "¹⁄₂ года"
             "3 years" -> "3 года"
             "4 years" -> "4 года"
             "5 years" -> "5 лет"
-            _ -> error $ "untranslated: " <> en
+            _ -> error $ "not translated: " <> en
     build target = do
         createDirectoryIfMissing True target
         for_ allValues $ \locale -> do

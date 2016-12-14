@@ -6,7 +6,6 @@ steps:
   - language_pragmas:
       style: vertical
       align: false
-  - records: {}
   - trailing_whitespace: {}
 # columns: 80
 language_extensions:

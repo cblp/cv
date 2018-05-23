@@ -8,7 +8,7 @@ import Data.Monoid                 ((<>))
 import System.Directory            (copyFile, createDirectoryIfMissing)
 import System.Environment          (getArgs)
 import System.FilePath             ((</>))
-import Text.Blaze.Html5            (Html, a, p, (!))
+import Text.Blaze.Html5            (a, p, (!))
 import Text.Blaze.Html5.Attributes (href)
 
 import Data.CV.Render (renderCv)
@@ -47,7 +47,7 @@ main = do
 
     professionalSkills En = do
         p "Compilers, desktop and server (backend) programming, \
-          \data analysis, high load services, user interface design."
+          \data analysis, high load services, user interface."
         p "Design, coding, project management, deployment, staff training."
     professionalSkills Ru = do
         p "Компиляторы, десктопное и серверное (backend) программирование, \
@@ -75,7 +75,7 @@ main = do
         [ Work
           { workStart = (2016, Feb)
           , workEnd = Nothing
-          , totalTime = tr "10 months"
+          , totalTime = tr "2 years"
           , organization =
                 \case En -> "Kaspersky Lab"; Ru -> "Лаборатория Касперского"
           , location = moscow
@@ -93,7 +93,7 @@ main = do
         , Work
           { workStart = (2012, Sep)
           , workEnd = Nothing
-          , totalTime = tr "4 years"
+          , totalTime = tr "5 years"
           , organization = moscowChemicalLyceum
           , location = moscow
           , position = \case
@@ -111,13 +111,13 @@ main = do
           , description = \case
                 En -> do
                     p $ do
-                        "I'm a backend developer of the keyword statistics service " :: Html
+                        "I'm a backend developer of the keyword statistics service "
                         a ! href "http://wordstat.yandex.com/" $ "Wordstat.yandex.com"
                         " and several internal Yandex services."
                     p "My software successfully stands year-to-year growing data and user traffic."
                 Ru -> do
                     p $ do
-                        "Разработчик серверной части сервиса статистики ключевых слов " :: Html
+                        "Разработчик серверной части сервиса статистики ключевых слов "
                         a ! href "http://wordstat.yandex.ru/" $ "Wordstat.yandex.ru"
                         " и некоторых внутренних сервисов Яндекса."
                     p "Мои сервисы успешно справляются с растущей год от года нагрузкой."
@@ -196,73 +196,106 @@ main = do
         ]
 
     publicActivity =
-        [ (2016, Aug) -: \loc ->
+        [ (2017, Apr) -: \loc ->
               p $ do
                   case loc of
                       En -> do
-                          "Organized RuHaskell community meetup in Moscow, Russia. " :: Html
-                          "4 talks, 120+ attendees. Schedule (Russian): " :: Html
+                          "Organized RuHaskell community meetup in Moscow, Russia. "
+                          "4 talks, 120+ attendees. Schedule (Russian): "
                       Ru -> do
-                          "Организовал митап сообщества RuHaskell в Москве. " :: Html
-                          "4 доклада, больше 50 слушателей. Список докладов: " :: Html
+                          "Организовал митап сообщества RuHaskell в Москве. "
+                          "4 доклада, больше 120 слушателей. Список докладов: "
+                  a ! href "https://events.kaspersky.com/event/ruhaskell2" $
+                      "events.kaspersky.com/event/ruhaskell2"
+        , (2016, Aug) -: \loc ->
+              p $ do
+                  case loc of
+                      En -> do
+                          "Organized RuHaskell community meetup in Moscow, Russia. "
+                          "4 talks, 120+ attendees. Schedule (Russian): "
+                      Ru -> do
+                          "Организовал митап сообщества RuHaskell в Москве. "
+                          "4 доклада, больше 120 слушателей. Список докладов: "
                   a ! href "https://events.kaspersky.com/event/ruhaskell" $
                       "events.kaspersky.com/event/ruhaskell"
         , (2015, Dec) -: \loc ->
               p $ do
                   case loc of
                       En -> do
-                          "Organized RuHaskell community meetup in Moscow, Russia. " :: Html
-                          "6 talks, 50+ attendees. Schedule (Russian): " :: Html
+                          "Organized RuHaskell community meetup in Moscow, Russia. "
+                          "6 talks, 50+ attendees. Schedule (Russian): "
                       Ru -> do
-                          "Организовал митап сообщества RuHaskell в Москве. " :: Html
-                          "6 докладов, больше 50 слушателей. Список докладов: " :: Html
+                          "Организовал митап сообщества RuHaskell в Москве. "
+                          "6 докладов, больше 50 слушателей. Список докладов: "
                   a ! href "http://ruhaskell.org/posts/events/2015/11/05/meetup-winter-register.html" $
                       "ruhaskell.org/posts/events/2015/11/05/meetup-winter-register.html"
         , (2015, Jun) -: \loc ->
               p $ do
                   case loc of
                       En -> do
-                          "Organized RuHaskell community meetup in Moscow, Russia. " :: Html
-                          "6 talks, 50+ attendees. Schedule (Russian): " :: Html
+                          "Organized RuHaskell community meetup in Moscow, Russia. "
+                          "6 talks, 50+ attendees. Schedule (Russian): "
                       Ru -> do
-                          "Организовал митап сообщества RuHaskell в Москве. " :: Html
+                          "Организовал митап сообщества RuHaskell в Москве. "
                           "6 докладов, больше 50 слушателей. Список докладов: "
-                  a ! href "https://github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer" $
-                      "github.com/ruHaskell/ruhaskell/wiki/Meetup2015Summer"
+                  a ! href "https://github.com/ruHaskell/ruhaskell/wiki/Meetup.2015.Summer" $
+                      "github.com/ruHaskell/ruhaskell/wiki/Meetup.2015.Summer"
         ]
 
     talks =
-        [ (2016, Aug) -: \loc ->
+        [ (2017, Dec) -: \loc ->
               p $ do
                   case loc of
                       En -> do
-                          "“Ivory: safe and performant Haskell” at the RuHaskell community meetup in Moscow. " :: Html
-                          "Description (Russian): " :: Html
+                          "(in collaboration with my student Nikolay Loginov) "
+                          "“CRDT — correctly replicated data in Haskell” "
+                          "at the functional programming conference FPCONF. "
+                          "Description: "
                       Ru -> do
-                          "«Ivory: безопасный и производительный код на Haskell» на московском митапе сообщества RuHaskell. " :: Html
-                          "Описание: " :: Html
+                          "(совместно с моим учеником Николаем Логиновым) "
+                          "«CRDT — корректно распределённые данные на Haskell» "
+                          "на конференции о функциональном программировании FPCONF. "
+                          "Описание: "
+                  a ! href "http://fpconf.ru/2017.html" $ "fpconf.ru/2017.html"
+                  case loc of En -> ", video: "; Ru -> ", видео: "
+                  a ! href "https://youtu.be/VFx0H2p3g6c" $ "youtu.be/VFx0H2p3g6c"
+        , (2016, Aug) -: \loc ->
+              p $ do
+                  case loc of
+                      En -> do
+                          "“Ivory: safe and performant Haskell” "
+                          "at the RuHaskell community meetup in Moscow. "
+                          "Description (Russian): "
+                      Ru -> do
+                          "«Ivory: безопасный и производительный код на Haskell» "
+                          "на московском митапе сообщества RuHaskell. "
+                          "Описание: "
                   a ! href "https://events.kaspersky.com/event/ruhaskell" $
                       "events.kaspersky.com/event/ruhaskell"
         , (2015, Oct) -: \loc ->
               p $ do
                   case loc of
                       En -> do
-                          "“Haskell for Pythonista” at the Python&Admin Party in Novosibirsk. " :: Html
-                          "Description (Russian): " :: Html
+                          "“Haskell for Pythonista” "
+                          "at the Python&Admin Party in Novosibirsk. "
+                          "Description (Russian): "
                       Ru -> do
-                          "«Haskell для питониста» на митапе Python&Admin Party в Новосибирске. " :: Html
-                          "Описание: " :: Html
+                          "«Haskell для питониста» "
+                          "на митапе Python&Admin Party в Новосибирске. "
+                          "Описание: "
                   a ! href "https://events.yandex.ru/lib/talks/3223/" $
                       "events.yandex.ru/lib/talks/3223"
         , (2015, Jun) -: \loc ->
               p $ do
                   case loc of
                       En -> do
-                          "“Haskell for Pythonista” at the RuHaskell community Meetup in Moscow. " :: Html
-                          "Video (Russian): " :: Html
+                          "“Haskell for Pythonista” "
+                          "at the RuHaskell community Meetup in Moscow. "
+                          "Video (Russian): "
                       Ru -> do
-                          "«Haskell для питониста» на московском митапе сообщества RuHaskell. " :: Html
-                          "Видео: " :: Html
+                          "«Haskell для питониста» "
+                          "на московском митапе сообщества RuHaskell. "
+                          "Видео: "
                   a ! href "http://ruhaskell.org/posts/talks/2015/06/21/haskell-for-pythonista.html" $
                       "ruhaskell.org/posts/talks/2015/06/21/haskell-for-pythonista.html"
         ]
@@ -285,6 +318,7 @@ main = do
             "1 semester"  -> "1 семестр"
             "¹⁄₂ year"    -> "¹⁄₂ года"
             "10 months"   -> "10 месяцев"
+            "2 years"     -> "2 года"
             "3 years"     -> "3 года"
             "4 years"     -> "4 года"
             "5 years"     -> "5 лет"
@@ -292,13 +326,11 @@ main = do
 
     build target = do
         createDirectoryIfMissing True target
-        for_ allValues $ \locale -> do
+        for_ universe $ \locale -> do
             let filename = target </> "cv." <> show locale <> ".html"
             ByteString.writeFile filename (renderCv locale cv)
         copyFile photo (target </> photo)
         putStrLn $ "built site in " <> show target
 
-allValues
-    :: (Bounded a, Enum a)
-    => [a]
-allValues = enumFrom minBound
+universe :: (Bounded a, Enum a) => [a]
+universe = enumFrom minBound

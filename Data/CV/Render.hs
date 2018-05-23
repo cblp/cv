@@ -6,7 +6,7 @@
 
 module Data.CV.Render where
 
-import           Control.Monad                 (forM_)
+import           Control.Monad                 (forM_, unless)
 import           Data.ByteString.Lazy          (ByteString)
 import           Data.CV.Types                 (CV(..), ContactInfo(..),
                                                 Education(..), Locale(En, Ru),
@@ -36,9 +36,7 @@ renderCv locale CV {..} =
                     tr $
                         td ! colspan (toValue (2 :: Int)) $
                         h3 $
-                        localize $ \case
-                            En -> "Contact Info"
-                            Ru -> "Контакты"
+                        localize $ \case En -> "Contact Info"; Ru -> "Контакты"
                     forM_ contactInfo $ \(contactMarkup -> (contactLabel, contactContent)) ->
                         tr $ do
                             td $ toHtml $ localize contactLabel
@@ -47,27 +45,18 @@ renderCv locale CV {..} =
             hr !
                 A.style
                     "height: 0; border-top: solid 1px black; border-bottom: none;"
-            h3 $
-                localize $ \case
-                    En -> "Professional Skills"
-                    Ru -> "Навыки и умения"
+            h3 . localize $ \case
+                En -> "Professional Skills"; Ru -> "Навыки и умения"
             dl . dd $ localize professionalSkills
-            h4 $
-                localize $ \case
-                    En -> "Technologies and Languages"
-                    Ru -> "Технологии и языки"
-            ul $
-                forM_ technologies $ \(techGroup, tech) ->
-                    li $ do
-                        em . toHtml $ localize techGroup
-                        " " :: Html
-                        toHtml $
-                            List.intercalate ", " (List.map localize tech) <>
-                            "."
-            h3 $
-                localize $ \case
-                    En -> "Work Experience"
-                    Ru -> "Опыт работы"
+            h4 . localize $ \case
+                En -> "Technologies and Languages"; Ru -> "Технологии и языки"
+            ul . forM_ technologies $ \(techGroup, tech) ->
+                li $ do
+                    em . toHtml $ localize techGroup
+                    " "
+                    toHtml $
+                        List.intercalate ", " (List.map localize tech) <> "."
+            h3 $ localize $ \case En -> "Work Experience"; Ru -> "Опыт работы"
             table ! class_ "work" $
                 forM_ workExperience $ \Work {..} ->
                     tr $ do
@@ -75,9 +64,8 @@ renderCv locale CV {..} =
                             localize $ \case
                                 En ->
                                     case workEnd of
-                                        Nothing -> do
-                                            "started " :: Html
-                                            timeSpan workStart
+                                        Nothing ->
+                                            "started " >> timeSpan workStart
                                         Just end -> do
                                             timeSpan workStart
                                             preEscapedString "&nbsp;— "
@@ -96,130 +84,119 @@ renderCv locale CV {..} =
                             toHtml $ localize position
                             br
                             localize $ \case
-                                En -> "at " :: Html
+                                En -> "at "
                                 Ru -> ""
                             T.span ! class_ "place" $
                                 toHtml $ localize organization
-                            ", " :: Html
+                            ", "
                             toHtml $ localize location
                             localize description
-            h3 $
-                localize $ \case
-                    En -> "Education"
-                    Ru -> "Образование"
+            h3 $ localize $ \case En -> "Education"; Ru -> "Образование"
             table ! class_ "edu" $
                 forM_ education $ \Education {..} ->
                     tr $ do
-                        td $ T.span ! class_ "time" $ toHtml graduated
+                        td $ T.span ! class_ "time" $
+                            if graduated > 0 then
+                                toHtml graduated
+                            else
+                                toHtml $ "(" <> show (negate graduated) <> ")"
                         td $ do
                             T.span ! class_ "place" $ toHtml $ localize school
-                            "," :: Html
-                            br
-                            toHtml $ localize division
+                            let division' = localize division
+                            unless (null division') $ do
+                                ","
+                                br
+                                toHtml $ localize division
                         td ! class_ "degree" $ toHtml $ localize degree
-            h3 $
-                localize $ \case
-                    En -> "Public Activity"
-                    Ru -> "Общественная деятельность"
+            h3 . localize $ \case
+                En -> "Public Activity"; Ru -> "Общественная деятельность"
             table ! class_ "achiev" $
                 forM_ publicActivity $ \((year, month), description) ->
                     tr $ do
                         td . p $ timeSpan (year, month)
                         td $ localize description
-            h4 $
-                localize $ \case
-                    En -> "Talks"
-                    Ru -> "Выступления"
+            h4 . localize $ \case En -> "Talks"; Ru -> "Выступления"
             table ! class_ "achiev" $
                 forM_ talks $ \((year, month), description) ->
                     tr $ do
                         td . p $ timeSpan (year, month)
                         td $ localize description
-            h3 $
-                localize $ \case
-                    En -> "Residence"
-                    Ru -> "Место жительства"
+            h3 . localize $ \case En -> "Residence"; Ru -> "Место жительства"
             dl . dd $ localize residence
   where
     localize f = f locale
     timeSpan (year, month) =
         T.span ! class_ "time" $ do
-            toHtml $
-                localize $ \case
-                    En -> show month
-                    Ru -> showRu month
-            " " :: Html
+            toHtml $ localize $ \case En -> show month; Ru -> showRu month
+            " "
             toHtml year
     nobr = T.span ! A.style "white-space: nowrap;"
-    styles :: Html
-    styles =
-        toHtml
-            [st|
-                abbr {
-                    border-bottom: 1px dotted;
-                }
+    styles = toHtml [st|
+        abbr {
+            border-bottom: 1px dotted;
+        }
 
-                body {
-                    font-family: Georgia, serif;
-                    padding: 3em;
-                }
+        body {
+            font-family: Georgia, serif;
+            padding: 3em;
+        }
 
-                h2 {
-                    font-weight: normal;
-                }
+        h2 {
+            font-weight: normal;
+        }
 
-                h3 {
-                    margin-top: 1em;
-                    margin-bottom: 0.5em;
-                }
+        h3 {
+            margin-top: 1em;
+            margin-bottom: 0.5em;
+        }
 
-                sup {
-                    font-size: small;
-                    vertical-align: 1.2em;
-                }
+        sup {
+            font-size: small;
+            vertical-align: 1.2em;
+        }
 
-                .edu, .work, .achiev {
-                    padding-left: 0.7em;
-                    border-spacing: 1em;
-                }
+        .edu, .work, .achiev {
+            padding-left: 0.7em;
+            border-spacing: 1em;
+        }
 
-                td {
-                    vertical-align: top;
-                }
+        td {
+            vertical-align: top;
+        }
 
-                td, h1, h2, h3, li {
-                    page-break-after: avoid;
-                }
+        td, h1, h2, h3, li {
+            page-break-after: avoid;
+        }
 
-                .edu td, .work td, .achiev td {
-                    padding-left: 1em;
-                }
+        .edu td, .work td, .achiev td {
+            padding-left: 1em;
+        }
 
-                .edu td.degree {
-                    /* font-style: italic; */
-                }
+        .edu td.degree {
+            /* font-style: italic; */
+        }
 
-                .time, .place {
-                    font-weight: bold;
-                }
+        .time, .place {
+            font-weight: bold;
+        }
 
-                .time {
-                    white-space: nowrap;
-                }
+        .time {
+            white-space: nowrap;
+        }
 
-                .contact-info {
-                    float: right;
-                    margin-left: 1em;
-                    padding-left: 1em;
-                    border-left: dashed 1px gray;
-                }
+        .contact-info {
+            float: right;
+            margin-left: 1em;
+            padding-left: 1em;
+            border-left: dashed 1px gray;
+        }
 
-                ul { margin-top: 0; }
+        ul { margin-top: 0; }
 
-                .li-number {
-                    text-align: right;
-                }
-            |]
+        .li-number {
+            text-align: right;
+        }
+    |]
 
 contactMarkup :: ContactInfo -> (Localized String, Html)
 contactMarkup =

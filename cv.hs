@@ -160,6 +160,17 @@ main = do
 
     education =
         [ Education
+          { graduated = -2019
+          , school = \case
+                En -> "The Moscow Aviation Institute"
+                Ru -> "Московский авиационный институт"
+          , division = \case
+                En -> "faculty of control systems and computer science in engineering"
+                Ru ->
+                    "институт №3 «Системы управления, информатика и электроэнергетика»"
+          , degree = \case En -> "M.S. Student"; Ru -> "магистрант"
+          }
+        , Education
           { graduated = 2010
           , school = \case
                 En -> "The Moscow Institute of Humanities and Economics"

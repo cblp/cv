@@ -1,8 +1,12 @@
+{-# LANGUAGE PatternSynonyms #-}
 {-# LANGUAGE TypeOperators #-}
 
 module Data.Tuple.X where
 
-type a -: b = (a, b)
+type (:-) = (,)
+
+pattern (:-) :: a -> b -> (a, b)
+pattern a :- b = (a, b)
 
 (-:) :: a -> b -> (a, b)
 (-:) = (,)

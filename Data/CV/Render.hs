@@ -90,6 +90,7 @@ renderCv locale CV {..} =
                                 toHtml $ localize organization
                             ", "
                             toHtml $ localize location
+                            br
                             localize description
             h3 $ localize $ \case En -> "Education"; Ru -> "Образование"
             table ! class_ "edu" $

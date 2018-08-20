@@ -73,32 +73,37 @@ main = do
 
     workExperience =
         [ Work
-          { workStart = (2016, Feb)
-          , workEnd = Nothing
-          , totalTime = tr "2 years"
-          , organization =
+            { workStart = (2016, Feb)
+            , workEnd = Nothing
+            , totalTime = tr "2¹⁄₂ years"
+            , organization =
                 \case En -> "Kaspersky Lab"; Ru -> "Лаборатория Касперского"
-          , location = moscow
-          , position = \case En -> "developer"; Ru -> "разработчик"
-          , description = \case
-                En -> "As a Kaspersky OS and Kaspersky Security System development team member, \
-                      \I implement security configuration compiler and various security policies, \
-                      \using Haskell (primarily) and C."
-                Ru -> "В команде разработки Kaspersky OS и безопасной платформы \
-                      \Kaspersky Security System \
-                      \я разрабатываю транслятор для языка конфигурации безопасности \
-                      \и реализую различные политики безопасности, \
-                      \используя языки Haskell (большей частью) и C."
-          }
+            , location = moscow
+            , position =
+                \case En -> "Senior Developer"; Ru -> "Старший разработчик"
+            , description = \case
+                En ->
+                    "As a Kaspersky OS and Kaspersky Security System \
+                    \development team member, \
+                    \I implement security configuration compiler and various \
+                    \security policies, \
+                    \using Haskell (primarily) and C."
+                Ru ->
+                    "В команде разработки Kaspersky OS и безопасной платформы \
+                    \Kaspersky Security System \
+                    \я разрабатываю транслятор для языка конфигурации \
+                    \безопасности и реализую различные политики безопасности, \
+                    \используя языки Haskell (большей частью) и C."
+            }
         , Work
           { workStart = (2012, Sep)
           , workEnd = Nothing
-          , totalTime = tr "5 years"
+          , totalTime = tr "6 years"
           , organization = moscowChemicalLyceum
           , location = moscow
           , position = \case
-                En -> "student scientific projects mentor"
-                Ru -> "руководитель научных работ школьников"
+                En -> "Student scientific projects mentor"
+                Ru -> "Руководитель научных работ школьников"
           , description = ""
           }
         , Work
@@ -107,7 +112,7 @@ main = do
           , totalTime = tr "4 years"
           , organization = \case En -> "Yandex"; Ru -> "Яндекс"
           , location = moscow
-          , position = \case En -> "software developer"; Ru -> "разработчик"
+          , position = \case En -> "Software Developer"; Ru -> "Разработчик"
           , description = \case
                 En -> do
                     p $ do
@@ -129,8 +134,8 @@ main = do
           , organization = moscowChemicalLyceum
           , location = moscow
           , position = \case
-                En -> "teacher of functional programming (Haskell)"
-                Ru -> "преподаватель функционального программирования (Haskell)"
+                En -> "Teacher of functional programming (Haskell)"
+                Ru -> "Преподаватель функционального программирования (Haskell)"
           , description = \case
                 En -> p "Optional subject for 9th, 10th and 11th grade students."
                 Ru -> p "Факультатив для 9, 10 и 11 классов."
@@ -144,8 +149,8 @@ main = do
                 Ru -> "НИИ информационных технологий"
           , location = moscow
           , position = \case
-                En -> "engineer"
-                Ru -> "инженер"
+                En -> "Engineer"
+                Ru -> "Инженер"
           , description = \case
                 En -> do
                     p "I was the lead developer of multi-component software data transfer and processing system."

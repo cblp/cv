@@ -75,7 +75,7 @@ main = do
         [ Work
             { workStart = (2016, Feb)
             , workEnd = Nothing
-            , totalTime = tr "2¹⁄₂ years"
+            , totalTime = tr "2½ years"
             , organization =
                 \case En -> "Kaspersky Lab"; Ru -> "Лаборатория Касперского"
             , location = moscow
@@ -332,10 +332,10 @@ main = do
     tr en Ru =
         case en of
             "1 semester"  -> "1 семестр"
-            "¹⁄₂ year"     -> "¹⁄₂ года"
+            "½ year"      -> "½ года"
             "10 months"   -> "10 месяцев"
             "2 years"     -> "2 года"
-            "2¹⁄₂ years"   -> "2¹⁄₂ года"
+            "2½ years"    -> "2½ года"
             "3 years"     -> "3 года"
             "4 years"     -> "4 года"
             "5 years"     -> "5 лет"

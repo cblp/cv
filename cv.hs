@@ -332,12 +332,14 @@ main = do
     tr en Ru =
         case en of
             "1 semester"  -> "1 семестр"
-            "¹⁄₂ year"    -> "¹⁄₂ года"
+            "¹⁄₂ year"     -> "¹⁄₂ года"
             "10 months"   -> "10 месяцев"
             "2 years"     -> "2 года"
+            "2¹⁄₂ years"   -> "2¹⁄₂ года"
             "3 years"     -> "3 года"
             "4 years"     -> "4 года"
             "5 years"     -> "5 лет"
+            "6 years"     -> "6 лет"
             _             -> error $ "not translated: " <> en
 
     build target = do

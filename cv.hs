@@ -117,7 +117,7 @@ main = do
             , description = \case
                 En -> do
                     p $ do
-                        "I'm a backend developer of the keyword statistics "
+                        "I was a backend developer of the keyword statistics "
                         "service "
                         a ! href "http://wordstat.yandex.com/" $
                             "Wordstat.yandex.com"

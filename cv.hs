@@ -277,7 +277,28 @@ main = do
                 "6 докладов, больше 50 слушателей. Список докладов: "
 
     talks =
-        [ (2018, Nov) -: \loc -> p $ do
+        [ (2019, May) -: \loc -> p $ do
+            case loc of
+                En -> do
+                    "“A purely functional approach to CRDT/RON-based "
+                    "distributed systems” at FPURE "
+                Ru -> do
+                    "«Чисто функциональная реализация полностью доступных "
+                    "систем на основе CRDT и RON» на FPURE "
+            a ! href "https://www.fpure.events" $ "fpure.events"
+        , (2019, Mar) -: \loc -> p $ do
+            case loc of
+                En -> do
+                    "Introduction to Kaspersky Security System and KasperskyOS "
+                    "at “Pi Day: Moscow Programmer Club Meetup”"
+                Ru -> do
+                    "Обзор Kaspersky Security System и KasperskyOS "
+                    "на «Дне Пи: Moscow Programmer Club Meetup»"
+            a   ! href
+                    "https://careers.kaspersky.ru/events/\
+                    \moscow-programmer-club-meet-up/"
+                $ "careers.kaspersky.ru/events/moscow-programmer-club-meet-up"
+        , (2018, Nov) -: \loc -> p $ do
             case loc of
                 En -> do
                     "A practical application of Haskell implementation of "

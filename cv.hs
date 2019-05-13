@@ -22,10 +22,10 @@ main = do
     args <- getArgs
     case args of
         ["-d"] -> deploy build
-        [] -> build "_site"
-        _ -> error "don't know what to do"
+        []     -> build "_site"
+        _      -> error "don't know what to do"
   where
-    cv = CV {..}
+    cv = CV{..}
 
     fullname En = "Yuriy Syrovetskiy"
     fullname Ru = "Юрий Сыровецкий"
@@ -46,36 +46,37 @@ main = do
         ]
 
     professionalSkills En = do
-        p "Compilers, desktop and server (backend) programming, \
-          \data analysis, high load services, user interface."
-        p "Design, coding, project management, deployment, staff training."
+        p   "Compilers, desktop and server (backend) programming, \
+            \data analysis, high load services, user interface."
+        p   "Design, coding, project management, deployment, staff training."
     professionalSkills Ru = do
-        p "Компиляторы, десктопное и серверное (backend) программирование, \
-          \анализ данных, высокие нагрузки, пользовательский интерфейс."
-        p "Проектирование, кодирование, управление проектом, внедрение, обучение персонала."
+        p   "Компиляторы, десктопное и серверное (backend) программирование, \
+            \анализ данных, высокие нагрузки, пользовательский интерфейс."
+        p   "Проектирование, кодирование, управление проектом, внедрение, \
+            \обучение персонала."
 
     technologies =
         [ (\case En -> "I am good in"; Ru -> "Владею") -:
-          [ "C", "C++", "English", "git", "Haskell", "Linux [Debian, Ubuntu]"
-          , "Mercurial", "Python", "Qt", \case En -> "Russian"; Ru -> "Русским"
-          , "Subversion"
-          ]
+            [ "C", "C++", "English", "git", "Haskell", "Linux [Debian, Ubuntu]"
+            , "Mercurial", "Python", "Qt"
+            , \case En -> "Russian"; Ru -> "Русским", "Subversion"
+            ]
         , (\case En -> "I can use"; Ru -> "Разбираюсь в") -:
-          [ "Boost", "HTML", "JavaScript", "Java", "Perl", "PHP", "Scala"
-          , "Windows", "XML"
-          ]
+            [ "Boost", "HTML", "JavaScript", "Java", "Perl", "PHP", "Scala"
+            , "Windows", "XML"
+            ]
         , (\case En -> "I can read"; Ru -> "Знаком с") -:
-          [ "Assembler", "Erlang", ".NET/C#", "LISP/Clojure/Scheme", "Ruby"
-          , "Smalltalk",
-          \case En -> "other cool stuff"; Ru -> "другими крутыми штуками"
-          ]
+            [ "Assembler", "Erlang", ".NET/C#", "LISP/Clojure/Scheme", "Ruby"
+            , "Smalltalk"
+            , \case En -> "other cool stuff"; Ru -> "другими крутыми штуками"
+            ]
         ]
 
     workExperience =
         [ Work
             { workStart = (2016, Feb)
             , workEnd = Nothing
-            , totalTime = tr "2½ years"
+            , totalTime = tr "3 years"
             , organization =
                 \case En -> "Kaspersky Lab"; Ru -> "Лаборатория Касперского"
             , location = moscow
@@ -96,224 +97,260 @@ main = do
                     \используя языки Haskell (большей частью) и C."
             }
         , Work
-          { workStart = (2012, Sep)
-          , workEnd = Nothing
-          , totalTime = tr "6 years"
-          , organization = moscowChemicalLyceum
-          , location = moscow
-          , position = \case
+            { workStart = (2012, Sep)
+            , workEnd = Nothing
+            , totalTime = tr "6 years"
+            , organization = moscowChemicalLyceum
+            , location = moscow
+            , position = \case
                 En -> "Student scientific projects mentor"
                 Ru -> "Руководитель научных работ школьников"
-          , description = ""
-          }
+            , description = ""
+            }
         , Work
-          { workStart = (2011, Dec)
-          , workEnd = Just (2016, Feb)
-          , totalTime = tr "4 years"
-          , organization = \case En -> "Yandex"; Ru -> "Яндекс"
-          , location = moscow
-          , position = \case En -> "Software Developer"; Ru -> "Разработчик"
-          , description = \case
+            { workStart =    (2011, Dec)
+            , workEnd = Just (2016, Feb)
+            , totalTime = tr "4 years"
+            , organization = \case En -> "Yandex"; Ru -> "Яндекс"
+            , location = moscow
+            , position = \case En -> "Software Developer"; Ru -> "Разработчик"
+            , description = \case
                 En -> do
                     p $ do
-                        "I'm a backend developer of the keyword statistics service "
-                        a ! href "http://wordstat.yandex.com/" $ "Wordstat.yandex.com"
+                        "I'm a backend developer of the keyword statistics "
+                        "service "
+                        a ! href "http://wordstat.yandex.com/" $
+                            "Wordstat.yandex.com"
                         " and several internal Yandex services."
-                    p "My software successfully stands year-to-year growing data and user traffic."
+                    p   "My software successfully stands year-to-year growing \
+                        \data and user traffic."
                 Ru -> do
                     p $ do
-                        "Разработчик серверной части сервиса статистики ключевых слов "
-                        a ! href "http://wordstat.yandex.ru/" $ "Wordstat.yandex.ru"
+                        "Разработчик серверной части сервиса статистики "
+                        "ключевых слов "
+                        a ! href "http://wordstat.yandex.ru/" $
+                            "Wordstat.yandex.ru"
                         " и некоторых внутренних сервисов Яндекса."
-                    p "Мои сервисы успешно справляются с растущей год от года нагрузкой."
-          }
+                    p   "Мои сервисы успешно справляются с растущей \
+                        \год от года нагрузкой."
+            }
         , Work
-          { workStart = (2015, Jan)
-          , workEnd = Just (2015, Jun)
-          , totalTime = tr "1 semester"
-          , organization = moscowChemicalLyceum
-          , location = moscow
-          , position = \case
+            { workStart =    (2015, Jan)
+            , workEnd = Just (2015, Jun)
+            , totalTime = tr "1 semester"
+            , organization = moscowChemicalLyceum
+            , location = moscow
+            , position = \case
                 En -> "Teacher of functional programming (Haskell)"
                 Ru -> "Преподаватель функционального программирования (Haskell)"
-          , description = \case
-                En -> p "Optional subject for 9th, 10th and 11th grade students."
+            , description = \case
+                En ->
+                    p "Optional subject for 9th, 10th and 11th grade students."
                 Ru -> p "Факультатив для 9, 10 и 11 классов."
-          }
+            }
         , Work
-          { workStart = (2006, Nov)
-          , workEnd = Just (2011, Oct)
-          , totalTime = tr "5 years"
-          , organization = \case
+            { workStart =    (2006, Nov)
+            , workEnd = Just (2011, Oct)
+            , totalTime = tr "5 years"
+            , organization = \case
                 En -> "Research Institute of Information Technologies"
                 Ru -> "НИИ информационных технологий"
-          , location = moscow
-          , position = \case
+            , location = moscow
+            , position = \case
                 En -> "Engineer"
                 Ru -> "Инженер"
-          , description = \case
+            , description = \case
                 En -> do
-                    p "I was the lead developer of multi-component software data transfer and processing system."
-                    p "I've been working on design and code, program and user documentation, deploy and customer support."
-                    p "In my team, I introduced usage of source control tools, issue management, common knowledge system (wiki)."
+                    p   "I was the lead developer of multi-component software \
+                        \data transfer and processing system."
+                    p   "I've been working on design and code, program and \
+                        \user documentation, deploy and customer support."
+                    p   "In my team, I introduced usage of source control \
+                        \tools, issue management, common knowledge system \
+                        \(wiki)."
                 Ru -> do
-                    p "Был ведущим разработчиком многокомпонентной системы передачи и обработки данных."
-                    p "Занимался проектированием, разработкой, составлением программной и пользовательской документации, внедрением системы в производстве, обучением пользователей и поддержкой."
-                    p "Внедрил в команде систему управления исходным кодом (Subversion и позже Mercurial), учёт задач, базу знаний (вики)."
-          }
+                    p   "Был ведущим разработчиком многокомпонентной системы \
+                        \передачи и обработки данных."
+                    p   "Занимался проектированием, разработкой, \
+                        \составлением программной и пользовательской \
+                        \документации, внедрением системы в производстве, \
+                        \обучением пользователей и поддержкой."
+                    p   "Внедрил в команде систему управления исходным кодом \
+                        \(Subversion и позже Mercurial), учёт задач, \
+                        \базу знаний (вики)."
+            }
         ]
 
     education =
         [ Education
-          { graduated = -2019
-          , school = \case
+            { graduated = -2020
+            , school = \case
                 En -> "The Moscow Aviation Institute"
                 Ru -> "Московский авиационный институт"
-          , division = \case
-                En -> "faculty of control systems and computer science in engineering"
+            , division = \case
+                En ->
+                    "faculty of control systems and computer science \
+                    \in engineering"
                 Ru ->
-                    "институт №3 «Системы управления, информатика и электроэнергетика»"
-          , degree = \case En -> "M.S. Student"; Ru -> "магистрант"
-          }
+                    "институт №3 \
+                    \«Системы управления, информатика и электроэнергетика»"
+            , degree = \case En -> "M.S. Student"; Ru -> "магистрант"
+            }
         , Education
-          { graduated = 2010
-          , school = \case
+            { graduated = 2010
+            , school = \case
                 En -> "The Moscow Institute of Humanities and Economics"
                 Ru -> "Московский гуманитарно-экономический институт"
-          , division = \case
+            , division = \case
                 En -> "faculty of law"
                 Ru -> "юридический факультет"
-          , degree = \case
+            , degree = \case
                 En -> "higher/specialist in jurisprudence, civil law"
                 Ru -> "высшее/специалист, юриспруденция, гражданское право"
           }
         , Education
-          { graduated = 2006
-          , school = \case
-                En -> "Institute of Cryptography, Communications and Informatics"
+            { graduated = 2006
+            , school = \case
+                En ->
+                    "Institute of Cryptography, Communications and Informatics"
                 Ru -> "Институт криптографии, связи и информатики"
-          , division = \case
+            , division = \case
                 En -> "faculty of information security"
                 Ru -> "факультет информационной безопасности"
-          , degree = \case
+            , degree = \case
                 En -> "incomplete higher in computer security"
                 Ru -> "неполное высшее, компьютерная безопасность"
-          }
+            }
         , Education
-          { graduated = 2002
-          , school = moscowChemicalLyceum
-          , division = \case
+            { graduated = 2002
+            , school = moscowChemicalLyceum
+            , division = \case
                 En -> "faculty of physics and mathematics"
                 Ru -> "физико-математический факультет"
-          , degree = \case
-                En -> "secondary"
-                Ru -> "среднее"
-          }
+            , degree = \case En -> "secondary"; Ru -> "среднее"
+            }
         ]
 
     publicActivity =
         [ (2017, Apr) -: \loc ->
-              p $ do
-                  case loc of
-                      En -> do
-                          "Organized RuHaskell community meetup in Moscow, Russia. "
-                          "4 talks, 120+ attendees. Schedule (Russian): "
-                      Ru -> do
-                          "Организовал митап сообщества RuHaskell в Москве. "
-                          "4 доклада, больше 120 слушателей. Список докладов: "
-                  a ! href "https://events.kaspersky.com/event/ruhaskell2" $
-                      "events.kaspersky.com/event/ruhaskell2"
+            p $ do
+                coLaboratoryRuhaskell loc
+                a ! href "https://events.kaspersky.com/event/ruhaskell2" $
+                    "events.kaspersky.com/event/ruhaskell2"
         , (2016, Aug) -: \loc ->
-              p $ do
-                  case loc of
-                      En -> do
-                          "Organized RuHaskell community meetup in Moscow, Russia. "
-                          "4 talks, 120+ attendees. Schedule (Russian): "
-                      Ru -> do
-                          "Организовал митап сообщества RuHaskell в Москве. "
-                          "4 доклада, больше 120 слушателей. Список докладов: "
-                  a ! href "https://events.kaspersky.com/event/ruhaskell" $
-                      "events.kaspersky.com/event/ruhaskell"
+            p $ do
+                coLaboratoryRuhaskell loc
+                a ! href "https://events.kaspersky.com/event/ruhaskell" $
+                    "events.kaspersky.com/event/ruhaskell"
         , (2015, Dec) -: \loc ->
-              p $ do
-                  case loc of
-                      En -> do
-                          "Organized RuHaskell community meetup in Moscow, Russia. "
-                          "6 talks, 50+ attendees. Schedule (Russian): "
-                      Ru -> do
-                          "Организовал митап сообщества RuHaskell в Москве. "
-                          "6 докладов, больше 50 слушателей. Список докладов: "
-                  a ! href "http://ruhaskell.org/posts/events/2015/11/05/meetup-winter-register.html" $
-                      "ruhaskell.org/posts/events/2015/11/05/meetup-winter-register.html"
+            p $ do
+                ruhaskellExtropolis loc
+                a   ! href
+                        "http://ruhaskell.org/posts/events/2015/11/05/\
+                        \meetup-winter-register.html"
+                    $   "ruhaskell.org/posts/events/2015/11/05/\
+                        \meetup-winter-register.html"
         , (2015, Jun) -: \loc ->
-              p $ do
-                  case loc of
-                      En -> do
-                          "Organized RuHaskell community meetup in Moscow, Russia. "
-                          "6 talks, 50+ attendees. Schedule (Russian): "
-                      Ru -> do
-                          "Организовал митап сообщества RuHaskell в Москве. "
-                          "6 докладов, больше 50 слушателей. Список докладов: "
-                  a ! href "https://github.com/ruHaskell/ruhaskell/wiki/Meetup.2015.Summer" $
-                      "github.com/ruHaskell/ruhaskell/wiki/Meetup.2015.Summer"
+            p $ do
+                ruhaskellExtropolis loc
+                a   ! href
+                        "https://github.com/ruHaskell/ruhaskell/wiki/\
+                        \Meetup.2015.Summer"
+                    $ "github.com/ruHaskell/ruhaskell/wiki/Meetup.2015.Summer"
         ]
+      where
+        coLaboratoryRuhaskell = \case
+            En -> do
+                "Co-organized RuHaskell community meetup "
+                "in Kaspersky Lab, Moscow, Russia. "
+                "4 talks, 120+ attendees. Schedule (Russian): "
+            Ru -> do
+                "Организовал митап сообщества RuHaskell "
+                "в Лаборатории Касперского в Москве. "
+                "4 доклада, больше 120 слушателей. Список докладов: "
+        ruhaskellExtropolis = \case
+            En -> do
+                "Organized RuHaskell community meetup in Moscow, Russia. "
+                "6 talks, 50+ attendees. Schedule (Russian): "
+            Ru -> do
+                "Организовал митап сообщества RuHaskell в Москве. "
+                "6 докладов, больше 50 слушателей. Список докладов: "
 
     talks =
-        [ (2017, Dec) -: \loc ->
-              p $ do
-                  case loc of
-                      En -> do
-                          "(in collaboration with my student Nikolay Loginov) "
-                          "“CRDT — correctly replicated data in Haskell” "
-                          "at the functional programming conference FPCONF. "
-                          "Description: "
-                      Ru -> do
-                          "(совместно с моим учеником Николаем Логиновым) "
-                          "«CRDT — корректно распределённые данные на Haskell» "
-                          "на конференции о функциональном программировании FPCONF. "
-                          "Описание: "
-                  a ! href "http://fpconf.ru/2017.html" $ "fpconf.ru/2017.html"
-                  case loc of En -> ", video: "; Ru -> ", видео: "
-                  a ! href "https://youtu.be/VFx0H2p3g6c" $ "youtu.be/VFx0H2p3g6c"
-        , (2016, Aug) -: \loc ->
-              p $ do
-                  case loc of
-                      En -> do
-                          "“Ivory: safe and performant Haskell” "
-                          "at the RuHaskell community meetup in Moscow. "
-                          "Description (Russian): "
-                      Ru -> do
-                          "«Ivory: безопасный и производительный код на Haskell» "
-                          "на московском митапе сообщества RuHaskell. "
-                          "Описание: "
-                  a ! href "https://events.kaspersky.com/event/ruhaskell" $
-                      "events.kaspersky.com/event/ruhaskell"
-        , (2015, Oct) -: \loc ->
-              p $ do
-                  case loc of
-                      En -> do
-                          "“Haskell for Pythonista” "
-                          "at the Python&Admin Party in Novosibirsk. "
-                          "Description (Russian): "
-                      Ru -> do
-                          "«Haskell для питониста» "
-                          "на митапе Python&Admin Party в Новосибирске. "
-                          "Описание: "
-                  a ! href "https://events.yandex.ru/lib/talks/3223/" $
-                      "events.yandex.ru/lib/talks/3223"
-        , (2015, Jun) -: \loc ->
-              p $ do
-                  case loc of
-                      En -> do
-                          "“Haskell for Pythonista” "
-                          "at the RuHaskell community Meetup in Moscow. "
-                          "Video (Russian): "
-                      Ru -> do
-                          "«Haskell для питониста» "
-                          "на московском митапе сообщества RuHaskell. "
-                          "Видео: "
-                  a ! href "http://ruhaskell.org/posts/talks/2015/06/21/haskell-for-pythonista.html" $
-                      "ruhaskell.org/posts/talks/2015/06/21/haskell-for-pythonista.html"
+        [ (2018, Nov) -: \loc -> p $ do
+            case loc of
+                En -> do
+                    "A practical application of Haskell implementation of "
+                    "CRDT/RON in distributed systems "
+                Ru -> do
+                    "«Применение CRDT/RON для создания распределенных "
+                    "приложений на Haskell» на митапе FProg SPb "
+            a ! href "https://spb-fp-meetup.timepad.ru/event/857591/" $
+                "spb-fp-meetup.timepad.ru/event/857591"
+        , (2018, Sep) -: \loc -> p $ do
+            case loc of
+                En -> do
+                    "“Purely functional programming and KasperskyOS” "
+                    "in Information Security section at RIFTECH — "
+                Ru -> do
+                    "«Чистое функциональное программирование и KasperskyOS» "
+                    "в секции «Информационная безопасность» на РИФТЕХ — "
+            a ! href "http://tech.rif.ru" $ "tech.rif.ru"
+        , (2017, Dec) -: \loc -> p $ do
+            case loc of
+                En -> do
+                    "(in collaboration with my student Nikolay Loginov) "
+                    "“CRDT — correctly replicated data in Haskell” "
+                    "at the functional programming conference FPCONF. "
+                    "Description: "
+                Ru -> do
+                    "(совместно с моим учеником Николаем Логиновым) "
+                    "«CRDT — корректно распределённые данные на Haskell» "
+                    "на конференции о функциональном программировании "
+                    "FPCONF. "
+                    "Описание: "
+            a ! href "http://fpconf.ru/2017.html" $ "fpconf.ru/2017.html"
+            case loc of En -> ", video: "; Ru -> ", видео: "
+            a ! href "https://youtu.be/VFx0H2p3g6c" $ "youtu.be/VFx0H2p3g6c"
+        , (2016, Aug) -: \loc -> p $ do
+            case loc of
+                En -> do
+                    "“Ivory: safe and performant Haskell” "
+                    "at the RuHaskell community meetup in Moscow. "
+                    "Description (Russian): "
+                Ru -> do
+                    "«Ivory: безопасный и производительный код на Haskell» "
+                    "на московском митапе сообщества RuHaskell. "
+                    "Описание: "
+            a ! href "https://events.kaspersky.com/event/ruhaskell" $
+                "events.kaspersky.com/event/ruhaskell"
+        , (2015, Oct) -: \loc -> p $ do
+            case loc of
+                En -> do
+                    "“Haskell for Pythonista” "
+                    "at the Python&Admin Party in Novosibirsk. "
+                    "Description (Russian): "
+                Ru -> do
+                    "«Haskell для питониста» "
+                    "на митапе Python&Admin Party в Новосибирске. "
+                    "Описание: "
+            a ! href "https://events.yandex.ru/lib/talks/3223/" $
+                "events.yandex.ru/lib/talks/3223"
+        , (2015, Jun) -: \loc -> p $ do
+            case loc of
+                En -> do
+                    "“Haskell for Pythonista” "
+                    "at the RuHaskell community Meetup in Moscow. "
+                    "Video (Russian): "
+                Ru -> do
+                    "«Haskell для питониста» "
+                    "на московском митапе сообщества RuHaskell. "
+                    "Видео: "
+            a   ! href
+                    "http://ruhaskell.org/posts/talks/2015/06/21/\
+                    \haskell-for-pythonista.html"
+                $   "ruhaskell.org/posts/talks/2015/06/21/\
+                    \haskell-for-pythonista.html"
         ]
 
     residence loc = do

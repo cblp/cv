@@ -6,21 +6,21 @@
 
 module Data.CV.Render where
 
-import           Control.Monad                 (forM_, unless)
-import           Data.ByteString.Lazy          (ByteString)
-import           Data.CV.Types                 (CV(..), ContactInfo(..),
-                                                Education(..), Locale(En, Ru),
-                                                Localized, Work(..), showRu)
-import qualified Data.List                     as List
-import           Data.Monoid                   ((<>))
-import           System.FilePath               ((</>))
+import           Control.Monad (forM_, unless)
+import           Data.ByteString.Lazy (ByteString)
+import qualified Data.List as List
+import           Data.Monoid ((<>))
+import           System.FilePath ((</>))
 import           Text.Blaze.Html.Renderer.Utf8 (renderHtml)
-import           Text.Blaze.Html5              as T
-import           Text.Blaze.Html5.Attributes   as A
-import           Text.Shakespeare.Text         (st)
+import           Text.Blaze.Html5 as T
+import           Text.Blaze.Html5.Attributes as A
+import           Text.Shakespeare.Text (st)
+
+import           Data.CV.Types (CV (..), ContactInfo (..), Education (..),
+                                Locale (En, Ru), Localized, Work (..), showRu)
 
 renderCv :: Locale -> CV -> ByteString
-renderCv locale CV {..} =
+renderCv locale CV{..} =
     renderHtml . docTypeHtml $ do
         T.head $ do
             meta ! charset "UTF-8"
@@ -58,7 +58,7 @@ renderCv locale CV {..} =
                         List.intercalate ", " (List.map localize tech) <> "."
             h3 $ localize $ \case En -> "Work Experience"; Ru -> "Опыт работы"
             table ! class_ "work" $
-                forM_ workExperience $ \Work {..} ->
+                forM_ workExperience $ \Work{..} ->
                     tr $ do
                         td $ do
                             localize $ \case
@@ -94,7 +94,7 @@ renderCv locale CV {..} =
                             localize description
             h3 $ localize $ \case En -> "Education"; Ru -> "Образование"
             table ! class_ "edu" $
-                forM_ education $ \Education {..} ->
+                forM_ education $ \Education{..} ->
                     tr $ do
                         td $ T.span ! class_ "time" $
                             if graduated > 0 then
@@ -116,7 +116,9 @@ renderCv locale CV {..} =
                     tr $ do
                         td . p $ timeSpan (year, month)
                         td $ localize description
-            h4 . localize $ \case En -> "Talks"; Ru -> "Выступления"
+            h4 . localize $ \case
+                En -> "Conference talks"
+                Ru -> "Выступления на конференциях"
             table ! class_ "achiev" $
                 forM_ talks $ \((year, month), description) ->
                     tr $ do

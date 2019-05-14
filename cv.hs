@@ -286,28 +286,28 @@ main = do
                     "«Чисто функциональная реализация полностью доступных "
                     "систем на основе CRDT и RON» на FPURE "
             a ! href "https://www.fpure.events" $ "fpure.events"
-        , (2019, Mar) -: \loc -> p $ do
-            case loc of
-                En -> do
-                    "Introduction to Kaspersky Security System and KasperskyOS "
-                    "at “Pi Day: Moscow Programmer Club Meetup”"
-                Ru -> do
-                    "Обзор Kaspersky Security System и KasperskyOS "
-                    "на «Дне Пи: Moscow Programmer Club Meetup»"
-            a   ! href
-                    "https://careers.kaspersky.ru/events/\
-                    \moscow-programmer-club-meet-up/"
-                $ "careers.kaspersky.ru/events/moscow-programmer-club-meet-up"
-        , (2018, Nov) -: \loc -> p $ do
-            case loc of
-                En -> do
-                    "A practical application of Haskell implementation of "
-                    "CRDT/RON in distributed systems "
-                Ru -> do
-                    "«Применение CRDT/RON для создания распределенных "
-                    "приложений на Haskell» на митапе FProg SPb "
-            a ! href "https://spb-fp-meetup.timepad.ru/event/857591/" $
-                "spb-fp-meetup.timepad.ru/event/857591"
+        -- , (2019, Mar) -: \loc -> p $ do
+        --     case loc of
+        --         En -> do
+        --             "Introduction to Kaspersky Security System and KasperskyOS "
+        --             "at “Pi Day: Moscow Programmer Club Meetup”"
+        --         Ru -> do
+        --             "Обзор Kaspersky Security System и KasperskyOS "
+        --             "на «Дне Пи: Moscow Programmer Club Meetup»"
+        --     a   ! href
+        --             "https://careers.kaspersky.ru/events/\
+        --             \moscow-programmer-club-meet-up/"
+        --         $ "careers.kaspersky.ru/events/moscow-programmer-club-meet-up"
+        -- , (2018, Nov) -: \loc -> p $ do
+        --     case loc of
+        --         En -> do
+        --             "A practical application of Haskell implementation of "
+        --             "CRDT/RON in distributed systems "
+        --         Ru -> do
+        --             "«Применение CRDT/RON для создания распределенных "
+        --             "приложений на Haskell» на митапе FProg SPb "
+        --     a ! href "https://spb-fp-meetup.timepad.ru/event/857591/" $
+        --         "spb-fp-meetup.timepad.ru/event/857591"
         , (2018, Sep) -: \loc -> p $ do
             case loc of
                 En -> do
@@ -333,45 +333,45 @@ main = do
             a ! href "http://fpconf.ru/2017.html" $ "fpconf.ru/2017.html"
             case loc of En -> ", video: "; Ru -> ", видео: "
             a ! href "https://youtu.be/VFx0H2p3g6c" $ "youtu.be/VFx0H2p3g6c"
-        , (2016, Aug) -: \loc -> p $ do
-            case loc of
-                En -> do
-                    "“Ivory: safe and performant Haskell” "
-                    "at the RuHaskell community meetup in Moscow. "
-                    "Description (Russian): "
-                Ru -> do
-                    "«Ivory: безопасный и производительный код на Haskell» "
-                    "на московском митапе сообщества RuHaskell. "
-                    "Описание: "
-            a ! href "https://events.kaspersky.com/event/ruhaskell" $
-                "events.kaspersky.com/event/ruhaskell"
-        , (2015, Oct) -: \loc -> p $ do
-            case loc of
-                En -> do
-                    "“Haskell for Pythonista” "
-                    "at the Python&Admin Party in Novosibirsk. "
-                    "Description (Russian): "
-                Ru -> do
-                    "«Haskell для питониста» "
-                    "на митапе Python&Admin Party в Новосибирске. "
-                    "Описание: "
-            a ! href "https://events.yandex.ru/lib/talks/3223/" $
-                "events.yandex.ru/lib/talks/3223"
-        , (2015, Jun) -: \loc -> p $ do
-            case loc of
-                En -> do
-                    "“Haskell for Pythonista” "
-                    "at the RuHaskell community Meetup in Moscow. "
-                    "Video (Russian): "
-                Ru -> do
-                    "«Haskell для питониста» "
-                    "на московском митапе сообщества RuHaskell. "
-                    "Видео: "
-            a   ! href
-                    "http://ruhaskell.org/posts/talks/2015/06/21/\
-                    \haskell-for-pythonista.html"
-                $   "ruhaskell.org/posts/talks/2015/06/21/\
-                    \haskell-for-pythonista.html"
+        -- , (2016, Aug) -: \loc -> p $ do
+        --     case loc of
+        --         En -> do
+        --             "“Ivory: safe and performant Haskell” "
+        --             "at the RuHaskell community meetup in Moscow. "
+        --             "Description (Russian): "
+        --         Ru -> do
+        --             "«Ivory: безопасный и производительный код на Haskell» "
+        --             "на московском митапе сообщества RuHaskell. "
+        --             "Описание: "
+        --     a ! href "https://events.kaspersky.com/event/ruhaskell" $
+        --         "events.kaspersky.com/event/ruhaskell"
+        -- , (2015, Oct) -: \loc -> p $ do
+        --     case loc of
+        --         En -> do
+        --             "“Haskell for Pythonista” "
+        --             "at the Python&Admin Party in Novosibirsk. "
+        --             "Description (Russian): "
+        --         Ru -> do
+        --             "«Haskell для питониста» "
+        --             "на митапе Python&Admin Party в Новосибирске. "
+        --             "Описание: "
+        --     a ! href "https://events.yandex.ru/lib/talks/3223/" $
+        --         "events.yandex.ru/lib/talks/3223"
+        -- , (2015, Jun) -: \loc -> p $ do
+        --     case loc of
+        --         En -> do
+        --             "“Haskell for Pythonista” "
+        --             "at the RuHaskell community Meetup in Moscow. "
+        --             "Video (Russian): "
+        --         Ru -> do
+        --             "«Haskell для питониста» "
+        --             "на московском митапе сообщества RuHaskell. "
+        --             "Видео: "
+        --     a   ! href
+        --             "http://ruhaskell.org/posts/talks/2015/06/21/\
+        --             \haskell-for-pythonista.html"
+        --         $   "ruhaskell.org/posts/talks/2015/06/21/\
+        --             \haskell-for-pythonista.html"
         ]
 
     residence loc = do

@@ -406,7 +406,7 @@ main = do
         for_ universe $ \locale -> do
             let filename = target </> "cv." <> show locale <> ".html"
             ByteString.writeFile filename (renderCv locale cv)
-        for_ [photo, pdfEn] $ \name -> copyFile name (target </> name)
+        copyFile photo (target </> photo)
         putStrLn $ "built site in " <> show target
 
 universe :: (Bounded a, Enum a) => [a]

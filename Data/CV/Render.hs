@@ -139,6 +139,10 @@ renderCv locale CV{..} =
             toHtml year
     nobr = T.span ! A.style "white-space: nowrap;"
     styles = toHtml [st|
+        a {
+            color: blue;
+        }
+
         abbr {
             border-bottom: 1px dotted;
         }

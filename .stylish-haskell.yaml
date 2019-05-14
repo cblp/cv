@@ -1,12 +1,7 @@
 steps:
   - imports:
-      align: group
-      long_list_align: inline
-      separate_lists: false
+      pad_module_names: false
   - language_pragmas:
-      style: vertical
       align: false
+  - simple_align: {}
   - trailing_whitespace: {}
-# columns: 80
-language_extensions:
-  - ExplicitNamespaces

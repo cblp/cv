@@ -2,20 +2,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RecordWildCards #-}
 
-import Data.ByteString.Lazy        as ByteString (writeFile)
-import Data.Foldable               (for_)
-import Data.Monoid                 ((<>))
-import System.Directory            (copyFile, createDirectoryIfMissing)
-import System.Environment          (getArgs)
-import System.FilePath             ((</>))
-import Text.Blaze.Html5            (a, p, (!))
-import Text.Blaze.Html5.Attributes (href)
+import           Data.ByteString.Lazy as ByteString (writeFile)
+import           Data.Foldable (for_)
+import           Data.Monoid ((<>))
+import           System.Directory (copyFile, createDirectoryIfMissing)
+import           System.Environment (getArgs)
+import           System.FilePath ((</>))
+import           Text.Blaze.Html5 (a, p, (!))
+import           Text.Blaze.Html5.Attributes (href)
 
-import Data.CV.Render (renderCv)
-import Data.CV.Types  (CV(..), ContactInfo(..), Education(..), Locale(En, Ru),
-                       Month(..), Work(..))
-import Data.Tuple.X   ((-:))
-import GitHubPages    (deploy)
+import           Data.CV.Render (renderCv)
+import           Data.CV.Types (CV (..), ContactInfo (..), Education (..),
+                                Locale (En, Ru), Month (..), Work (..))
+import           Data.Tuple.X ((-:))
+import           GitHubPages (deploy)
 
 main :: IO ()
 main = do
@@ -387,18 +387,17 @@ main = do
     moscowChemicalLyceum Ru = "Московский Химический Лицей (школа 1303)"
 
     tr en En = en
-    tr en Ru =
-        case en of
-            "1 semester"  -> "1 семестр"
-            "½ year"      -> "½ года"
-            "10 months"   -> "10 месяцев"
-            "2 years"     -> "2 года"
-            "2½ years"    -> "2½ года"
-            "3 years"     -> "3 года"
-            "4 years"     -> "4 года"
-            "5 years"     -> "5 лет"
-            "6 years"     -> "6 лет"
-            _             -> error $ "not translated: " <> en
+    tr en Ru = case en of
+        "1 semester" -> "1 семестр"
+        "½ year"     -> "½ года"
+        "10 months"  -> "10 месяцев"
+        "2 years"    -> "2 года"
+        "2½ years"   -> "2½ года"
+        "3 years"    -> "3 года"
+        "4 years"    -> "4 года"
+        "5 years"    -> "5 лет"
+        "6 years"    -> "6 лет"
+        _            -> error $ "not translated: " <> en
 
     build target = do
         createDirectoryIfMissing True target

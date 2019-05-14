@@ -32,6 +32,8 @@ main = do
 
     photo = "Yuriy_Syrovetskiy.jpg"
 
+    pdfEn = "cv.en.pdf"
+
     contactInfo =
         [ Telephone "+7 905 547 11 98"
         , Skype     "cblp.su"
@@ -263,7 +265,7 @@ main = do
             En -> do
                 "Co-organized RuHaskell community meetup "
                 "in Kaspersky Lab, Moscow, Russia. "
-                "4 talks, 120+ attendees. Schedule (Russian): "
+                "4 talks, 120+ attendees. "
             Ru -> do
                 "Организовал митап сообщества RuHaskell "
                 "в Лаборатории Касперского в Москве. "
@@ -271,7 +273,7 @@ main = do
         ruhaskellExtropolis = \case
             En -> do
                 "Organized RuHaskell community meetup in Moscow, Russia. "
-                "6 talks, 50+ attendees. Schedule (Russian): "
+                "6 talks, 50+ attendees. "
             Ru -> do
                 "Организовал митап сообщества RuHaskell в Москве. "
                 "6 докладов, больше 50 слушателей. Список докладов: "
@@ -281,19 +283,19 @@ main = do
             case loc of
                 En -> do
                     "“A purely functional approach to CRDT/RON-based "
-                    "distributed systems” at FPURE "
+                    "distributed systems” at FPURE. "
                 Ru -> do
                     "«Чисто функциональная реализация полностью доступных "
-                    "систем на основе CRDT и RON» на FPURE "
+                    "систем на основе CRDT и RON» на FPURE. "
             a ! href "https://www.fpure.events" $ "fpure.events"
         -- , (2019, Mar) -: \loc -> p $ do
         --     case loc of
         --         En -> do
         --             "Introduction to Kaspersky Security System and KasperskyOS "
-        --             "at “Pi Day: Moscow Programmer Club Meetup”"
+        --             "at “Pi Day: Moscow Programmer Club Meetup.” "
         --         Ru -> do
         --             "Обзор Kaspersky Security System и KasperskyOS "
-        --             "на «Дне Пи: Moscow Programmer Club Meetup»"
+        --             "на «Дне Пи: Moscow Programmer Club Meetup». "
         --     a   ! href
         --             "https://careers.kaspersky.ru/events/\
         --             \moscow-programmer-club-meet-up/"
@@ -301,21 +303,21 @@ main = do
         -- , (2018, Nov) -: \loc -> p $ do
         --     case loc of
         --         En -> do
-        --             "A practical application of Haskell implementation of "
-        --             "CRDT/RON in distributed systems "
+        --             "“A practical application of Haskell implementation of "
+        --             "CRDT/RON in distributed systems.” "
         --         Ru -> do
         --             "«Применение CRDT/RON для создания распределенных "
-        --             "приложений на Haskell» на митапе FProg SPb "
+        --             "приложений на Haskell» на митапе FProg SPb. "
         --     a ! href "https://spb-fp-meetup.timepad.ru/event/857591/" $
         --         "spb-fp-meetup.timepad.ru/event/857591"
         , (2018, Sep) -: \loc -> p $ do
             case loc of
                 En -> do
                     "“Purely functional programming and KasperskyOS” "
-                    "in Information Security section at RIFTECH — "
+                    "in Information Security section at RIFTECH. "
                 Ru -> do
                     "«Чистое функциональное программирование и KasperskyOS» "
-                    "в секции «Информационная безопасность» на РИФТЕХ — "
+                    "в секции «Информационная безопасность» на РИФТЕХ. "
             a ! href "http://tech.rif.ru" $ "tech.rif.ru"
         , (2017, Dec) -: \loc -> p $ do
             case loc of
@@ -404,7 +406,7 @@ main = do
         for_ universe $ \locale -> do
             let filename = target </> "cv." <> show locale <> ".html"
             ByteString.writeFile filename (renderCv locale cv)
-        copyFile photo (target </> photo)
+        for_ [photo, pdfEn] $ \name -> copyFile name (target </> name)
         putStrLn $ "built site in " <> show target
 
 universe :: (Bounded a, Enum a) => [a]

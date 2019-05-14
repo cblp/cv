@@ -6,8 +6,9 @@
 
 module Data.CV.Render where
 
-import           Control.Monad (forM_, unless)
+import           Control.Monad (unless)
 import           Data.ByteString.Lazy (ByteString)
+import           Data.Foldable (for_)
 import qualified Data.List as List
 import           Data.Monoid ((<>))
 import           System.FilePath ((</>))
@@ -37,20 +38,23 @@ renderCv locale CV{..} =
                         td ! colspan (toValue (2 :: Int)) $
                         h3 $
                         localize $ \case En -> "Contact Info"; Ru -> "Контакты"
-                    forM_ contactInfo $ \(contactMarkup -> (contactLabel, contactContent)) ->
-                        tr $ do
-                            td $ toHtml $ localize contactLabel
-                            td contactContent
+                    for_ contactInfo $
+                        \(contactMarkup -> (contactLabel, contactContent)) ->
+                            tr $ do
+                                td $ toHtml $ localize contactLabel
+                                td contactContent
             h1 . toHtml $ localize fullname
             hr !
                 A.style
-                    "height: 0; border-top: solid 1px black; border-bottom: none;"
+                    "height: 0; \
+                    \border-top: solid 1px black; \
+                    \border-bottom: none;"
             h3 . localize $ \case
                 En -> "Professional Skills"; Ru -> "Навыки и умения"
             dl . dd $ localize professionalSkills
             h4 . localize $ \case
                 En -> "Technologies and Languages"; Ru -> "Технологии и языки"
-            ul . forM_ technologies $ \(techGroup, tech) ->
+            ul . for_ technologies $ \(techGroup, tech) ->
                 li $ do
                     em . toHtml $ localize techGroup
                     " "
@@ -58,7 +62,7 @@ renderCv locale CV{..} =
                         List.intercalate ", " (List.map localize tech) <> "."
             h3 $ localize $ \case En -> "Work Experience"; Ru -> "Опыт работы"
             table ! class_ "work" $
-                forM_ workExperience $ \Work{..} ->
+                for_ workExperience $ \Work{..} ->
                     tr $ do
                         td $ do
                             localize $ \case
@@ -94,7 +98,7 @@ renderCv locale CV{..} =
                             localize description
             h3 $ localize $ \case En -> "Education"; Ru -> "Образование"
             table ! class_ "edu" $
-                forM_ education $ \Education{..} ->
+                for_ education $ \Education{..} ->
                     tr $ do
                         td $ T.span ! class_ "time" $
                             if graduated > 0 then
@@ -112,7 +116,7 @@ renderCv locale CV{..} =
             h3 . localize $ \case
                 En -> "Public Activity"; Ru -> "Общественная деятельность"
             table ! class_ "achiev" $
-                forM_ publicActivity $ \((year, month), description) ->
+                for_ publicActivity $ \((year, month), description) ->
                     tr $ do
                         td . p $ timeSpan (year, month)
                         td $ localize description
@@ -120,7 +124,7 @@ renderCv locale CV{..} =
                 En -> "Conference talks"
                 Ru -> "Выступления на конференциях"
             table ! class_ "achiev" $
-                forM_ talks $ \((year, month), description) ->
+                for_ talks $ \((year, month), description) ->
                     tr $ do
                         td . p $ timeSpan (year, month)
                         td $ localize description

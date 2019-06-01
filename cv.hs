@@ -242,6 +242,6 @@ main = do
 
     build target = do
         createDirectoryIfMissing True target
-        ByteString.writeFile (target </> "cv.html") (renderCv cv)
+        ByteString.writeFile (target </> "index.html") (renderCv cv)
         copyFile photo (target </> photo)
         putStrLn $ "built site in " <> show target

@@ -92,16 +92,16 @@ main = do
                 p   "My software successfully stands year-to-year growing \
                     \data and user traffic."
             }
-        , Work
-            { workStart =    (2015, Jan)
-            , workEnd = Just (2015, Jun)
-            , totalTime = "1 semester"
-            , organization = moscowChemicalLyceum
-            , location = moscow
-            , position = "Teacher of functional programming (Haskell)"
-            , description =
-                p "Optional subject for 9th, 10th and 11th grade students."
-            }
+        -- , Work
+        --     { workStart =    (2015, Jan)
+        --     , workEnd = Just (2015, Jun)
+        --     , totalTime = "1 semester"
+        --     , organization = moscowChemicalLyceum
+        --     , location = moscow
+        --     , position = "Teacher of functional programming (Haskell)"
+        --     , description =
+        --         p "Optional subject for 9th, 10th and 11th grade students."
+        --     }
         , Work
             { workStart =    (2006, Nov)
             , workEnd = Just (2011, Oct)

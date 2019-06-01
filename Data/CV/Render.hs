@@ -9,9 +9,9 @@ module Data.CV.Render where
 import           Control.Monad (unless)
 import           Data.ByteString.Lazy (ByteString)
 import           Data.Foldable (for_)
-import qualified Data.List as List
 import           Data.Monoid ((<>))
-import           System.FilePath ((</>))
+import           Data.Text (Text)
+import qualified Data.Text as Text
 import           Text.Blaze.Html.Renderer.Utf8 (renderHtml)
 import           Text.Blaze.Html5 as T
 import           Text.Blaze.Html5.Attributes as A
@@ -49,7 +49,7 @@ renderCv CV{..} =
             h3 "Competencies"
             dl $ dd competencies
             h4 "Technologies"
-            dl $ dd $ toHtml $ List.intercalate ", " technologies
+            dl $ dd $ toHtml $ Text.intercalate ", " technologies
             h3 "Work Experience"
             table ! class_ "work" $
                 for_ workExperience $ \Work{..} ->
@@ -84,7 +84,7 @@ renderCv CV{..} =
                                 toHtml $ "(" <> show (negate graduated) <> ")"
                         td $ do
                             T.span ! class_ "place" $ toHtml school
-                            unless (null division) $ do
+                            unless (Text.null division) $ do
                                 ","
                                 br
                                 toHtml division
@@ -181,15 +181,15 @@ renderCv CV{..} =
         }
     |]
 
-contactMarkup :: ContactInfo -> (String, Html)
+contactMarkup :: ContactInfo -> (Text, Html)
 contactMarkup =
     \case
         Bitbucket user -> ("Bitbucket", ahref "https://bitbucket.org/" user)
         EMail addr -> (email, ahref "mailto:" addr)
-        Facebook user -> ("Facebook", ahref "https://" ("fb.me" </> user))
+        Facebook user -> ("Facebook", ahref "https://" ("fb.me/" <> user))
         GitHub user -> ("GitHub", ahref "https://github.com/" user)
         LinkedIn short ->
-            ("LinkedIn", ahref "https://" ("linkedin.com/in/" </> short))
+            ("LinkedIn", ahref "https://" ("linkedin.com/in/" <> short))
         Personal prefix url -> (personal, ahref prefix url)
         Skype user -> ("Skype", ahref "callto:" user)
         Telegram user -> ("Telegram", ahref "https://telegram.me/" user)

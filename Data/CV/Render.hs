@@ -46,14 +46,10 @@ renderCv CV{..} =
                     "height: 0; \
                     \border-top: solid 1px black; \
                     \border-bottom: none;"
-            h3 "Professional Skills"
-            dl $ dd professionalSkills
-            h4 "Technologies and Languages"
-            ul . for_ technologies $ \(techGroup, tech) ->
-                li $ do
-                    em $ toHtml techGroup
-                    " "
-                    toHtml $ List.intercalate ", " tech <> "."
+            h3 "Competencies"
+            dl $ dd competencies
+            h4 "Technologies"
+            dl $ dd $ toHtml $ List.intercalate ", " technologies
             h3 "Work Experience"
             table ! class_ "work" $
                 for_ workExperience $ \Work{..} ->

@@ -69,15 +69,14 @@ data Education = Education
     }
 
 data CV = CV
-    { fullname           :: String
-    , photo              :: FilePath
-    , contactInfo        :: [ContactInfo]
-    , professionalSkills :: Html
-    , technologies       :: [String :- [String]]
-      -- ^ lists of technologies in groups
-    , workExperience     :: [Work]
-    , education          :: [Education]
-    , publicActivity     :: [(Year, Month) :- Html]
-    , talks              :: [(Year, Month) :- Html]
-    , residence          :: Html
+    { fullname       :: String
+    , photo          :: FilePath
+    , contactInfo    :: [ContactInfo]
+    , competencies   :: Html
+    , technologies   :: [String]
+    , workExperience :: [Work]
+    , education      :: [Education]
+    , publicActivity :: [(Year, Month) :- Html]
+    , talks          :: [(Year, Month) :- Html]
+    , residence      :: Html
     }

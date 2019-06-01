@@ -43,25 +43,13 @@ main = do
         , Twitter   "cblp_su"
         ]
 
-    professionalSkills = do
-        p   "Compilers, desktop and server (backend) programming, \
-            \data analysis, high load services, user interface."
-        p   "Design, coding, project management, deployment, staff training."
+    competencies = do
+        p $ do
+            "Backend, Compilers, Data analysis, Distributed systems, "
+            "Functional programming, High load, Security, User interface"
+        p "Design, Coding, Project management, Deployment, Staff training"
 
-    technologies =
-        [ "I am good in" -:
-            [ "C", "C++", "English", "git", "Haskell", "Linux [Debian, Ubuntu]"
-            , "Mercurial", "Python", "Qt", "Russian", "Subversion"
-            ]
-        , "I can use" -:
-            [ "Boost", "HTML", "JavaScript", "Java", "Perl", "PHP", "Scala"
-            , "Windows", "XML"
-            ]
-        , "I can read" -:
-            [ "Assembler", "Erlang", ".NET/C#", "LISP/Clojure/Scheme", "Ruby"
-            , "Smalltalk", "other cool stuff"
-            ]
-        ]
+    technologies = ["C/C++", "Haskell", "Linux", "Python"]
 
     workExperience =
         [ Work
@@ -71,7 +59,7 @@ main = do
             , organization = "Kaspersky Lab"
             , location = moscow
             , position = "Senior Developer"
-            , description =
+            , description = p
                 "As a Kaspersky OS and Kaspersky Security System \
                 \development team member, \
                 \I implement security configuration compiler and various \

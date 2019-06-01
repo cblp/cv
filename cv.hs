@@ -127,12 +127,12 @@ main = do
                 "faculty of control systems and computer science in engineering"
             , degree = "M.S. Student"
             }
-        , Education
-            { graduated = 2010
-            , school = "The Moscow Institute of Humanities and Economics"
-            , division = "faculty of law"
-            , degree = "higher/specialist in jurisprudence, civil law"
-            }
+        -- , Education
+        --     { graduated = 2010
+        --     , school = "The Moscow Institute of Humanities and Economics"
+        --     , division = "faculty of law"
+        --     , degree = "higher/specialist in jurisprudence, civil law"
+        --     }
         , Education
             { graduated = 2006
             , school =
@@ -140,12 +140,12 @@ main = do
             , division = "faculty of information security"
             , degree = "incomplete higher in computer security"
             }
-        , Education
-            { graduated = 2002
-            , school = moscowChemicalLyceum
-            , division = "faculty of physics and mathematics"
-            , degree = "secondary"
-            }
+        -- , Education
+        --     { graduated = 2002
+        --     , school = moscowChemicalLyceum
+        --     , division = "faculty of physics and mathematics"
+        --     , degree = "secondary"
+        --     }
         ]
 
     publicActivity =

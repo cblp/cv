@@ -3,24 +3,8 @@
 
 module Data.CV.Types where
 
-import Data.String     (IsString(..))
-import Data.Tuple.X    ((:-))
-import Text.Blaze.Html (Html)
-
-data Locale
-    = En
-    | Ru
-    deriving (Bounded, Enum)
-
-instance Show Locale where
-    show En = "en"
-    show Ru = "ru"
-
-type Localized a = Locale -> a
-
-instance IsString string =>
-         IsString (Localized string) where
-    fromString = const . fromString
+import           Data.Tuple.X ((:-))
+import           Text.Blaze.Html (Html)
 
 data ContactInfo
     = Bitbucket String
@@ -70,30 +54,30 @@ showRu Dec = "декабрь"
 data Work = Work
     { workStart    :: (Year, Month)
     , workEnd      :: Maybe (Year, Month)
-    , totalTime    :: Localized String
-    , organization :: Localized String
-    , location     :: Localized String
-    , position     :: Localized String
-    , description  :: Localized Html
+    , totalTime    :: String
+    , organization :: String
+    , location     :: String
+    , position     :: String
+    , description  :: Html
     }
 
 data Education = Education
     { graduated :: Year
-    , school    :: Localized String
-    , division  :: Localized String
-    , degree    :: Localized String
+    , school    :: String
+    , division  :: String
+    , degree    :: String
     }
 
 data CV = CV
-    { fullname           :: Localized String
+    { fullname           :: String
     , photo              :: FilePath
     , contactInfo        :: [ContactInfo]
-    , professionalSkills :: Localized Html
-    , technologies       :: [Localized String :- [Localized String]]
+    , professionalSkills :: Html
+    , technologies       :: [String :- [String]]
       -- ^ lists of technologies in groups
     , workExperience     :: [Work]
     , education          :: [Education]
-    , publicActivity     :: [(Year, Month) :- Localized Html]
-    , talks              :: [(Year, Month) :- Localized Html]
-    , residence          :: Localized Html
+    , publicActivity     :: [(Year, Month) :- Html]
+    , talks              :: [(Year, Month) :- Html]
+    , residence          :: Html
     }

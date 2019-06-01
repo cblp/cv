@@ -18,14 +18,14 @@ import           Text.Blaze.Html5.Attributes as A
 import           Text.Shakespeare.Text (st)
 
 import           Data.CV.Types (CV (..), ContactInfo (..), Education (..),
-                                Locale (En, Ru), Localized, Work (..), showRu)
+                                Work (..))
 
-renderCv :: Locale -> CV -> ByteString
-renderCv locale CV{..} =
+renderCv :: CV -> ByteString
+renderCv CV{..} =
     renderHtml . docTypeHtml $ do
         T.head $ do
             meta ! charset "UTF-8"
-            T.title . toHtml $ localize fullname
+            T.title $ toHtml fullname
             T.style styles
         body $ do
             T.div ! class_ "contact-info" $
@@ -34,69 +34,50 @@ renderCv locale CV{..} =
                 --     td ! colspan (toValue (2 :: Int)) $
                 --     img ! src (toValue photo)
                  do
-                    tr $
-                        td ! colspan (toValue (2 :: Int)) $
-                        h3 $
-                        localize $ \case En -> "Contact Info"; Ru -> "Контакты"
+                    tr $ td ! colspan (toValue (2 :: Int)) $ h3 "Contact Info"
                     for_ contactInfo $
                         \(contactMarkup -> (contactLabel, contactContent)) ->
                             tr $ do
-                                td $ toHtml $ localize contactLabel
+                                td $ toHtml contactLabel
                                 td contactContent
-            h1 . toHtml $ localize fullname
+            h1 $ toHtml fullname
             hr !
                 A.style
                     "height: 0; \
                     \border-top: solid 1px black; \
                     \border-bottom: none;"
-            h3 . localize $ \case
-                En -> "Professional Skills"; Ru -> "Навыки и умения"
-            dl . dd $ localize professionalSkills
-            h4 . localize $ \case
-                En -> "Technologies and Languages"; Ru -> "Технологии и языки"
+            h3 "Professional Skills"
+            dl $ dd professionalSkills
+            h4 "Technologies and Languages"
             ul . for_ technologies $ \(techGroup, tech) ->
                 li $ do
-                    em . toHtml $ localize techGroup
+                    em $ toHtml techGroup
                     " "
-                    toHtml $
-                        List.intercalate ", " (List.map localize tech) <> "."
-            h3 $ localize $ \case En -> "Work Experience"; Ru -> "Опыт работы"
+                    toHtml $ List.intercalate ", " tech <> "."
+            h3 "Work Experience"
             table ! class_ "work" $
                 for_ workExperience $ \Work{..} ->
                     tr $ do
                         td $ do
-                            localize $ \case
-                                En ->
-                                    case workEnd of
-                                        Nothing ->
-                                            "started " >> timeSpan workStart
-                                        Just end -> do
-                                            timeSpan workStart
-                                            preEscapedString "&nbsp;— "
-                                            timeSpan end
-                                Ru -> do
+                            case workEnd of
+                                Nothing ->
+                                    "started " >> timeSpan workStart
+                                Just end -> do
                                     timeSpan workStart
                                     preEscapedString "&nbsp;— "
-                                    case workEnd of
-                                        Nothing ->
-                                            abbr ! A.title "настоящее время" $
-                                            nobr "н. в."
-                                        Just end -> timeSpan end
+                                    timeSpan end
                             br
-                            toHtml $ "(" <> localize totalTime <> ")"
+                            toHtml $ "(" <> totalTime <> ")"
                         td $ do
-                            toHtml $ localize position
+                            toHtml position
                             br
-                            localize $ \case
-                                En -> "at "
-                                Ru -> ""
-                            T.span ! class_ "place" $
-                                toHtml $ localize organization
+                            "at "
+                            T.span ! class_ "place" $ toHtml organization
                             ", "
-                            toHtml $ localize location
+                            toHtml location
                             br
-                            localize description
-            h3 $ localize $ \case En -> "Education"; Ru -> "Образование"
+                            description
+            h3 "Education"
             table ! class_ "edu" $
                 for_ education $ \Education{..} ->
                     tr $ do
@@ -106,38 +87,33 @@ renderCv locale CV{..} =
                             else
                                 toHtml $ "(" <> show (negate graduated) <> ")"
                         td $ do
-                            T.span ! class_ "place" $ toHtml $ localize school
-                            let division' = localize division
-                            unless (null division') $ do
+                            T.span ! class_ "place" $ toHtml school
+                            unless (null division) $ do
                                 ","
                                 br
-                                toHtml $ localize division
-                        td ! class_ "degree" $ toHtml $ localize degree
-            h3 . localize $ \case
-                En -> "Public Activity"; Ru -> "Общественная деятельность"
+                                toHtml division
+                        td ! class_ "degree" $ toHtml degree
+            h3 "Public Activity"
             table ! class_ "achiev" $
                 for_ publicActivity $ \((year, month), description) ->
                     tr $ do
                         td . p $ timeSpan (year, month)
-                        td $ localize description
-            h4 . localize $ \case
-                En -> "Conference talks"
-                Ru -> "Выступления на конференциях"
+                        td description
+            h4 "Conference talks"
             table ! class_ "achiev" $
                 for_ talks $ \((year, month), description) ->
                     tr $ do
                         td . p $ timeSpan (year, month)
-                        td $ localize description
-            h3 . localize $ \case En -> "Residence"; Ru -> "Место жительства"
-            dl . dd $ localize residence
+                        td description
+            h3 "Residence"
+            dl $ dd residence
   where
-    localize f = f locale
     timeSpan (year, month) =
         T.span ! class_ "time" $ do
-            toHtml $ localize $ \case En -> show month; Ru -> showRu month
+            toHtml $ show month
             " "
             toHtml year
-    nobr = T.span ! A.style "white-space: nowrap;"
+    -- nobr = T.span ! A.style "white-space: nowrap;"
     styles = toHtml [st|
         a {
             color: blue;
@@ -209,7 +185,7 @@ renderCv locale CV{..} =
         }
     |]
 
-contactMarkup :: ContactInfo -> (Localized String, Html)
+contactMarkup :: ContactInfo -> (String, Html)
 contactMarkup =
     \case
         Bitbucket user -> ("Bitbucket", ahref "https://bitbucket.org/" user)
@@ -225,9 +201,6 @@ contactMarkup =
         Twitter user -> ("Twitter", ahref "https://twitter.com/" user)
   where
     ahref prefix url = a ! href (toValue (prefix <> url)) $ toHtml url
-    email En = "E-mail"
-    email Ru = "Эл. почта"
-    personal En = "Personal Web Page"
-    personal Ru = "Сайт"
-    tel En = "Tel."
-    tel Ru = "Тел."
+    email = "E-mail"
+    personal = "Personal Web Page"
+    tel = "Tel."

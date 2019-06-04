@@ -1,4 +1,3 @@
-{-# LANGUAGE BlockArguments #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RecordWildCards #-}
 
@@ -35,7 +34,7 @@ main = do
         , Skype     "cblp.su"
         , EMail     "cblp@cblp.su"
         , Telegram  "cblp_su"
-        , Personal  "http://" "cblp.su"
+        , Personal  "cblp.github.io"
         , GitHub    "cblp"
         , Bitbucket "cblp"
         , LinkedIn  "cblpsu"
@@ -149,22 +148,22 @@ main = do
         ]
 
     publicActivity =
-        [ (2017, Apr) -: p do
+        [ (2017, Apr) -: p $ do
             coLaboratoryRuhaskell
             a ! href "https://events.kaspersky.com/event/ruhaskell2" $
                 "events.kaspersky.com/event/ruhaskell2"
-        , (2016, Aug) -: p do
+        , (2016, Aug) -: p $ do
             coLaboratoryRuhaskell
             a ! href "https://events.kaspersky.com/event/ruhaskell" $
                 "events.kaspersky.com/event/ruhaskell"
-        , (2015, Dec) -: p do
+        , (2015, Dec) -: p $ do
             ruhaskellExtropolis
             a   ! href
                     "http://ruhaskell.org/posts/events/2015/11/05/\
                     \meetup-winter-register.html"
                 $   "ruhaskell.org/posts/events/2015/11/05/\
                     \meetup-winter-register.html"
-        , (2015, Jun) -: p do
+        , (2015, Jun) -: p $ do
             ruhaskellExtropolis
             a   ! href
                     "https://github.com/ruHaskell/ruhaskell/wiki/\
@@ -181,7 +180,7 @@ main = do
             "6 talks, 50+ attendees. "
 
     talks =
-        [ (2019, May) -: p do
+        [ (2019, May) -: p $ do
             "“A purely functional approach to CRDT/RON-based "
             "distributed systems” at FPURE. "
             a ! href "https://www.fpure.events" $ "fpure.events"
@@ -197,11 +196,11 @@ main = do
         --             "CRDT/RON in distributed systems.” "
         --     a ! href "https://spb-fp-meetup.timepad.ru/event/857591/" $
         --         "spb-fp-meetup.timepad.ru/event/857591"
-        , (2018, Sep) -: p do
+        , (2018, Sep) -: p $ do
             "“Purely functional programming and KasperskyOS” "
             "in Information Security section at RIFTECH. "
             a ! href "http://tech.rif.ru" $ "tech.rif.ru"
-        , (2017, Dec) -: p do
+        , (2017, Dec) -: p $ do
             "(in collaboration with my student Nikolay Loginov) "
             "“CRDT — correctly replicated data in Haskell” "
             "at the functional programming conference FPCONF. "

@@ -182,21 +182,17 @@ renderCv CV{..} =
     |]
 
 contactMarkup :: ContactInfo -> (Text, Html)
-contactMarkup =
-    \case
-        Bitbucket user -> ("Bitbucket", ahref "https://bitbucket.org/" user)
-        EMail addr -> (email, ahref "mailto:" addr)
-        Facebook user -> ("Facebook", ahref "https://" ("fb.me/" <> user))
-        GitHub user -> ("GitHub", ahref "https://github.com/" user)
-        LinkedIn short ->
-            ("LinkedIn", ahref "https://" ("linkedin.com/in/" <> short))
-        Personal prefix url -> (personal, ahref prefix url)
-        Skype user -> ("Skype", ahref "callto:" user)
-        Telegram user -> ("Telegram", ahref "https://telegram.me/" user)
-        Telephone number -> (tel, toHtml number)
-        Twitter user -> ("Twitter", ahref "https://twitter.com/" user)
+contactMarkup = \case
+    Bitbucket user -> ("Bitbucket", ahref "https://bitbucket.org/" user)
+    EMail addr -> ("E-mail", ahref "mailto:" addr)
+    Facebook user -> ("Facebook", ahref "https://" ("fb.me/" <> user))
+    GitHub user -> ("GitHub", ahref "https://github.com/" user)
+    LinkedIn short ->
+        ("LinkedIn", ahref "https://" ("linkedin.com/in/" <> short))
+    Personal url -> ("Personal Web Page", ahref "https://" url)
+    Skype user -> ("Skype", ahref "callto:" user)
+    Telegram user -> ("Telegram", ahref "https://telegram.me/" user)
+    Telephone number -> ("Tel.", toHtml number)
+    Twitter user -> ("Twitter", ahref "https://twitter.com/" user)
   where
     ahref prefix url = a ! href (toValue (prefix <> url)) $ toHtml url
-    email = "E-mail"
-    personal = "Personal Web Page"
-    tel = "Tel."

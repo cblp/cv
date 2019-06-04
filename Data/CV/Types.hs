@@ -14,8 +14,7 @@ data ContactInfo
     | Facebook Text
     | GitHub Text
     | LinkedIn Text
-    | Personal Text -- ^ prefix
-               Text -- ^ URL without prefix
+    | Personal Text
     | Skype Text
     | Telegram Text
     | Telephone Text

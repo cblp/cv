@@ -10,3 +10,4 @@ pattern a :- b = (a, b)
 
 (-:) :: a -> b -> (a, b)
 (-:) = (,)
+infixr 0 -:

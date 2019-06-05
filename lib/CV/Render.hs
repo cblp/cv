@@ -4,7 +4,7 @@
 {-# LANGUAGE RecordWildCards #-}
 {-# LANGUAGE ViewPatterns #-}
 
-module Data.CV.Render where
+module CV.Render where
 
 import           Control.Monad (unless)
 import           Data.ByteString.Lazy (ByteString)
@@ -17,8 +17,7 @@ import           Text.Blaze.Html5 as T
 import           Text.Blaze.Html5.Attributes as A
 import           Text.Shakespeare.Text (st)
 
-import           Data.CV.Types (CV (..), ContactInfo (..), Education (..),
-                                Work (..))
+import           CV.Types (CV (..), ContactInfo (..), Education (..), Work (..))
 
 renderCv :: CV -> ByteString
 renderCv CV{..} =

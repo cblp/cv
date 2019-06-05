@@ -2,7 +2,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TypeOperators #-}
 
-module Data.CV.Types where
+module CV.Types where
 
 import           Data.Text (Text)
 import           Data.Tuple.X ((:-))

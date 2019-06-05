@@ -3,16 +3,16 @@
 
 import           Data.ByteString.Lazy as ByteString (writeFile)
 import           Data.Monoid ((<>))
+import           Data.Tuple.X ((-:))
 import           System.Directory (copyFile, createDirectoryIfMissing)
 import           System.Environment (getArgs)
 import           System.FilePath ((</>))
 import           Text.Blaze.Html5 (a, p, toHtml, (!))
 import           Text.Blaze.Html5.Attributes (href)
 
-import           Data.CV.Render (renderCv)
-import           Data.CV.Types (CV (..), ContactInfo (..), Education (..),
-                                Month (..), Work (..))
-import           Data.Tuple.X ((-:))
+import           CV.Render (renderCv)
+import           CV.Types (CV (..), ContactInfo (..), Education (..),
+                           Month (..), Work (..))
 import           GitHubPages (deploy)
 
 main :: IO ()

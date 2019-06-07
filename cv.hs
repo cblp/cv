@@ -109,12 +109,15 @@ cv = CV
             , location = moscow
             , position = "Engineer"
             , description = do
-                p   "I was the lead developer of multi-component software \
-                    \data transfer and processing system."
-                p   "I've been working on design and code, program and \
-                    \user documentation, deploy and customer support."
-                p   "In my team, I introduced usage of source control tools, \
-                    \issue management, common knowledge system (wiki)."
+                p $ do
+                    "I was the lead developer of multi-component software "
+                    "data transfer and processing system."
+                p $ do
+                    "I've been working on design and code, program and "
+                    "user documentation, deploy and customer support."
+                p $ do
+                    "In my team, I introduced usage of source control tools, "
+                    "issue management, common knowledge system (wiki)."
             , visible = True
             }
         ]

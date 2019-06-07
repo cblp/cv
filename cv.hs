@@ -40,6 +40,7 @@ cv = CV
         p "Design, Coding, Project management, Deployment, Staff training"
 
     , technologies = ["C/C++", "Haskell", "Linux", "Python"]
+    -- TODO что конкретно тебя интересует и как ты планируешь развиваться
 
     , workExperience =
         [ Work
@@ -48,7 +49,7 @@ cv = CV
             , totalTime = "3 years"
             , organization = "Kaspersky Lab"
             , location = moscow
-            , position = "Senior Developer"
+            , position = "Senior Software Engineer"
             , description = p $ do
                 "As a Kaspersky OS and Kaspersky Security System "
                 "development team member, "
@@ -90,7 +91,7 @@ cv = CV
             , totalTime = "4 years"
             , organization = "Yandex"
             , location = moscow
-            , position = "Software Developer"
+            , position = "Software Engineer"
             , description = do
                 p $ do
                     "I was a backend developer of the keyword statistics "

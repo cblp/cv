@@ -53,7 +53,7 @@ cv = CV
                 "As a Kaspersky OS and Kaspersky Security System \
                 \development team member, \
                 \I implement security configuration compiler and various \
-                \security policies, \
+                \security policies (including object-capability model), \
                 \using Haskell (primarily) and C."
             , visible = True
             }
@@ -81,8 +81,13 @@ cv = CV
                     a ! href "http://wordstat.yandex.com/" $
                         "Wordstat.yandex.com"
                     " and several internal Yandex services."
-                p   "My software successfully stands year-to-year growing \
-                    \data and user traffic."
+                p $ do
+                    "I worked with computer linguistics. "
+                    "I developed problem-specific databases in microservice "
+                    "architecture. "
+                p $ do
+                    "My software successfully stands year-to-year growing "
+                    "data and user traffic."
             , visible = True
             }
         , Work

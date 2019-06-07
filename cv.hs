@@ -50,11 +50,11 @@ cv = CV
             , location = moscow
             , position = "Senior Developer"
             , description = p
-                "As a Kaspersky OS and Kaspersky Security System \
-                \development team member, \
-                \I implement security configuration compiler and various \
-                \security policies (including object-capability model), \
-                \using Haskell (primarily) and C."
+                "As a Kaspersky OS and Kaspersky Security System "
+                "development team member, "
+                "I implement security configuration compiler and various "
+                "security policies (including object-capability model), "
+                "using Haskell for high-level logic and generating code in C."
                 -- TODO achiements in numbers?
             , visible = True
             }

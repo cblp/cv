@@ -3,12 +3,14 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 import           Data.ByteString.Lazy as ByteString (writeFile)
+import           Data.Foldable (fold)
+import           Data.List (intersperse)
 import           Data.Monoid ((<>))
 import           Data.Tuple.X ((-:))
 import           System.Directory (createDirectoryIfMissing)
 import           System.Environment (getArgs)
 import           System.FilePath ((</>))
-import           Text.Blaze.Html5 (a, p, toHtml, (!))
+import           Text.Blaze.Html5 (a, p, strong, toHtml, (!))
 import           Text.Blaze.Html5.Attributes (href)
 
 import           CV.Render (renderCv)
@@ -34,13 +36,15 @@ cv = CV
         ]
 
     , competencies = do
-        p $ do
-            "Backend, Compilers, Data analysis, Distributed systems (CRDT), "
-            "Functional programming, High load, Security, User interface"
+        p $ fold $ intersperse ", "
+            [ strong "Distributed systems (CRDT)"
+            , strong "Functional programming"
+            , "Web backend", "Compilers", "Data analysis", "Scalable services"
+            , "Security", "User interface"
+            ]
         p "Design, Coding, Project management, Deployment, Staff training"
 
-    , technologies = ["C/C++", "Haskell", "Linux", "Python"]
-    -- TODO что конкретно тебя интересует и как ты планируешь развиваться
+    , technologies = [strong "Haskell", "C/C++", "Linux", "Python"]
 
     , workExperience =
         [ Work

@@ -76,7 +76,7 @@ data CV = CV
     { fullname       :: Text
     , contactInfo    :: [ContactInfo]
     , competencies   :: Html
-    , technologies   :: [Text]
+    , technologies   :: [Html]
     , workExperience :: [Work]
     , education      :: [Education]
     , publicActivity :: [(Year, Month) :- Html]

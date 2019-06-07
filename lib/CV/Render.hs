@@ -9,6 +9,7 @@ module CV.Render where
 import           Control.Monad (unless, when)
 import           Data.ByteString.Lazy (ByteString)
 import           Data.Foldable (for_)
+import           Data.List (intersperse)
 import           Data.Monoid ((<>))
 import           Data.Text (Text)
 import qualified Data.Text as Text
@@ -48,7 +49,7 @@ renderCv CV{..} =
             h3 "Competencies"
             dl $ dd competencies
             h4 "Technologies"
-            dl $ dd $ toHtml $ Text.intercalate ", " technologies
+            dl $ dd $ toHtml $ intersperse ", " technologies
             h3 "Work Experience"
             table ! class_ "work" $
                 for_ workExperience $ \Work{end = workEnd, ..} ->

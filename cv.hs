@@ -65,7 +65,23 @@ cv = CV
             , organization = moscowChemicalLyceum
             , location = moscow
             , position = "Student scientific projects mentor"
-            , description = ""
+            , description = do
+                p $ do
+                    "Some students presented their work at school science "
+                    "project fairs. "
+                p $ do
+                    "In 2014, Polina Kirichenko won 1st prize with her work on "
+                    "natural language-based programming at the Yandex "
+                    "conference on programming for school students. "
+                    a   ! href
+                            "https://academy.yandex.ru/events/school-conf/\
+                            \msk-apr-2014/#winners"
+                        $ "academy.yandex.ru"
+                p $ do
+                    "In 2017, Nikolay Loginov presented his work on CRDT at "
+                    "the industrial conference on functional programming "
+                    "FPCONF (co-presented with me). "
+                    a ! href "http://fpconf.ru/2017.html" $ "fpconf.ru"
             , visible = True
             }
         , Work

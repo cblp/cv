@@ -96,6 +96,13 @@ cv = CV
                     "Another one got 1.5 times decrease in memory consumption "
                     "without a visible performance penalty after introducing "
                     "internal compression."
+                p $ do
+                    "I gave talks at the company's local meetups "
+                    "(internal and public) "
+                    a   ! href
+                            "https://events.yandex.ru/events/meetings/\
+                            \29-october-2015/"
+                        $ "events.yandex.ru"
             , visible = True
             }
         , Work
@@ -124,7 +131,8 @@ cv = CV
                     "I've been working on design and code, program and "
                     "user documentation, deploy and customer support."
                 p $ do
-                    "In my team, I introduced usage of source control tools, "
+                    "In my department (~20 people), "
+                    "I introduced usage of source control tools, "
                     "issue management, common knowledge system (wiki)."
             , visible = True
             }

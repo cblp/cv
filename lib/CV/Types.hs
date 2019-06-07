@@ -74,7 +74,6 @@ data Education = Education
 
 data CV = CV
     { fullname       :: Text
-    , photo          :: FilePath
     , contactInfo    :: [ContactInfo]
     , competencies   :: Html
     , technologies   :: [Text]

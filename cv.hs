@@ -1,10 +1,11 @@
+{-# LANGUAGE DisambiguateRecordFields #-}
+{-# LANGUAGE NamedFieldPuns #-}
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
 
 import           Data.ByteString.Lazy as ByteString (writeFile)
 import           Data.Monoid ((<>))
 import           Data.Tuple.X ((-:))
-import           System.Directory (copyFile, createDirectoryIfMissing)
+import           System.Directory (createDirectoryIfMissing)
 import           System.Environment (getArgs)
 import           System.FilePath ((</>))
 import           Text.Blaze.Html5 (a, p, toHtml, (!))
@@ -15,21 +16,11 @@ import           CV.Types (CV (..), ContactInfo (..), Education (..),
                            Month (..), Work (..))
 import           GitHubPages (deploy)
 
-main :: IO ()
-main = do
-    args <- getArgs
-    case args of
-        ["-d"] -> deploy build
-        []     -> build "_site"
-        _      -> error "don't know what to do"
-  where
-    cv = CV{..}
+cv :: CV
+cv = CV
+    { fullname = "Yuriy Syrovetskiy"
 
-    fullname = "Yuriy Syrovetskiy"
-
-    photo = "Yuriy_Syrovetskiy.jpg"
-
-    contactInfo =
+    , contactInfo =
         [ Telephone "+7 905 547 11 98"
         , Skype     "cblp.su"
         , EMail     "cblp@cblp.su"
@@ -42,15 +33,15 @@ main = do
         , Twitter   "cblp_su"
         ]
 
-    competencies = do
+    , competencies = do
         p $ do
             "Backend, Compilers, Data analysis, Distributed systems (CRDT), "
             "Functional programming, High load, Security, User interface"
         p "Design, Coding, Project management, Deployment, Staff training"
 
-    technologies = ["C/C++", "Haskell", "Linux", "Python"]
+    , technologies = ["C/C++", "Haskell", "Linux", "Python"]
 
-    workExperience =
+    , workExperience =
         [ Work
             { start = (2016, Feb)
             , end = Nothing
@@ -123,7 +114,7 @@ main = do
             }
         ]
 
-    education =
+    , education =
         [ Education
             { graduated = -2020
             , school = "The Moscow Aviation Institute"
@@ -156,7 +147,15 @@ main = do
             }
         ]
 
-    publicActivity =
+    , publicActivity = let
+        coLaboratoryRuhaskell = do
+            "Co-organized RuHaskell community meetup "
+            "in Kaspersky Lab, Moscow, Russia. "
+            "4 talks, 120+ attendees. "
+        ruhaskellExtropolis = do
+            "Organized RuHaskell community meetup in Moscow, Russia. "
+            "6 talks, 50+ attendees. "
+        in
         [ (2017, Apr) -: p $ do
             coLaboratoryRuhaskell
             a ! href "https://events.kaspersky.com/event/ruhaskell2" $
@@ -179,16 +178,8 @@ main = do
                     \Meetup.2015.Summer"
                 $ "github.com/ruHaskell/ruhaskell/wiki/Meetup.2015.Summer"
         ]
-      where
-        coLaboratoryRuhaskell = do
-            "Co-organized RuHaskell community meetup "
-            "in Kaspersky Lab, Moscow, Russia. "
-            "4 talks, 120+ attendees. "
-        ruhaskellExtropolis = do
-            "Organized RuHaskell community meetup in Moscow, Russia. "
-            "6 talks, 50+ attendees. "
 
-    talks =
+    , talks =
         [ (2019, May) -: p $ do
             "“A purely functional approach to CRDT/RON-based "
             "distributed systems” at FPURE. "
@@ -240,16 +231,25 @@ main = do
         --             \haskell-for-pythonista.html"
         ]
 
-    residence = do
+    , residence = do
         p $ toHtml moscow
         p "I'm able to relocate to Europe or North America."
+    }
 
+  where
     moscow = "Moscow, Russia"
 
     moscowChemicalLyceum = "The Moscow Chemical Lyceum (School 1303)"
 
+main :: IO ()
+main = do
+    args <- getArgs
+    case args of
+        ["-d"] -> deploy build
+        []     -> build "_site"
+        _      -> error "don't know what to do"
+  where
     build target = do
         createDirectoryIfMissing True target
         ByteString.writeFile (target </> "index.html") (renderCv cv)
-        copyFile photo (target </> photo)
         putStrLn $ "built site in " <> show target

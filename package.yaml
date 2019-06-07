@@ -21,3 +21,6 @@ dependencies:
   - shakespeare
   - temporary
   - text
+
+default-extensions:
+  - StrictData

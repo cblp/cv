@@ -44,7 +44,7 @@ main = do
 
     competencies = do
         p $ do
-            "Backend, Compilers, Data analysis, Distributed systems, "
+            "Backend, Compilers, Data analysis, Distributed systems (CRDT), "
             "Functional programming, High load, Security, User interface"
         p "Design, Coding, Project management, Deployment, Staff training"
 
@@ -52,8 +52,8 @@ main = do
 
     workExperience =
         [ Work
-            { workStart = (2016, Feb)
-            , workEnd = Nothing
+            { start = (2016, Feb)
+            , end = Nothing
             , totalTime = "3 years"
             , organization = "Kaspersky Lab"
             , location = moscow
@@ -64,19 +64,21 @@ main = do
                 \I implement security configuration compiler and various \
                 \security policies, \
                 \using Haskell (primarily) and C."
+            , visible = True
             }
         , Work
-            { workStart = (2012, Sep)
-            , workEnd = Nothing
+            { start = (2012, Sep)
+            , end = Nothing
             , totalTime = "6 years"
             , organization = moscowChemicalLyceum
             , location = moscow
             , position = "Student scientific projects mentor"
             , description = ""
+            , visible = True
             }
         , Work
-            { workStart =    (2011, Dec)
-            , workEnd = Just (2016, Feb)
+            { start =    (2011, Dec)
+            , end = Just (2016, Feb)
             , totalTime = "4 years"
             , organization = "Yandex"
             , location = moscow
@@ -90,20 +92,22 @@ main = do
                     " and several internal Yandex services."
                 p   "My software successfully stands year-to-year growing \
                     \data and user traffic."
+            , visible = True
             }
-        -- , Work
-        --     { workStart =    (2015, Jan)
-        --     , workEnd = Just (2015, Jun)
-        --     , totalTime = "1 semester"
-        --     , organization = moscowChemicalLyceum
-        --     , location = moscow
-        --     , position = "Teacher of functional programming (Haskell)"
-        --     , description =
-        --         p "Optional subject for 9th, 10th and 11th grade students."
-        --     }
         , Work
-            { workStart =    (2006, Nov)
-            , workEnd = Just (2011, Oct)
+            { start =    (2015, Jan)
+            , end = Just (2015, Jun)
+            , totalTime = "1 semester"
+            , organization = moscowChemicalLyceum
+            , location = moscow
+            , position = "Teacher of functional programming (Haskell)"
+            , description =
+                p "Optional subject for 9th, 10th and 11th grade students."
+            , visible = False
+            }
+        , Work
+            { start =    (2006, Nov)
+            , end = Just (2011, Oct)
             , totalTime = "5 years"
             , organization = "Research Institute of Information Technologies"
             , location = moscow
@@ -115,6 +119,7 @@ main = do
                     \user documentation, deploy and customer support."
                 p   "In my team, I introduced usage of source control tools, \
                     \issue management, common knowledge system (wiki)."
+            , visible = True
             }
         ]
 
@@ -125,26 +130,30 @@ main = do
             , division =
                 "faculty of control systems and computer science in engineering"
             , degree = "M.S. Student"
+            , visible = True
             }
-        -- , Education
-        --     { graduated = 2010
-        --     , school = "The Moscow Institute of Humanities and Economics"
-        --     , division = "faculty of law"
-        --     , degree = "higher/specialist in jurisprudence, civil law"
-        --     }
+        , Education
+            { graduated = 2010
+            , school = "The Moscow Institute of Humanities and Economics"
+            , division = "faculty of law"
+            , degree = "higher/specialist in jurisprudence, civil law"
+            , visible = False
+            }
         , Education
             { graduated = 2006
             , school =
                 "Institute of Cryptography, Communications and Informatics"
             , division = "faculty of information security"
             , degree = "incomplete higher in computer security"
+            , visible = True
             }
-        -- , Education
-        --     { graduated = 2002
-        --     , school = moscowChemicalLyceum
-        --     , division = "faculty of physics and mathematics"
-        --     , degree = "secondary"
-        --     }
+        , Education
+            { graduated = 2002
+            , school = moscowChemicalLyceum
+            , division = "faculty of physics and mathematics"
+            , degree = "secondary"
+            , visible = False
+            }
         ]
 
     publicActivity =

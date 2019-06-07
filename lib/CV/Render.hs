@@ -6,7 +6,7 @@
 
 module CV.Render where
 
-import           Control.Monad (unless)
+import           Control.Monad (unless, when)
 import           Data.ByteString.Lazy (ByteString)
 import           Data.Foldable (for_)
 import           Data.Monoid ((<>))
@@ -14,7 +14,7 @@ import           Data.Text (Text)
 import qualified Data.Text as Text
 import           Text.Blaze.Html.Renderer.Utf8 (renderHtml)
 import           Text.Blaze.Html5 as T
-import           Text.Blaze.Html5.Attributes as A
+import           Text.Blaze.Html5.Attributes as A hiding (start)
 import           Text.Shakespeare.Text (st)
 
 import           CV.Types (CV (..), ContactInfo (..), Education (..), Work (..))
@@ -51,14 +51,14 @@ renderCv CV{..} =
             dl $ dd $ toHtml $ Text.intercalate ", " technologies
             h3 "Work Experience"
             table ! class_ "work" $
-                for_ workExperience $ \Work{..} ->
-                    tr $ do
+                for_ workExperience $ \Work{end = workEnd, ..} ->
+                    when visible $ tr $ do
                         td $ do
                             case workEnd of
                                 Nothing ->
-                                    "started " >> timeSpan workStart
+                                    "started " >> timeSpan start
                                 Just end -> do
-                                    timeSpan workStart
+                                    timeSpan start
                                     preEscapedString "&nbsp;— "
                                     timeSpan end
                             br
@@ -75,7 +75,7 @@ renderCv CV{..} =
             h3 "Education"
             table ! class_ "edu" $
                 for_ education $ \Education{..} ->
-                    tr $ do
+                    when visible $ tr $ do
                         td $ T.span ! class_ "time" $
                             if graduated > 0 then
                                 toHtml graduated

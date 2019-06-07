@@ -1,3 +1,4 @@
+{-# LANGUAGE DuplicateRecordFields #-}
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TypeOperators #-}
@@ -53,13 +54,14 @@ showRu Nov = "ноябрь"
 showRu Dec = "декабрь"
 
 data Work = Work
-    { workStart    :: (Year, Month)
-    , workEnd      :: Maybe (Year, Month)
+    { start        :: (Year, Month)
+    , end          :: Maybe (Year, Month)
     , totalTime    :: Text
     , organization :: Text
     , location     :: Text
     , position     :: Text
     , description  :: Html
+    , visible      :: Bool
     }
 
 data Education = Education
@@ -67,6 +69,7 @@ data Education = Education
     , school    :: Text
     , division  :: Text
     , degree    :: Text
+    , visible   :: Bool
     }
 
 data CV = CV

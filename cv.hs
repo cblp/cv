@@ -55,6 +55,7 @@ cv = CV
                 \I implement security configuration compiler and various \
                 \security policies (including object-capability model), \
                 \using Haskell (primarily) and C."
+                -- TODO achiements in numbers?
             , visible = True
             }
         , Work
@@ -88,6 +89,13 @@ cv = CV
                 p $ do
                     "My software successfully stands year-to-year growing "
                     "data and user traffic."
+                p $ do
+                    "One microservice rewritten by me from Python to C++, "
+                    "got about 10 times boost in maximum request load. "
+                p $ do
+                    "Another one got 1.5 times decrease in memory consumption "
+                    "without a visible performance penalty after introducing "
+                    "internal compression."
             , visible = True
             }
         , Work

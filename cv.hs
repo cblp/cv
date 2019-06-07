@@ -49,7 +49,7 @@ cv = CV
             , organization = "Kaspersky Lab"
             , location = moscow
             , position = "Senior Developer"
-            , description = p
+            , description = p $ do
                 "As a Kaspersky OS and Kaspersky Security System "
                 "development team member, "
                 "I implement security configuration compiler and various "

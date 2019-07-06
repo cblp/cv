@@ -9,7 +9,7 @@ executables:
   cv:
     dependencies:
       - cv
-    main: cv.hs
+    main: Main.hs
 
 dependencies:
   - base

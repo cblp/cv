@@ -10,7 +10,7 @@ import           Data.Tuple.X ((-:))
 import           System.Directory (createDirectoryIfMissing)
 import           System.Environment (getArgs)
 import           System.FilePath ((</>))
-import           Text.Blaze.Html5 (a, p, strong, toHtml, (!))
+import           Text.Blaze.Html5 (a, p, toHtml, (!))
 import           Text.Blaze.Html5.Attributes (href)
 
 import           CV.Render (renderCv)
@@ -37,14 +37,13 @@ cv = CV
 
     , competencies = do
         p $ fold $ intersperse ", "
-            [ strong "Distributed systems (CRDT)"
-            , strong "Functional programming"
+            [ "Distributed systems (CRDT)", "Functional programming"
             , "Web backend", "Compilers", "Data analysis", "Scalable services"
             , "Security", "User interface"
             ]
         p "Design, Coding, Project management, Deployment, Staff training"
 
-    , technologies = [strong "Haskell", "C/C++", "Linux", "Python"]
+    , technologies = ["C", "C++", "Haskell", "Linux", "Python"]
 
     , workExperience =
         [ Work
@@ -57,8 +56,9 @@ cv = CV
             , description = p $ do
                 "As a Kaspersky OS and Kaspersky Security System "
                 "development team member, "
-                "I implement security configuration compiler and various "
-                "security policies (including object-capability model), "
+                "I design DSLs, implement security configuration compiler "
+                "and various security policies "
+                "(including object-capability model), "
                 "using Haskell for high-level logic and generating code in C."
                 -- TODO achiements in numbers?
             , visible = True

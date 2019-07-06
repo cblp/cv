@@ -54,7 +54,7 @@ renderCv CV{..} =
             table ! class_ "work" $
                 for_ workExperience $ \Work{end = workEnd, ..} ->
                     when visible $ tr $ do
-                        td $ do
+                        td $ p $ do
                             case workEnd of
                                 Nothing ->
                                     "started " >> timeSpan start
@@ -65,30 +65,30 @@ renderCv CV{..} =
                             br
                             toHtml $ "(" <> totalTime <> ")"
                         td $ do
-                            toHtml position
-                            br
-                            "at "
-                            T.span ! class_ "place" $ toHtml organization
-                            ", "
-                            toHtml location
-                            br
+                            p $ do
+                                toHtml position
+                                br
+                                "at "
+                                T.span ! class_ "place" $ toHtml organization
+                                ", "
+                                toHtml location
                             description
             h3 "Education"
             table ! class_ "edu" $
                 for_ education $ \Education{..} ->
                     when visible $ tr $ do
-                        td $ T.span ! class_ "time" $
+                        td $ p $ T.span ! class_ "time" $
                             if graduated > 0 then
                                 toHtml graduated
                             else
                                 toHtml $ "(" <> show (negate graduated) <> ")"
-                        td $ do
+                        td $ p $ do
                             T.span ! class_ "place" $ toHtml school
                             unless (Text.null division) $ do
                                 ","
                                 br
                                 toHtml division
-                        td ! class_ "degree" $ toHtml degree
+                        td ! class_ "degree" $ p $ toHtml degree
             h3 "Public Activity"
             table ! class_ "achiev" $
                 for_ publicActivity $ \((year, month), description) ->
@@ -140,7 +140,7 @@ renderCv CV{..} =
 
         .edu, .work, .achiev {
             padding-left: 0.7em;
-            border-spacing: 1em;
+            /* border-spacing: 1em; */
         }
 
         td {
@@ -172,12 +172,17 @@ renderCv CV{..} =
             margin-left: 1em;
             padding-left: 1em;
             border-left: dashed 1px gray;
+            width: 33%;
         }
 
         ul { margin-top: 0; }
 
         .li-number {
             text-align: right;
+        }
+
+        p {
+            margin-top: 0;
         }
     |]
 
@@ -189,7 +194,7 @@ contactMarkup = \case
     GitHub user -> ("GitHub", ahref "https://github.com/" user)
     LinkedIn short ->
         ("LinkedIn", ahref "https://" ("linkedin.com/in/" <> short))
-    Personal url -> ("Personal Web Page", ahref "https://" url)
+    Personal url -> ("Personal", ahref "https://" url)
     Skype user -> ("Skype", ahref "callto:" user)
     Telegram user -> ("Telegram", ahref "https://telegram.me/" user)
     Telephone number -> ("Tel.", toHtml number)

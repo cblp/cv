@@ -146,8 +146,8 @@ cv = CV
             , position = "Engineer"
             , description = do
                 p $ do
-                    "I was the lead developer of multi-component software "
-                    "data transfer and processing system."
+                    "I was the lead developer in 3-people team working on "
+                    "multi-component data transfer and processing system."
                 p $ do
                     "I've been working on design and code, program and "
                     "user documentation, deploy and customer support."

@@ -50,7 +50,7 @@ cv = CV
             { start = (2016, Feb)
             , end = Nothing
             , totalTime = "3 years"
-            , organization = "Kaspersky Lab"
+            , organization = "Kaspersky"
             , location = moscow
             , position = "Senior Software Engineer"
             , description = p $ do
@@ -195,7 +195,7 @@ cv = CV
     , publicActivity = let
         coLaboratoryRuhaskell = do
             "Co-organized RuHaskell community meetup "
-            "in Kaspersky Lab, Moscow, Russia. "
+            "in Kaspersky, Moscow, Russia. "
             "4 talks, 120+ attendees. "
         ruhaskellExtropolis = do
             "Organized RuHaskell community meetup in Moscow, Russia. "

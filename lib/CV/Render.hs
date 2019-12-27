@@ -48,7 +48,7 @@ renderCv CV{..} =
                     \border-bottom: none;"
             h3 "Competencies"
             dl $ dd competencies
-            h4 "Technologies"
+            h4 "Key Technologies"
             dl $ dd $ toHtml $ intersperse ", " technologies
             h3 "Work Experience"
             table ! class_ "work" $

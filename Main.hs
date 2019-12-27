@@ -231,7 +231,9 @@ cv = CV
       (2019, May) -: p $ do
         "“A purely functional approach to CRDT/RON-based "
         "distributed systems” at FPURE. "
-        a ! href "https://www.fpure.events" $ "fpure.events",
+        a ! href "https://www.fpure.events" $ "fpure.events"
+        ", video: "
+        a ! href "https://youtu.be/2MKLWCh33wE" $ "youtu.be/2MKLWCh33wE",
       -- , (2019, Mar) -: do
       --             "Introduction to Kaspersky Security System and KasperskyOS "
       --             "at “Pi Day: Moscow Programmer Club Meetup.” "

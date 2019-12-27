@@ -48,8 +48,8 @@ cv = CV
         [ Work
             { start = (2016, Feb)
             , end = Nothing
-            , totalTime = "3 years"
-            , organization = "Kaspersky"
+            , totalTime = "4 years"
+            , organization = "Kaspersky Lab"
             , location = moscow
             , position = "Senior Software Engineer"
             , description = p $ do
@@ -65,7 +65,7 @@ cv = CV
         , Work
             { start = (2012, Sep)
             , end = Nothing
-            , totalTime = "6 years"
+            , totalTime = "7 years"
             , organization = moscowChemicalLyceum
             , location = moscow
             , position = "Student scientific projects mentor"

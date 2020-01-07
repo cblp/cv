@@ -82,12 +82,14 @@ renderCv CV{..} =
                                 toHtml graduated
                             else
                                 toHtml $ "(" <> show (negate graduated) <> ")"
-                        td $ p $ do
-                            T.span ! class_ "place" $ toHtml school
-                            unless (Text.null division) $ do
-                                ","
-                                br
-                                toHtml division
+                        td $ do
+                            p $ do
+                                T.span ! class_ "place" $ toHtml school
+                                unless (Text.null division) $ do
+                                    ","
+                                    br
+                                    toHtml division
+                            description
                         td ! class_ "degree" $ p $ toHtml degree
             h3 "Public Activity"
             table ! class_ "achiev" $

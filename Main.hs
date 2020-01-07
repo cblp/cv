@@ -282,9 +282,9 @@ cv = CV
       ]
 
 
-  , residence =
+  , residence = do
       p $ toHtml moscow
-      -- p "I'm open to relocation to Europe or North America."
+      p "I'm open to relocation to Europe." -- or North America."
   }
 
   where

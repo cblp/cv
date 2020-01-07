@@ -1,0 +1,23 @@
+cabal-version: 2.2
+
+name: cv
+version: 2020
+build-type: Simple
+
+common language
+  build-depends: base, blaze-html, bytestring, directory
+  default-extensions: StrictData
+  default-language: Haskell2010
+  ghc-options: -Wall -Werror
+
+library
+  import: language
+  exposed-modules: CV CV.Render CV.Types Data.Tuple.X GitHubPages
+  hs-source-dirs: lib
+  build-depends: process, shakespeare, temporary, text
+
+executable cv
+  import: language
+  main-is: Main.hs
+  ghc-options: -Wall -Werror
+  build-depends: cv, filepath

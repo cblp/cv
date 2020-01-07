@@ -5,11 +5,11 @@ ghc-options: -Wall -Werror
 library:
   source-dirs: lib
 
-executables:
-  cv:
-    dependencies:
-      - cv
-    main: Main.hs
+executable:
+  dependencies:
+    - cv
+  main: Main.hs
+  other-modules: []
 
 dependencies:
   - base

@@ -168,6 +168,7 @@ cv = CV
         division =
           "faculty of control systems and computer science in engineering",
         degree = "M.S. Student",
+        description = "",
         visible = True
         },
       Education{
@@ -175,6 +176,7 @@ cv = CV
         school = "The Moscow Institute of Humanities and Economics",
         division = "faculty of law",
         degree = "higher/specialist in jurisprudence, civil law",
+        description = "",
         visible = False
         },
       Education{
@@ -183,6 +185,7 @@ cv = CV
           "Institute of Cryptography, Communications and Informatics",
         division = "faculty of information security",
         degree = "incomplete higher in computer security",
+        description = "",
         visible = True
         },
       Education{
@@ -190,6 +193,7 @@ cv = CV
         school = moscowChemicalLyceum,
         division = "faculty of physics and mathematics",
         degree = "secondary",
+        description = "",
         visible = False
         }
       ]

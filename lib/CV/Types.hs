@@ -65,11 +65,12 @@ data Work = Work
     }
 
 data Education = Education
-    { graduated :: Year
-    , school    :: Text
-    , division  :: Text
-    , degree    :: Text
-    , visible   :: Bool
+    { graduated   :: Year
+    , school      :: Text
+    , division    :: Text
+    , degree      :: Text
+    , description :: Html
+    , visible     :: Bool
     }
 
 data CV = CV

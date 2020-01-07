@@ -168,7 +168,15 @@ cv = CV
         division =
           "faculty of control systems and computer science in engineering",
         degree = "M.S. Student",
-        description = "",
+        description = p $ do
+          "Master's thesis: A distributed embedded database. "
+          "I've built a CRDT-based database-like application framework for "
+          "data synchronization and a distributed project management software "
+          "on top of the framework. "
+          "Both in Haskell. "
+          "The source code is available at "
+          a ! href "https://github.com/ff-notes" $ "github.com/ff-notes"
+          ".",
         visible = True
         },
       Education{

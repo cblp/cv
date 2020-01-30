@@ -163,11 +163,11 @@ cv = CV
 
   , education = [
       Education{
-        graduated = -2020,
+        graduated = 2020,
         school = "The Moscow Aviation Institute",
         division =
           "faculty of control systems and computer science in engineering",
-        degree = "M.S. Student",
+        degree = "Master",
         description = p $ do
           "Master's thesis: A distributed embedded database. "
           "I've built a CRDT-based database-like application framework for "

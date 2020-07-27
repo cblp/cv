@@ -2,7 +2,6 @@ module GitHubPages where
 
 import Control.Monad    (unless)
 import Data.List        (intercalate)
-import Data.Monoid      ((<>))
 import System.Directory (doesDirectoryExist, withCurrentDirectory)
 import System.IO.Temp   (withSystemTempDirectory)
 import System.Process   (callProcess, readProcess)

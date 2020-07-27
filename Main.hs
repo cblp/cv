@@ -4,7 +4,6 @@
 import           Data.ByteString.Lazy as ByteString (writeFile)
 import           Data.Foldable (fold)
 import           Data.List (intersperse)
-import           Data.Monoid ((<>))
 import           Data.Tuple.X ((-:))
 import           System.Directory (createDirectoryIfMissing)
 import           System.Environment (getArgs)

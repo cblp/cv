@@ -10,7 +10,6 @@ import           Control.Monad (unless, when)
 import           Data.ByteString.Lazy (ByteString)
 import           Data.Foldable (for_)
 import           Data.List (intersperse)
-import           Data.Monoid ((<>))
 import           Data.Text (Text)
 import qualified Data.Text as Text
 import           Text.Blaze.Html.Renderer.Utf8 (renderHtml)

@@ -45,16 +45,26 @@ cv = CV
           ]
       p "Design, Coding, Project management, Deployment, Staff training"
 
-  , technologies = ["C", "C++", "Haskell", "Linux", "Python"]
+  , technologies = ["C++", "Haskell", "Linux"]
 
   , workExperience = [
       Work{
-        start = (2016, Feb),
+        start = (2020, Mar),
         end = Nothing,
+        totalTime = "4 months",
+        organization = yandex,
+        location = moscow,
+        position = "Software Engineer",
+        description = p "Python & Java development in Yandex.Disk cloud core.",
+        visible = True
+        },
+      Work{
+        start = (2016, Feb),
+        end = Just (2020, Mar),
         totalTime = "4 years",
         organization = "Kaspersky Lab",
         location = moscow,
-        position = "Senior Software Engineer",
+        position = "Software Engineer, then Senior Software Engineer",
         description = p $ do
           "As a Kaspersky OS and Kaspersky Security System "
           "development team member, "
@@ -67,8 +77,8 @@ cv = CV
         },
       Work{
         start = (2012, Sep),
-        end = Nothing,
-        totalTime = "7 years",
+        end = Just (2018, May),
+        totalTime = "6 years",
         organization = moscowChemicalLyceum,
         location = moscow,
         position = "Student scientific projects mentor",
@@ -95,7 +105,7 @@ cv = CV
         start = (2011, Dec),
         end = Just (2016, Feb),
         totalTime = "4 years",
-        organization = "Yandex",
+        organization = yandex,
         location = moscow,
         position = "Software Engineer",
         description = do
@@ -143,7 +153,7 @@ cv = CV
         totalTime = "5 years",
         organization = "Research Institute of Information Technologies",
         location = moscow,
-        position = "Engineer",
+        position = "Engineer, then Team Lead & Architect",
         description = do
           p $ do
             "I was the lead developer in 3-people team working on "
@@ -239,6 +249,9 @@ cv = CV
 
 
   , talks = [
+      (2020, Jul) -: p $ do
+        "“Property and fuzzy testing” at C++ Russia. "
+        a ! href "https://cppconf-moscow.ru" $ "cppconf-moscow.ru",
       (2019, May) -: p $ do
         "“A purely functional approach to CRDT/RON-based "
         "distributed systems” at FPURE. "
@@ -302,6 +315,8 @@ cv = CV
     moscow = "Moscow, Russia"
 
     moscowChemicalLyceum = "The Moscow Chemical Lyceum (School 1303)"
+
+    yandex = "Yandex"
 
 main :: IO ()
 main = do

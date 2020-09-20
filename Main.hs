@@ -51,7 +51,7 @@ cv = CV
       Work{
         start = (2020, Mar),
         end = Nothing,
-        totalTime = "4 months",
+        totalTime = "6 months",
         organization = yandex,
         location = moscow,
         position = "Software Engineer",

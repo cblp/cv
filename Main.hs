@@ -49,6 +49,17 @@ cv = CV
 
   , workExperience = [
       Work{
+        start = (2020, Sep),
+        end = Nothing,
+        totalTime = "1 month",
+        organization = "Higher School of Economics",
+        location = moscow,
+        position = "Haskell teacher",
+        description =
+          p "I'm teaching practical programming in Haskell to 1—4th grade students.",
+        visible = True
+        },
+      Work{
         start = (2020, Mar),
         end = Nothing,
         totalTime = "6 months",

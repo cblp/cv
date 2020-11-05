@@ -45,7 +45,7 @@ cv = CV
           ]
       p "Design, Coding, Project management, Deployment, Staff training"
 
-  , technologies = ["C++", "Haskell", "Linux"]
+  , technologies = ["Haskell", "CRDT"]
 
   , workExperience = [
       Work{

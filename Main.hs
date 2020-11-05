@@ -56,7 +56,7 @@ cv = CV
         location = moscow,
         position = "Haskell teacher",
         description =
-          p "I'm teaching practical programming in Haskell to 1—4th grade students.",
+          p "I'm teaching practical programming in Haskell to 1—4th year students.",
         visible = True
         },
       Work{
@@ -66,7 +66,10 @@ cv = CV
         organization = yandex,
         location = moscow,
         position = "Software Engineer",
-        description = p "Python & Java development in Yandex.Disk cloud core.",
+        description = do
+          p "Writing Java in Yandex.Disk cloud core."
+          p "Implemented cross-service file metadata synchronization machinery."
+          p "Working on a CRDT-based application state synchronization framework.",
         visible = True
         },
       Work{

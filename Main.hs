@@ -61,7 +61,7 @@ cv = CV
         },
       Work{
         start = (2020, Mar),
-        end = Nothing,
+        end = Just (2020, Dec),
         totalTime = "9 months",
         organization = yandex,
         location = moscow,

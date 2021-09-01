@@ -49,6 +49,16 @@ cv = CV
 
   , workExperience = [
       Work{
+        start = (2021, Feb),
+        end = Nothing,
+        totalTime = "7 months",
+        organization = "IOHK",
+        location = "remote",
+        position = "Software Engineer",
+        description = p "Cardano node development",
+        visible = True
+        },
+      Work{
         start = (2020, Sep),
         end = Just (2021, Mar),
         totalTime = "7 months",

@@ -23,7 +23,7 @@ cv = CV
   , contactInfo = [
       Telephone "+7 905 547 11 98",
       Skype "cblp.su",
-      EMail "cblp@cblp.su",
+      EMail "job38@cblp.su",
       Telegram "cblp_su",
       Personal "cblp.github.io",
       GitHub "cblp",

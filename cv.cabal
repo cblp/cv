@@ -18,6 +18,7 @@ library
 
 executable cv
   import: language
+  default-extensions: DisambiguateRecordFields OverloadedStrings StrictData
   main-is: Main.hs
   ghc-options: -Wall -Werror
   build-depends: cv, filepath

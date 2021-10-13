@@ -1,6 +1,3 @@
-{-# LANGUAGE DisambiguateRecordFields #-}
-{-# LANGUAGE OverloadedStrings #-}
-
 import           Data.ByteString.Lazy as ByteString (writeFile)
 import           Data.Foldable (fold)
 import           Data.List (intersperse)

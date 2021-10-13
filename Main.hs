@@ -1,17 +1,17 @@
-import           Data.ByteString.Lazy as ByteString (writeFile)
-import           Data.Foldable (fold)
-import           Data.List (intersperse)
-import           Data.Tuple.X ((-:))
-import           System.Directory (createDirectoryIfMissing)
-import           System.Environment (getArgs)
-import           System.FilePath ((</>))
-import           Text.Blaze.Html5 (a, p, toHtml, (!))
-import           Text.Blaze.Html5.Attributes (href)
+import Data.ByteString.Lazy as BS (writeFile)
+import Data.Foldable (fold)
+import Data.List (intersperse)
+import Data.Tuple.X ((-:))
+import System.Directory (createDirectoryIfMissing)
+import System.Environment (getArgs)
+import System.FilePath ((</>))
+import Text.Blaze.Html5 (a, p, toHtml, (!))
+import Text.Blaze.Html5.Attributes (href)
 
-import           CV.Render (renderCv)
-import           CV.Types (CV (..), ContactInfo (..), Education (..),
-                           Month (..), Work (..))
-import           GitHubPages (deploy)
+import CV.Render (renderCv)
+import CV.Types (CV (..), ContactInfo (..), Education (..), Month (..),
+                 Work (..))
+import GitHubPages (deploy)
 
 cv :: CV
 cv = CV
@@ -349,5 +349,5 @@ main = do
   where
     build target = do
       createDirectoryIfMissing True target
-      ByteString.writeFile (target </> "index.html") (renderCv cv)
+      BS.writeFile (target </> "index.html") (renderCv cv)
       putStrLn $ "built site in " <> show target

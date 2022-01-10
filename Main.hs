@@ -48,11 +48,13 @@ cv = CV
       Work{
         start = (2021, Feb),
         end = Nothing,
-        totalTime = "7 months",
-        organization = "IOHK",
+        totalTime = "1 year",
+        organization = "Input-Output Global",
         location = "remote",
         position = "Software Engineer",
-        description = p "Cardano node development",
+        description =
+          p "Cardano blockchain node development. \
+            \Implemented some features for the Alonzo era hardfork.",
         visible = True
         },
       Work{
@@ -93,7 +95,7 @@ cv = CV
           "and various security policies "
           "(including object-capability model), "
           "using Haskell for high-level logic and generating code in C.",
-          -- TODO achiements in numbers?
+          -- TODO achievements in numbers?
         visible = True
         },
       Work{

@@ -46,15 +46,29 @@ cv = CV
 
   , workExperience = [
       Work{
-        start = (2021, Feb),
+        start = (2022, Jun),
         end = Nothing,
-        totalTime = "1 year",
+        totalTime = "3 months",
+        organization = "Generation Lambda",
+        location = "remote",
+        position = "Senior Software Engineer",
+        description =
+          p "Developing Maladex — a distributed exchange based on the Cardano\
+            \ smart contracts.\
+            \ Created an NFT distribution testing service.\
+            \ Designed internal infrastructure tools.",
+        visible = True
+        },
+      Work{
+        start = (2021, Feb),
+        end = Just (2022, May),
+        totalTime = "1⅓ year",
         organization = "Input-Output Global",
         location = "remote",
         position = "Software Engineer",
         description =
           p "Cardano blockchain node development. \
-            \Implemented some features for the Alonzo era hardfork.",
+            \Implemented some features for the Alonzo era.",
         visible = True
         },
       Work{

@@ -5,12 +5,16 @@ import Data.Tuple.X ((-:))
 import System.Directory (createDirectoryIfMissing)
 import System.Environment (getArgs)
 import System.FilePath ((</>))
-import Text.Blaze.Html5 (a, p, toHtml, (!))
+import Text.Blaze.Html5 (a, p, (!))
 import Text.Blaze.Html5.Attributes (href)
 
 import CV.Render (renderCv)
-import CV.Types (CV (..), ContactInfo (..), Education (..), Month (..),
-                 Work (..))
+import CV.Types (CV (CV),
+                 ContactInfo (Bitbucket, EMail, Facebook, GitHub, LinkedIn, Personal, Skype, Telegram, Telephone, Twitter),
+                 Education (Education),
+                 Month (Apr, Aug, Dec, Feb, Jan, Jul, Jun, Mar, May, Nov, Oct, Sep),
+                 Work (Work))
+import CV.Types qualified
 import GitHubPages (deploy)
 
 cv :: CV
@@ -344,8 +348,8 @@ cv = CV
 
 
   , residence = do
-      p $ toHtml moscow
-      p "I'm open to remote work and relocation." -- to Europe or North America."
+      p "Montenegro"
+      p "I'm open to remote work and relocation."
   }
 
   where

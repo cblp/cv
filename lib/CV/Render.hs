@@ -1,42 +1,61 @@
+{-# LANGUAGE BlockArguments #-}
+{-# LANGUAGE DisambiguateRecordFields #-}
+{-# LANGUAGE ImportQualifiedPost #-}
 {-# LANGUAGE LambdaCase #-}
+{-# LANGUAGE NamedFieldPuns #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE QuasiQuotes #-}
-{-# LANGUAGE RecordWildCards #-}
 {-# LANGUAGE ViewPatterns #-}
 
 module CV.Render where
 
-import           Control.Monad (unless, when)
-import           Data.ByteString.Lazy (ByteString)
-import           Data.Foldable (for_)
-import           Data.List (intersperse)
-import           Data.Text (Text)
-import qualified Data.Text as Text
-import           Text.Blaze.Html.Renderer.Utf8 (renderHtml)
-import           Text.Blaze.Html5 as T
-import           Text.Blaze.Html5.Attributes as A hiding (start)
-import           Text.Shakespeare.Text (st)
+import Control.Monad (unless, when)
+import Data.ByteString.Lazy (ByteString)
+import Data.Foldable (for_)
+import Data.List (intersperse)
+import Data.Text (Text)
+import Data.Text qualified as Text
+import Text.Blaze.Html.Renderer.Utf8 (renderHtml)
+import Text.Blaze.Html5 as T
+import Text.Blaze.Html5.Attributes as A hiding (start)
+import Text.Shakespeare.Text (st)
 
-import           CV.Types (CV (..), ContactInfo (..), Education (..), Work (..))
+import CV.Types (CV (CV),
+                 ContactInfo (Bitbucket, EMail, Facebook, GitHub, LinkedIn, Personal, Skype, Telegram, Telephone, Twitter),
+                 Education (Education), Work (Work))
+import CV.Types qualified
 
 renderCv :: CV -> ByteString
-renderCv CV{..} =
-    renderHtml . docTypeHtml $ do
-        T.head $ do
+renderCv
+        CV
+        { competencies
+        , contactInfo
+        , education
+        , fullname
+        , publicActivity
+        , residence
+        , talks
+        , technologies
+        , workExperience
+        } =
+    renderHtml $ docTypeHtml do
+        T.head do
             meta ! charset "UTF-8"
             T.title $ toHtml fullname
             T.style styles
-        body $ do
+        body do
             T.div ! class_ "contact-info" $
                 table $
                 -- tr $
                 --     td ! colspan (toValue (2 :: Int)) $
                 --     img ! src (toValue photo)
                  do
-                    tr $ td ! colspan (toValue (2 :: Int)) $ h3 "Contact Info"
+                    tr $ td ! colspan (toValue (2 :: Int)) $ do
+                        h3 "Contact Info"
+                        p "Time zone is CET (UTC+2)"
                     for_ contactInfo $
                         \(contactMarkup -> (contactLabel, contactContent)) ->
-                            tr $ do
+                            tr do
                                 td $ toHtml contactLabel
                                 td contactContent
             h1 $ toHtml fullname
@@ -51,20 +70,29 @@ renderCv CV{..} =
             dl $ dd $ toHtml $ intersperse ", " technologies
             h3 "Work Experience"
             table ! class_ "work" $
-                for_ workExperience $ \Work{end = workEnd, ..} ->
-                    when visible $ tr $ do
-                        td $ p $ do
+                for_ workExperience
+                    \Work
+                        { description
+                        , end = workEnd
+                        , location
+                        , organization
+                        , position
+                        , start
+                        , totalTime
+                        , visible
+                        } ->
+                    when visible $ tr do
+                        td $ p do
                             case workEnd of
-                                Nothing ->
-                                    "started " >> timeSpan start
+                                Nothing -> "started " >> timeSpan start
                                 Just end -> do
                                     timeSpan start
                                     preEscapedString "&nbsp;— "
                                     timeSpan end
                             br
                             toHtml $ "(" <> totalTime <> ")"
-                        td $ do
-                            p $ do
+                        td do
+                            p do
                                 toHtml position
                                 br
                                 "at "
@@ -74,17 +102,25 @@ renderCv CV{..} =
                             description
             h3 "Education"
             table ! class_ "edu" $
-                for_ education $ \Education{..} ->
-                    when visible $ tr $ do
+                for_ education
+                    \Education
+                        { degree
+                        , description
+                        , division
+                        , graduated
+                        , school
+                        , visible
+                        } ->
+                    when visible $ tr do
                         td $ p $ T.span ! class_ "time" $
                             if graduated > 0 then
                                 toHtml graduated
                             else
                                 toHtml $ "(" <> show (negate graduated) <> ")"
-                        td $ do
-                            p $ do
+                        td do
+                            p do
                                 T.span ! class_ "place" $ toHtml school
-                                unless (Text.null division) $ do
+                                unless (Text.null division) do
                                     ","
                                     br
                                     toHtml division
@@ -92,14 +128,14 @@ renderCv CV{..} =
                         td ! class_ "degree" $ p $ toHtml degree
             h3 "Public Activity"
             table ! class_ "achiev" $
-                for_ publicActivity $ \((year, month), description) ->
-                    tr $ do
+                for_ publicActivity \((year, month), description) ->
+                    tr do
                         td . p $ timeSpan (year, month)
                         td description
             h4 "Conference talks"
             table ! class_ "achiev" $
-                for_ talks $ \((year, month), description) ->
-                    tr $ do
+                for_ talks \((year, month), description) ->
+                    tr do
                         td . p $ timeSpan (year, month)
                         td description
             h3 "Residence"

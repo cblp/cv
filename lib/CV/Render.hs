@@ -8,6 +8,8 @@
 
 module CV.Render where
 
+import Prelude hiding (div, head)
+
 import Control.Monad (unless, when)
 import Data.ByteString.Lazy (ByteString)
 import Data.Foldable (for_)
@@ -20,7 +22,7 @@ import Text.Blaze.Html5.Attributes as A hiding (start)
 import Text.Shakespeare.Text (st)
 
 import CV.Types (CV (CV),
-                 ContactInfo (Bitbucket, EMail, Facebook, GitHub, LinkedIn, Personal, Skype, Telegram, Telephone, Twitter),
+                 ContactInfo (Bitbucket, EMail, Facebook, GitHub, LinkedIn, Location, Personal, Skype, Telegram, Telephone, Twitter),
                  Education (Education), Month, Work (Work))
 import CV.Types qualified
 
@@ -32,47 +34,57 @@ renderCv
         , education
         , fullname
         , publicActivity
-        , residence
         , talks
         , technologies
         , workExperience
         } =
     renderHtml $
     docTypeHtml do
-        T.head $ preamble fullname
+        head $ preamble fullname
         body do
-            renderContacts contactInfo
-            h1 $ toHtml fullname
-            hr
-            renderCompetencies competencies
-            renderTechnologies technologies
-            renderWorkExperience workExperience
-            renderEducation education
-            renderPublicActivity publicActivity
-            renderTalks talks
-            renderResidence residence
+            div ! class_ "container" $ do
+                h1 $ toHtml fullname
+                renderContacts contactInfo
+                hr
+                renderCompetencies competencies
+                renderTechnologies technologies
+                hr
+                renderWorkExperience workExperience
+                renderEducation education
+                renderPublicActivity publicActivity
+                renderTalks talks
 
 preamble :: Text -> Html
 preamble fullname = do
     meta ! charset "UTF-8"
+    meta ! name "viewport" ! content "width=device-width, initial-scale=1"
     T.title $ toHtml fullname
+    link
+        ! href
+            "https://cdn.jsdelivr.net\
+            \/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+        ! rel "stylesheet"
+        ! integrity
+            "sha384-\
+            \gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+        ! crossorigin "anonymous"
+    script  ! src
+                "https://cdn.jsdelivr.net\
+                \/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+            ! integrity
+                "sha384-\
+                \A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4\
+                \Xa"
+            ! crossorigin "anonymous"
+        $ ""
     T.style styles
+  where
+    crossorigin = customAttribute "crossorigin"
+    integrity   = customAttribute "integrity"
 
 renderContacts :: [ContactInfo] -> Html
 renderContacts contactInfo =
-    T.div ! class_ "contact-info" $
-    table do
-        tr $
-            td2 do
-                h3 "Contact Info"
-                p "Time zone is CET (UTC+2)"
-        for_ contactInfo \contact -> do
-            let (contactLabel, contactContent) = contactMarkup contact
-            tr do
-                td $ toHtml contactLabel
-                td contactContent
-  where
-    td2 = td ! colspan (toValue (2 :: Int))
+    address $ mconcat $ intersperse br $ fmap contactMarkup contactInfo
 
 renderCompetencies :: Html -> Html
 renderCompetencies competencies = do
@@ -87,7 +99,7 @@ renderTechnologies technologies = do
 renderWorkExperience :: [Work] -> Html
 renderWorkExperience workExperience = do
     h3 "Work Experience"
-    table ! class_ "work" $
+    table ! class_ "table work" $
         for_ workExperience
             \Work
                 { description
@@ -113,8 +125,7 @@ renderWorkExperience workExperience = do
                 td do
                     p do
                         toHtml position
-                        br
-                        "at "
+                        " at "
                         T.span ! class_ "place" $ toHtml organization
                         ", "
                         toHtml location
@@ -123,7 +134,7 @@ renderWorkExperience workExperience = do
 renderEducation :: [Education] -> Html
 renderEducation education = do
     h3 "Education"
-    table ! class_ "edu" $
+    table ! class_ "edu table" $
         for_ education
             \Education
                 { degree
@@ -151,7 +162,7 @@ renderEducation education = do
 renderPublicActivity :: [((Int, Month), Html)] -> Html
 renderPublicActivity publicActivity = do
     h3 "Public Activity"
-    table ! class_ "achiev" $
+    table ! class_ "achiev table" $
         for_ publicActivity \((year, month), description) ->
             tr do
                 td . p $ timeSpan (year, month)
@@ -160,7 +171,7 @@ renderPublicActivity publicActivity = do
 renderTalks :: [((Int, Month), Html)] -> Html
 renderTalks talks = do
     h4 "Conference talks"
-    table ! class_ "achiev" $
+    table ! class_ "achiev table" $
         for_ talks \((year, month), description) ->
             tr do
                 td $ p $ timeSpan (year, month)
@@ -181,100 +192,34 @@ timeSpan (year, month) =
 -- nobr = T.span ! A.style "white-space: nowrap;"
 
 styles :: Html
-styles = toHtml [st|
-    a {
-        color: blue;
-    }
+styles =
+    toHtml
+        [st|
+            td, h1, h2, h3, li {
+                page-break-after: avoid;
+            }
 
-    abbr {
-        border-bottom: 1px dotted;
-    }
+            .time, .place {
+                font-weight: bold;
+            }
 
-    body {
-        font-family: Georgia, serif;
-        padding: 3em;
-    }
+            .time {
+                white-space: nowrap;
+            }
+        |]
 
-    h2 {
-        font-weight: normal;
-    }
-
-    h3 {
-        margin-top: 1em;
-        margin-bottom: 0.5em;
-    }
-
-    sup {
-        font-size: small;
-        vertical-align: 1.2em;
-    }
-
-    .edu, .work, .achiev {
-        padding-left: 0.7em;
-        /* border-spacing: 1em; */
-    }
-
-    td {
-        vertical-align: top;
-    }
-
-    td, h1, h2, h3, li {
-        page-break-after: avoid;
-    }
-
-    .edu td, .work td, .achiev td {
-        padding-left: 1em;
-    }
-
-    .edu td.degree {
-        /* font-style: italic; */
-    }
-
-    .time, .place {
-        font-weight: bold;
-    }
-
-    .time {
-        white-space: nowrap;
-    }
-
-    .contact-info {
-        float: right;
-        margin-left: 1em;
-        padding-left: 1em;
-        border-left: dashed 1px gray;
-        width: 33%;
-    }
-
-    ul { margin-top: 0; }
-
-    .li-number {
-        text-align: right;
-    }
-
-    p {
-        margin-top: 0;
-    }
-
-    hr {
-        border-bottom: none;
-        border-top: solid 1px black;
-        height: 0;
-    }
-|]
-
-contactMarkup :: ContactInfo -> (Text, Html)
+contactMarkup :: ContactInfo -> Html
 contactMarkup = \case
-    Bitbucket user -> ("Bitbucket", ahref "https://bitbucket.org/" user)
-    EMail addr -> ("E-mail", ahref "mailto:" addr)
-    Facebook user -> ("Facebook", ahref "https://" ("fb.me/" <> user))
-    GitHub user -> ("GitHub", ahref "https://github.com/" user)
-    LinkedIn short ->
-        ("LinkedIn", ahref "https://" ("linkedin.com/in/" <> short))
-    Personal url -> ("Personal", ahref "https://" url)
-    Skype user -> ("Skype", ahref "callto:" user)
-    Telegram user -> ("Telegram", ahref "https://telegram.me/" user)
-    Telephone number -> ("Tel.", toHtml number)
-    Twitter user -> ("Twitter", ahref "https://twitter.com/" user)
+    Bitbucket user -> ahref "https://bitbucket.org/" user
+    EMail addr -> ahref "mailto:" addr
+    Facebook user -> ahref "https://" $ "fb.me/" <> user
+    GitHub user -> ahref "https://" $ "github.com/" <> user
+    LinkedIn short -> ahref "https://" $ "linkedin.com/in/" <> short
+    Location location -> toHtml location
+    Personal url -> ahref "https://" url
+    Skype user -> ahref "callto:" user
+    Telegram user -> ahref "https://t.me/" user
+    Telephone number -> toHtml number
+    Twitter user -> ahref "https://twitter.com/" user
   where
     ahref prefix url = a ! href (toValue (prefix <> url)) $ toHtml url

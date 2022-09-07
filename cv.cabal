@@ -1,7 +1,6 @@
 cabal-version: 2.2
 name:          cv
 version:       2022
-build-type:    Simple
 
 common language
   build-depends:

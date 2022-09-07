@@ -9,8 +9,7 @@ import Text.Blaze.Html5 (a, p, (!))
 import Text.Blaze.Html5.Attributes (href)
 
 import CV.Render (renderCv)
-import CV.Types (CV (CV),
-                 ContactInfo (Bitbucket, EMail, Facebook, GitHub, LinkedIn, Personal, Skype, Telegram, Telephone, Twitter),
+import CV.Types (CV (CV), ContactInfo (EMail, GitHub, LinkedIn, Location),
                  Education (Education),
                  Month (Apr, Aug, Dec, Feb, Jan, Jul, Jun, Mar, May, Nov, Oct, Sep),
                  Work (Work))
@@ -21,19 +20,19 @@ cv :: CV
 cv = CV
   { fullname = "Yuriy Syrovetskiy"
 
-  , contactInfo = [
-      Telephone "+7 905 547 11 98",
-      Skype "cblp.su",
-      EMail "job38@cblp.su",
-      Telegram "cblp_su",
-      Personal "cblp.github.io",
-      GitHub "cblp",
-      Bitbucket "cblp",
-      LinkedIn "cblpsu",
-      Facebook "cblp.su",
-      Twitter "cblp_su"
+  , contactInfo =
+      [ Location "Montenegro (UTC+2), remote"
+      , EMail "job38@cblp.su"
+      , LinkedIn "cblpsu"
+      , GitHub "cblp"
+      -- , Personal "cblp.github.io"
+      -- , Telephone "+7 905 547 11 98"
+      -- , Skype "cblp.su"
+      -- , Telegram "cblp_su"
+      -- , Bitbucket "cblp"
+      -- , Facebook "cblp.su"
+      -- , Twitter "cblp_su"
       ]
-
 
   , competencies = do
       p $
@@ -44,7 +43,13 @@ cv = CV
             "Web backend", "Compilers", "Data analysis", "Scalable services",
             "Security", "User interface"
           ]
-      p "Design, Coding, Project management, Deployment, Staff training"
+      p $
+        fold $
+        intersperse
+          ", "
+          [ "Software design", "Coding", "Project management", "Deployment",
+            "Staff training"
+          ]
 
   , technologies = ["Haskell", "CRDT"]
 
@@ -210,7 +215,6 @@ cv = CV
         }
       ]
 
-
   , education = [
       Education{
         graduated = 2020,
@@ -256,7 +260,6 @@ cv = CV
         }
       ]
 
-
   , publicActivity = let
       coLaboratoryRuhaskell = do
         "Co-organized RuHaskell community meetup "
@@ -287,7 +290,6 @@ cv = CV
                 "https://github.com/ruHaskell/ruhaskell/wiki/Meetup.2015.Summer"
             $ "github.com/ruHaskell/ruhaskell/wiki/Meetup.2015.Summer"
         ]
-
 
   , talks = [
       (2020, Jul) -: p $ do
@@ -345,11 +347,6 @@ cv = CV
       --         $   "ruhaskell.org/posts/talks/2015/06/21/\
       --             \haskell-for-pythonista.html"
       ]
-
-
-  , residence = do
-      p "Montenegro"
-      p "I'm open to remote work and relocation."
   }
 
   where

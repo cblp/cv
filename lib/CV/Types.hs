@@ -15,6 +15,7 @@ data ContactInfo
     | Facebook Text
     | GitHub Text
     | LinkedIn Text
+    | Location Text
     | Personal Text
     | Skype Text
     | Telegram Text
@@ -82,5 +83,4 @@ data CV = CV
     , education      :: [Education]
     , publicActivity :: [(Year, Month) :- Html]
     , talks          :: [(Year, Month) :- Html]
-    , residence      :: Html
     }

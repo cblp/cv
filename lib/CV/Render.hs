@@ -5,7 +5,6 @@
 {-# LANGUAGE NamedFieldPuns #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE QuasiQuotes #-}
-{-# LANGUAGE ViewPatterns #-}
 
 module CV.Render where
 
@@ -22,7 +21,7 @@ import Text.Shakespeare.Text (st)
 
 import CV.Types (CV (CV),
                  ContactInfo (Bitbucket, EMail, Facebook, GitHub, LinkedIn, Personal, Skype, Telegram, Telephone, Twitter),
-                 Education (Education), Work (Work))
+                 Education (Education), Month, Work (Work))
 import CV.Types qualified
 
 renderCv :: CV -> ByteString
@@ -38,190 +37,231 @@ renderCv
         , technologies
         , workExperience
         } =
-    renderHtml $ docTypeHtml do
-        T.head do
-            meta ! charset "UTF-8"
-            T.title $ toHtml fullname
-            T.style styles
+    renderHtml $
+    docTypeHtml do
+        T.head $ preamble fullname
         body do
-            T.div ! class_ "contact-info" $
-                table $
-                -- tr $
-                --     td ! colspan (toValue (2 :: Int)) $
-                --     img ! src (toValue photo)
-                 do
-                    tr $ td ! colspan (toValue (2 :: Int)) $ do
-                        h3 "Contact Info"
-                        p "Time zone is CET (UTC+2)"
-                    for_ contactInfo $
-                        \(contactMarkup -> (contactLabel, contactContent)) ->
-                            tr do
-                                td $ toHtml contactLabel
-                                td contactContent
+            renderContacts contactInfo
             h1 $ toHtml fullname
-            hr !
-                A.style
-                    "height: 0; \
-                    \border-top: solid 1px black; \
-                    \border-bottom: none;"
-            h3 "Competencies"
-            dl $ dd competencies
-            h4 "Key Technologies"
-            dl $ dd $ toHtml $ intersperse ", " technologies
-            h3 "Work Experience"
-            table ! class_ "work" $
-                for_ workExperience
-                    \Work
-                        { description
-                        , end = workEnd
-                        , location
-                        , organization
-                        , position
-                        , start
-                        , totalTime
-                        , visible
-                        } ->
-                    when visible $ tr do
-                        td $ p do
-                            case workEnd of
-                                Nothing -> "started " >> timeSpan start
-                                Just end -> do
-                                    timeSpan start
-                                    preEscapedString "&nbsp;— "
-                                    timeSpan end
-                            br
-                            toHtml $ "(" <> totalTime <> ")"
-                        td do
-                            p do
-                                toHtml position
-                                br
-                                "at "
-                                T.span ! class_ "place" $ toHtml organization
-                                ", "
-                                toHtml location
-                            description
-            h3 "Education"
-            table ! class_ "edu" $
-                for_ education
-                    \Education
-                        { degree
-                        , description
-                        , division
-                        , graduated
-                        , school
-                        , visible
-                        } ->
-                    when visible $ tr do
-                        td $ p $ T.span ! class_ "time" $
-                            if graduated > 0 then
-                                toHtml graduated
-                            else
-                                toHtml $ "(" <> show (negate graduated) <> ")"
-                        td do
-                            p do
-                                T.span ! class_ "place" $ toHtml school
-                                unless (Text.null division) do
-                                    ","
-                                    br
-                                    toHtml division
-                            description
-                        td ! class_ "degree" $ p $ toHtml degree
-            h3 "Public Activity"
-            table ! class_ "achiev" $
-                for_ publicActivity \((year, month), description) ->
-                    tr do
-                        td . p $ timeSpan (year, month)
-                        td description
-            h4 "Conference talks"
-            table ! class_ "achiev" $
-                for_ talks \((year, month), description) ->
-                    tr do
-                        td . p $ timeSpan (year, month)
-                        td description
-            h3 "Residence"
-            dl $ dd residence
+            hr
+            renderCompetencies competencies
+            renderTechnologies technologies
+            renderWorkExperience workExperience
+            renderEducation education
+            renderPublicActivity publicActivity
+            renderTalks talks
+            renderResidence residence
+
+preamble :: Text -> Html
+preamble fullname = do
+    meta ! charset "UTF-8"
+    T.title $ toHtml fullname
+    T.style styles
+
+renderContacts :: [ContactInfo] -> Html
+renderContacts contactInfo =
+    T.div ! class_ "contact-info" $
+    table do
+        tr $
+            td2 do
+                h3 "Contact Info"
+                p "Time zone is CET (UTC+2)"
+        for_ contactInfo \contact -> do
+            let (contactLabel, contactContent) = contactMarkup contact
+            tr do
+                td $ toHtml contactLabel
+                td contactContent
   where
-    timeSpan (year, month) =
-        T.span ! class_ "time" $ do
-            toHtml $ show month
-            " "
-            toHtml year
-    -- nobr = T.span ! A.style "white-space: nowrap;"
-    styles = toHtml [st|
-        a {
-            color: blue;
-        }
+    td2 = td ! colspan (toValue (2 :: Int))
 
-        abbr {
-            border-bottom: 1px dotted;
-        }
+renderCompetencies :: Html -> Html
+renderCompetencies competencies = do
+    h3 "Competencies"
+    dl $ dd competencies
 
-        body {
-            font-family: Georgia, serif;
-            padding: 3em;
-        }
+renderTechnologies :: [Html] -> Html
+renderTechnologies technologies = do
+    h4 "Key Technologies"
+    dl $ dd $ toHtml $ intersperse ", " technologies
 
-        h2 {
-            font-weight: normal;
-        }
+renderWorkExperience :: [Work] -> Html
+renderWorkExperience workExperience = do
+    h3 "Work Experience"
+    table ! class_ "work" $
+        for_ workExperience
+            \Work
+                { description
+                , end = workEnd
+                , location
+                , organization
+                , position
+                , start
+                , totalTime
+                , visible
+                } ->
+            when visible $
+            tr do
+                td $ p do
+                    case workEnd of
+                        Nothing -> "started " >> timeSpan start
+                        Just end -> do
+                            timeSpan start
+                            preEscapedString "&nbsp;— "
+                            timeSpan end
+                    br
+                    toHtml $ "(" <> totalTime <> ")"
+                td do
+                    p do
+                        toHtml position
+                        br
+                        "at "
+                        T.span ! class_ "place" $ toHtml organization
+                        ", "
+                        toHtml location
+                    description
 
-        h3 {
-            margin-top: 1em;
-            margin-bottom: 0.5em;
-        }
+renderEducation :: [Education] -> Html
+renderEducation education = do
+    h3 "Education"
+    table ! class_ "edu" $
+        for_ education
+            \Education
+                { degree
+                , description
+                , division
+                , graduated
+                , school
+                , visible
+                } ->
+            when visible $
+            tr do
+                td $ p $ T.span ! class_ "time" $
+                    if graduated > 0 then
+                        toHtml graduated
+                    else
+                        toHtml $ "(" <> show (negate graduated) <> ")"
+                td do
+                    p do
+                        T.span ! class_ "place" $ toHtml school
+                        unless (Text.null division) $
+                            "," >> br >> toHtml division
+                    description
+                td ! class_ "degree" $ p $ toHtml degree
 
-        sup {
-            font-size: small;
-            vertical-align: 1.2em;
-        }
+renderPublicActivity :: [((Int, Month), Html)] -> Html
+renderPublicActivity publicActivity = do
+    h3 "Public Activity"
+    table ! class_ "achiev" $
+        for_ publicActivity \((year, month), description) ->
+            tr do
+                td . p $ timeSpan (year, month)
+                td description
 
-        .edu, .work, .achiev {
-            padding-left: 0.7em;
-            /* border-spacing: 1em; */
-        }
+renderTalks :: [((Int, Month), Html)] -> Html
+renderTalks talks = do
+    h4 "Conference talks"
+    table ! class_ "achiev" $
+        for_ talks \((year, month), description) ->
+            tr do
+                td $ p $ timeSpan (year, month)
+                td description
 
-        td {
-            vertical-align: top;
-        }
+renderResidence :: Html -> Html
+renderResidence residence = do
+    h3 "Residence"
+    dl $ dd residence
 
-        td, h1, h2, h3, li {
-            page-break-after: avoid;
-        }
+timeSpan :: (Int, Month) -> Html
+timeSpan (year, month) =
+    T.span ! class_ "time" $ do
+        toHtml $ show month
+        " "
+        toHtml year
 
-        .edu td, .work td, .achiev td {
-            padding-left: 1em;
-        }
+-- nobr = T.span ! A.style "white-space: nowrap;"
 
-        .edu td.degree {
-            /* font-style: italic; */
-        }
+styles :: Html
+styles = toHtml [st|
+    a {
+        color: blue;
+    }
 
-        .time, .place {
-            font-weight: bold;
-        }
+    abbr {
+        border-bottom: 1px dotted;
+    }
 
-        .time {
-            white-space: nowrap;
-        }
+    body {
+        font-family: Georgia, serif;
+        padding: 3em;
+    }
 
-        .contact-info {
-            float: right;
-            margin-left: 1em;
-            padding-left: 1em;
-            border-left: dashed 1px gray;
-            width: 33%;
-        }
+    h2 {
+        font-weight: normal;
+    }
 
-        ul { margin-top: 0; }
+    h3 {
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+    }
 
-        .li-number {
-            text-align: right;
-        }
+    sup {
+        font-size: small;
+        vertical-align: 1.2em;
+    }
 
-        p {
-            margin-top: 0;
-        }
-    |]
+    .edu, .work, .achiev {
+        padding-left: 0.7em;
+        /* border-spacing: 1em; */
+    }
+
+    td {
+        vertical-align: top;
+    }
+
+    td, h1, h2, h3, li {
+        page-break-after: avoid;
+    }
+
+    .edu td, .work td, .achiev td {
+        padding-left: 1em;
+    }
+
+    .edu td.degree {
+        /* font-style: italic; */
+    }
+
+    .time, .place {
+        font-weight: bold;
+    }
+
+    .time {
+        white-space: nowrap;
+    }
+
+    .contact-info {
+        float: right;
+        margin-left: 1em;
+        padding-left: 1em;
+        border-left: dashed 1px gray;
+        width: 33%;
+    }
+
+    ul { margin-top: 0; }
+
+    .li-number {
+        text-align: right;
+    }
+
+    p {
+        margin-top: 0;
+    }
+
+    hr {
+        border-bottom: none;
+        border-top: solid 1px black;
+        height: 0;
+    }
+|]
 
 contactMarkup :: ContactInfo -> (Text, Html)
 contactMarkup = \case

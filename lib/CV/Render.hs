@@ -113,16 +113,17 @@ renderWorkExperience workExperience = do
                 } ->
             when visible $
             tr do
-                td $ p do
-                    case workEnd of
-                        Nothing -> "started " >> timeSpan start
-                        Just end -> do
-                            timeSpan start
-                            preEscapedString "&nbsp;— "
-                            timeSpan end
-                    br
-                    toHtml $ "(" <> totalTime <> ")"
-                td do
+                td ! class_ "col-2" $
+                    p do
+                        case workEnd of
+                            Nothing -> "started " >> timeSpan start
+                            Just end -> do
+                                timeSpan start
+                                preEscapedString "&nbsp;— "
+                                timeSpan end
+                        br
+                        toHtml $ "(" <> totalTime <> ")"
+                td ! class_ "col-10" $ do
                     p do
                         toHtml position
                         " at "
@@ -146,18 +147,20 @@ renderEducation education = do
                 } ->
             when visible $
             tr do
-                td $ p $ T.span ! class_ "time" $
-                    if graduated > 0 then
-                        toHtml graduated
-                    else
-                        toHtml $ "(" <> show (negate graduated) <> ")"
-                td do
+                td ! class_ "col-2" $
+                    p $
+                    T.span ! class_ "time" $
+                        if graduated > 0 then
+                            toHtml graduated
+                        else
+                            toHtml $ "(" <> show (negate graduated) <> ")"
+                td ! class_ "col-8" $ do
                     p do
                         T.span ! class_ "place" $ toHtml school
                         unless (Text.null division) $
                             "," >> br >> toHtml division
                     description
-                td ! class_ "degree" $ p $ toHtml degree
+                td ! class_ "col-2 degree" $ p $ toHtml degree
 
 renderPublicActivity :: [((Int, Month), Html)] -> Html
 renderPublicActivity publicActivity = do
@@ -165,8 +168,8 @@ renderPublicActivity publicActivity = do
     table ! class_ "achiev table" $
         for_ publicActivity \((year, month), description) ->
             tr do
-                td . p $ timeSpan (year, month)
-                td description
+                td ! class_ "col-2" $ p $ timeSpan (year, month)
+                td ! class_ "col-10" $ description
 
 renderTalks :: [((Int, Month), Html)] -> Html
 renderTalks talks = do
@@ -174,8 +177,8 @@ renderTalks talks = do
     table ! class_ "achiev table" $
         for_ talks \((year, month), description) ->
             tr do
-                td $ p $ timeSpan (year, month)
-                td description
+                td ! class_ "col-2" $ p $ timeSpan (year, month)
+                td ! class_ "col-10" $ description
 
 renderResidence :: Html -> Html
 renderResidence residence = do

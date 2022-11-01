@@ -23,7 +23,8 @@ import Text.Shakespeare.Text (st)
 
 import CV.Types (CV (CV),
                  ContactInfo (Bitbucket, EMail, Facebook, GitHub, LinkedIn, Location, Personal, Skype, Telegram, Telephone, Twitter),
-                 Education (Education), Month, Work (Work))
+                 Education (Education), Month, Organization (At, Freelance),
+                 Work (Work))
 import CV.Types qualified
 
 renderCv :: CV -> ByteString
@@ -126,8 +127,11 @@ renderWorkExperience workExperience = do
                 td ! class_ "col-10" $ do
                     p do
                         toHtml position
-                        " at "
-                        T.span ! class_ "place" $ toHtml organization
+                        case organization of
+                            At org -> do
+                                " at "
+                                T.span ! class_ "place" $ toHtml org
+                            Freelance -> "freelance"
                         ", "
                         toHtml location
                     description
@@ -213,16 +217,16 @@ styles =
 
 contactMarkup :: ContactInfo -> Html
 contactMarkup = \case
-    Bitbucket user -> ahref "https://bitbucket.org/" user
-    EMail addr -> ahref "mailto:" addr
-    Facebook user -> ahref "https://" $ "fb.me/" <> user
-    GitHub user -> ahref "https://" $ "github.com/" <> user
-    LinkedIn short -> ahref "https://" $ "linkedin.com/in/" <> short
+    Bitbucket user    -> ahref "https://bitbucket.org/" user
+    EMail addr        -> ahref "mailto:" addr
+    Facebook user     -> ahref "https://" $ "fb.me/" <> user
+    GitHub user       -> ahref "https://" $ "github.com/" <> user
+    LinkedIn short    -> ahref "https://" $ "linkedin.com/in/" <> short
     Location location -> toHtml location
-    Personal url -> ahref "https://" url
-    Skype user -> ahref "callto:" user
-    Telegram user -> ahref "https://t.me/" user
-    Telephone number -> toHtml number
-    Twitter user -> ahref "https://twitter.com/" user
+    Personal url      -> ahref "https://" url
+    Skype user        -> ahref "callto:" user
+    Telegram user     -> ahref "https://t.me/" user
+    Telephone number  -> toHtml number
+    Twitter user      -> ahref "https://twitter.com/" user
   where
     ahref prefix url = a ! href (toValue (prefix <> url)) $ toHtml url

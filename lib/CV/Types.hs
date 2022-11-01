@@ -54,11 +54,13 @@ showRu Oct = "октябрь"
 showRu Nov = "ноябрь"
 showRu Dec = "декабрь"
 
+data Organization = Freelance | At Text
+
 data Work = Work
     { start        :: (Year, Month)
     , end          :: Maybe (Year, Month)
     , totalTime    :: Text
-    , organization :: Text
+    , organization :: Organization
     , location     :: Text
     , position     :: Text
     , description  :: Html

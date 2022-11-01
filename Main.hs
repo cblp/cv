@@ -12,7 +12,7 @@ import CV.Render (renderCv)
 import CV.Types (CV (CV), ContactInfo (EMail, GitHub, LinkedIn, Location),
                  Education (Education),
                  Month (Apr, Aug, Dec, Feb, Jan, Jul, Jun, Mar, May, Nov, Oct, Sep),
-                 Work (Work))
+                 Organization (At, Freelance), Work (Work))
 import CV.Types qualified
 import GitHubPages (deploy)
 
@@ -55,10 +55,26 @@ cv = CV
 
   , workExperience = [
       Work{
-        start = (2022, Jun),
+        start = (2022, Aug),
         end = Nothing,
         totalTime = "3 months",
-        organization = "Generation Lambda",
+        organization = Freelance,
+        location = "remote",
+        position = "",
+        description =
+          p "Lead developer of internal system of issue-tracking and decision\
+            \ making for a large DAO.\
+            \ Web backend + frontend.\
+            \ Stellar blockchain integration for automatic payment processing\
+            \ and access management.\
+            \ Telegram integration for control via chat.",
+        visible = True
+        },
+      Work{
+        start = (2022, Jun),
+        end = Just (2022, Aug),
+        totalTime = "3 months",
+        organization = At "Generation Lambda",
         location = "remote",
         position = "Senior Software Engineer",
         description =
@@ -72,7 +88,7 @@ cv = CV
         start = (2021, Feb),
         end = Just (2022, May),
         totalTime = "1⅓ year",
-        organization = "Input-Output Global",
+        organization = At "Input-Output Global",
         location = "remote",
         position = "Software Engineer",
         description =
@@ -84,7 +100,7 @@ cv = CV
         start = (2020, Sep),
         end = Just (2021, Mar),
         totalTime = "7 months",
-        organization = "Higher School of Economics",
+        organization = At "Higher School of Economics",
         location = moscow,
         position = "Haskell teacher",
         description =
@@ -108,7 +124,7 @@ cv = CV
         start = (2016, Feb),
         end = Just (2020, Mar),
         totalTime = "4 years",
-        organization = "Kaspersky Lab",
+        organization = At "Kaspersky Lab",
         location = moscow,
         position = "Software Engineer, then Senior Software Engineer",
         description = p $ do
@@ -125,7 +141,7 @@ cv = CV
         start = (2012, Sep),
         end = Just (2018, May),
         totalTime = "6 years",
-        organization = moscowChemicalLyceum,
+        organization = At moscowChemicalLyceum,
         location = moscow,
         position = "Student scientific projects mentor",
         description = do
@@ -186,7 +202,7 @@ cv = CV
         start = (2015, Jan),
         end = Just (2015, Jun),
         totalTime = "1 semester",
-        organization = moscowChemicalLyceum,
+        organization = At moscowChemicalLyceum,
         location = moscow,
         position = "Teacher of functional programming (Haskell)",
         description =
@@ -197,7 +213,7 @@ cv = CV
         start = (2006, Nov),
         end = Just (2011, Oct),
         totalTime = "5 years",
-        organization = "Research Institute of Information Technologies",
+        organization = At "Research Institute of Information Technologies",
         location = moscow,
         position = "Engineer, then Team Lead & Architect",
         description = do
@@ -354,7 +370,7 @@ cv = CV
 
     moscowChemicalLyceum = "The Moscow Chemical Lyceum (School 1303)"
 
-    yandex = "Yandex"
+    yandex = At "Yandex"
 
 main :: IO ()
 main = do

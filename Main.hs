@@ -21,7 +21,7 @@ cv = CV
   { fullname = "Yuriy Syrovetskiy"
 
   , contactInfo =
-      [ Location "Montenegro (UTC+2), remote"
+      [ Location "Montenegro (UTC+1), remote"
       , EMail "job38@cblp.su"
       , LinkedIn "cblpsu"
       , GitHub "cblp"
@@ -57,17 +57,18 @@ cv = CV
       Work{
         start = (2022, Aug),
         end = Nothing,
-        totalTime = "3 months",
+        totalTime = "4 months",
         organization = Freelance,
         location = "remote",
         position = "",
-        description =
+        description = do
           p "Lead developer of internal system of issue-tracking and decision\
             \ making for a large DAO.\
             \ Web backend + frontend.\
             \ Stellar blockchain integration for automatic payment processing\
             \ and access management.\
-            \ Telegram integration for control via chat.",
+            \ Telegram integration for control via chat."
+          p "Variuos Python and Haskell projects.",
         visible = True
         },
       Work{

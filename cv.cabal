@@ -32,10 +32,10 @@ library
 executable cv
   import:             language
   default-extensions:
+    BlockArguments
     DisambiguateRecordFields
     ImportQualifiedPost
     OverloadedStrings
-    StrictData
 
   main-is:            Main.hs
   ghc-options:        -Wall -Werror

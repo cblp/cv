@@ -55,9 +55,9 @@ cv = CV
 
   , workExperience = [
       Work{
-        start = (2022, Aug),
+        start = (2022, Jun),
         end = Nothing,
-        totalTime = "4 months",
+        totalTime = "7 months",
         organization = Freelance,
         location = "remote",
         position = "",
@@ -83,7 +83,7 @@ cv = CV
             \ smart contracts.\
             \ Created an NFT distribution testing service.\
             \ Designed internal infrastructure tools.",
-        visible = True
+        visible = False
         },
       Work{
         start = (2021, Feb),
@@ -215,7 +215,7 @@ cv = CV
         start = (2006, Nov),
         end = Just (2011, Oct),
         totalTime = "5 years",
-        organization = At "Research Institute of Information Technologies",
+        organization = At "Institute of Information Technologies",
         location = moscow,
         position = "Engineer, then Team Lead & Architect",
         description = do
@@ -225,6 +225,12 @@ cv = CV
           p $ do
             "I've been working on design and code, program and "
             "user documentation, deploy and customer support."
+          p do
+            "During the development process, "
+            "I designed and implemented software components using "
+            "C, C++ and Python languages, and Qt GUI framework. "
+            "I used static and dynamic program analysis tools "
+            "to detect and fix bugs such as memory leaks."
           p $ do
             "In my department (~20 people), "
             "I introduced usage of source control tools, "
@@ -266,7 +272,7 @@ cv = CV
         division = "faculty of information security",
         degree = "incomplete higher in computer security",
         description = "",
-        visible = True
+        visible = False
         },
       Education{
         graduated = 2002,

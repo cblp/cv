@@ -178,11 +178,11 @@ cv = CV
             a ! href "http://wordstat.yandex.com/" $
               "Wordstat.yandex.com"
             " and several internal Yandex services."
+          p do
+            "Wordstat is a search-oriented database "
+            "capable of scanning over 1 billion records at a user request."
+          p "I worked with computer linguistics."
           p "I developed microservices using HTTP JSON-API."
-          p $ do
-            "I worked with computer linguistics. "
-            "I developed problem-specific databases in microservice "
-            "architecture. "
           p $ do
             "My software successfully stands year-to-year growing "
             "data and user traffic."

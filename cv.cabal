@@ -1,6 +1,6 @@
 cabal-version: 3.4
 name:          cv
-version:       2022
+version:       2023
 
 common language
   build-depends:

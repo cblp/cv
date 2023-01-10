@@ -5,9 +5,9 @@
 
 module CV.Types where
 
-import           Data.Text (Text)
-import           Data.Tuple.X ((:-))
-import           Text.Blaze.Html (Html)
+import Data.Text (Text)
+import Data.Tuple.X ((:-))
+import Text.Blaze.Html (Html)
 
 data ContactInfo
     = Bitbucket Text
@@ -57,14 +57,15 @@ showRu Dec = "декабрь"
 data Organization = Freelance | At Text
 
 data Work = Work
-    { start        :: (Year, Month)
-    , end          :: Maybe (Year, Month)
-    , totalTime    :: Text
-    , organization :: Organization
-    , location     :: Text
-    , position     :: Text
-    , description  :: Html
-    , visible      :: Bool
+    { start         :: (Year, Month)
+    , end           :: Maybe (Year, Month)
+    , totalTime     :: Text
+    , organization  :: Organization
+    , location      :: Text
+    , position      :: Text
+    , description   :: Html
+    , toolsAndTechs :: Text
+    , visible       :: Bool
     }
 
 data Education = Education

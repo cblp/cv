@@ -109,6 +109,7 @@ renderWorkExperience workExperience = do
                 , organization
                 , position
                 , start
+                , toolsAndTechs
                 , totalTime
                 , visible
                 } ->
@@ -135,6 +136,11 @@ renderWorkExperience workExperience = do
                         ", "
                         toHtml location
                     description
+                    unless (Text.null toolsAndTechs) $
+                        p do
+                            strong "Tools & Technologies:"
+                            " "
+                            toHtml toolsAndTechs
 
 renderEducation :: [Education] -> Html
 renderEducation education = do

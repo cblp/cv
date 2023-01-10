@@ -68,7 +68,10 @@ cv = CV
             \ Stellar blockchain integration for automatic payment processing\
             \ and access management.\
             \ Telegram integration for control via chat."
-          p "Variuos Python and Haskell projects.",
+          p "Various Python and Haskell projects.",
+        toolsAndTechs =
+          "Docker, Ed25519 cryptography, Haskell (Servant, Yesod), HTTP, JSON\
+          \, Python (Flask), Sqlite, Stellar blockchain, Telegram API",
         visible = True
         },
       Work{
@@ -83,6 +86,7 @@ cv = CV
             \ smart contracts.\
             \ Created an NFT distribution testing service.\
             \ Designed internal infrastructure tools.",
+        toolsAndTechs = "Cardano blockchain (NFT, tokens), Haskell, JSON",
         visible = False
         },
       Work{
@@ -95,6 +99,8 @@ cv = CV
         description =
           p "Cardano blockchain node development. \
             \Implemented some features for the Alonzo era.",
+        toolsAndTechs =
+          "Cardano blockchain (API, CLI, node), CBOR, Haskell, JSON",
         visible = True
         },
       Work{
@@ -106,6 +112,7 @@ cv = CV
         position = "Haskell teacher",
         description =
           p "Teaching programming in Haskell to 1—4th year students.",
+        toolsAndTechs = "",
         visible = True
         },
       Work{
@@ -118,7 +125,9 @@ cv = CV
         description = do
           p "Writing Java in Yandex.Disk cloud core."
           p "Implemented cross-service file metadata synchronization machinery."
-          p "Working on a CRDT-based application state synchronization framework.",
+          p "Working on a CRDT-based application state synchronization\
+            \ framework.",
+        toolsAndTechs = "ClickHouse, HTTP, Java, JSON, PostgreSQL, Python",
         visible = True
         },
       Work{
@@ -136,6 +145,9 @@ cv = CV
           "(including object-capability model), "
           "using Haskell for high-level logic and generating code in C.",
           -- TODO achievements in numbers?
+        toolsAndTechs =
+          "C (kernel level, hard realtime, lock-free data)\
+          \, Haskell (Ivory, Megaparsec)",
         visible = True
         },
       Work{
@@ -162,6 +174,7 @@ cv = CV
             "the industrial conference on functional programming "
             "FPCONF (co-presented with me). "
             a ! href "http://fpconf.ru/2017.html" $ "fpconf.ru",
+        toolsAndTechs = "",
         visible = True
         },
       Work{
@@ -198,6 +211,9 @@ cv = CV
             "(internal and public) "
             a ! href "https://events.yandex.ru/events/meetings/29-october-2015/"
               $ "events.yandex.ru",
+        toolsAndTechs =
+          "Apache Thrift, BerkeleyDB, BitTorrent, C++, Cap'n'proto, Cython\
+          \, Map/Reduce, PostgreSQL, Python, Yandex.Tank",
         visible = True
         },
       Work{
@@ -209,6 +225,7 @@ cv = CV
         position = "Teacher of functional programming (Haskell)",
         description =
           p "Optional subject for 9th, 10th and 11th grade students.",
+        toolsAndTechs = "",
         visible = False
         },
       Work{
@@ -235,6 +252,7 @@ cv = CV
             "In my department (~20 people), "
             "I introduced usage of source control tools, "
             "issue management, common knowledge system (wiki).",
+        toolsAndTechs = "C, C++, Linux kernel, Python, Qt, Windows API, XML",
         visible = True
         }
       ]

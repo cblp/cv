@@ -51,7 +51,7 @@ cv = CV
             "Staff training"
           ]
 
-  , technologies = ["Haskell", "CRDT"]
+  , technologies = ["C++", "Haskell", "Java", "Python"]
 
   , workExperience = [
       Work{

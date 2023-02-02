@@ -35,6 +35,8 @@ cv = CV
       ]
 
   , competencies = do
+      p "Ability to work in a complex environment combining different\
+        \ technologies."
       p $
         fold $
         intersperse
@@ -67,7 +69,8 @@ cv = CV
             \ Web backend + frontend.\
             \ Stellar blockchain integration for automatic payment processing\
             \ and access management.\
-            \ Telegram integration for control via chat."
+            \ Telegram integration for control via chat.\
+            \ Tooling to mint and trade NFT representing real estate ownership."
           p "Various Python and Haskell projects.",
         toolsAndTechs =
           "Docker, Ed25519 cryptography, Haskell (Servant, Yesod), HTTP, JSON\

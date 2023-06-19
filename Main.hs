@@ -62,8 +62,8 @@ cv = CV
         location = "remote",
         position = "Senior Software Engineer",
         description =
-          "Developer of the system of the massive search engine events and\
-          \ expenditure real-time accounting system.",
+          "Developer of the massive search engine events and expenditure\
+          \ real-time accounting system.",
         toolsAndTechs = "C++, ClickHouse, Python, YTsaurus",
         visible = True
         },

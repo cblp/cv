@@ -49,17 +49,28 @@ cv = CV
         fold $
         intersperse
           ", "
-          [ "Software design", "Coding", "Project management", "Deployment",
-            "Staff training"
-          ]
+          ["Software design", "Coding", "Deployment", "Staff training"]
 
   , technologies = ["C++", "Haskell", "Java", "Python"]
 
   , workExperience = [
       Work{
-        start = (2022, Jun),
+        start = (2023, Apr),
         end = Nothing,
-        totalTime = "7 months",
+        totalTime = "2 months",
+        organization = yandex,
+        location = "remote",
+        position = "Senior Software Engineer",
+        description =
+          "Developer of the system of the massive search engine events and\
+          \ expenditure real-time accounting system.",
+        toolsAndTechs = "C++, ClickHouse, Python, YTsaurus",
+        visible = True
+        },
+      Work{
+        start = (2022, Jun),
+        end = Just (2023, Apr),
+        totalTime = "10 months",
         organization = Freelance,
         location = "remote",
         position = "",

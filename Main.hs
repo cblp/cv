@@ -21,7 +21,7 @@ cv = CV
   { fullname = "Yuriy Syrovetskiy"
 
   , contactInfo =
-      [ Location "Montenegro (UTC+1), remote"
+      [ Location "Montenegro (UTC+2), remote"
       , EMail "job38@cblp.su"
       , LinkedIn "cblpsu"
       , GitHub "cblp"

@@ -60,7 +60,8 @@ cv = CV
         totalTime = "3 months",
         organization = yandex,
         location = "remote",
-        position = "Senior Software Engineer",
+        -- position = "Senior Software Engineer",
+        position = "Software Engineer",
         description =
           "Developer of the massive search engine events and expenditure\
           \ real-time accounting system.",
@@ -94,7 +95,8 @@ cv = CV
         totalTime = "3 months",
         organization = At "Generation Lambda",
         location = "remote",
-        position = "Senior Software Engineer",
+        position = "Software Engineer",
+        -- position = "Senior Software Engineer",
         description =
           p "Developing Maladex — a distributed exchange based on the Cardano\
             \ smart contracts.\
@@ -150,7 +152,8 @@ cv = CV
         totalTime = "4 years",
         organization = At "Kaspersky Lab",
         location = moscow,
-        position = "Software Engineer, then Senior Software Engineer",
+        -- position = "Software Engineer, then Senior Software Engineer",
+        position = "Software Engineer",
         description = p $ do
           "As a Kaspersky OS and Kaspersky Security System "
           "development team member, "

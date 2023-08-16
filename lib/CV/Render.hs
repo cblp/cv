@@ -208,17 +208,10 @@ styles :: Html
 styles =
     toHtml
         [st|
-            td, h1, h2, h3, li {
-                page-break-after: avoid;
-            }
-
-            .time, .place {
-                font-weight: bold;
-            }
-
-            .time {
-                white-space: nowrap;
-            }
+            body                { font-size:        smaller;    }
+            td, h1, h2, h3, li  { page-break-after: avoid;      }
+            .time, .place       { font-weight:      bold;       }
+            .time               { white-space:      nowrap;     }
         |]
 
 contactMarkup :: ContactInfo -> Html

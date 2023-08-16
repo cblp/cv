@@ -190,7 +190,7 @@ cv = CV
             "FPCONF (co-presented with me). "
             a ! href "http://fpconf.ru/2017.html" $ "fpconf.ru",
         toolsAndTechs = "",
-        visible = True
+        visible = False
         },
       Work{
         start = (2011, Dec),

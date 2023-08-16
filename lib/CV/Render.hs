@@ -132,7 +132,7 @@ renderWorkExperience workExperience = do
                             At org -> do
                                 " at "
                                 T.span ! class_ "place" $ toHtml org
-                            Freelance -> "freelance"
+                            Freelance -> "freelance and short-time contracts"
                         ", "
                         toHtml location
                     description

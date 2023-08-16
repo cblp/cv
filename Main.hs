@@ -55,28 +55,14 @@ cv = CV
 
   , workExperience = [
       Work{
-        start = (2023, Apr),
-        end = Nothing,
-        totalTime = "3 months",
-        organization = yandex,
-        location = "remote",
-        -- position = "Senior Software Engineer",
-        position = "Software Engineer",
-        description =
-          "Developer of the massive search engine events and expenditure\
-          \ real-time accounting system.",
-        toolsAndTechs = "C++, ClickHouse, Python, YTsaurus",
-        visible = True
-        },
-      Work{
         start = (2022, Jun),
-        end = Just (2023, Apr),
-        totalTime = "10 months",
+        end = Nothing,
+        totalTime = "1 year",
         organization = Freelance,
         location = "remote",
         position = "",
         description = do
-          p "Lead developer of internal system of issue-tracking and decision\
+          p "Lead developer of internal system of issue tracking and decision\
             \ making for a large DAO.\
             \ Web backend + frontend.\
             \ Stellar blockchain integration for automatic payment processing\
@@ -85,9 +71,23 @@ cv = CV
             \ Tooling to mint and trade NFT representing real estate ownership."
           p "Various Python and Haskell projects.",
         toolsAndTechs =
-          "Docker, Ed25519 cryptography, Haskell (Servant, Yesod), HTTP, JSON\
-          \, Python (Flask), Sqlite, Stellar blockchain, Telegram API",
+          "C++, ClickHouse, Docker, Ed25519 cryptography\
+          \, Haskell (Servant, Yesod), HTTP, JSON, Python (Flask)\
+          \, Sqlite, Stellar blockchain, Telegram API, YTsaurus",
         visible = True
+        },
+      Work{
+        start = (2023, Apr),
+        end = Nothing,
+        totalTime = "3 months",
+        organization = yandex,
+        location = "remote",
+        position = "Senior Software Engineer",
+        description =
+          "Developer of the massive search engine events and expenditure\
+          \ real-time accounting system.",
+        toolsAndTechs = "C++, ClickHouse, Python, YTsaurus",
+        visible = False
         },
       Work{
         start = (2022, Jun),
@@ -95,8 +95,7 @@ cv = CV
         totalTime = "3 months",
         organization = At "Generation Lambda",
         location = "remote",
-        position = "Software Engineer",
-        -- position = "Senior Software Engineer",
+        position = "Senior Software Engineer",
         description =
           p "Developing Maladex — a distributed exchange based on the Cardano\
             \ smart contracts.\
@@ -152,8 +151,7 @@ cv = CV
         totalTime = "4 years",
         organization = At "Kaspersky Lab",
         location = moscow,
-        -- position = "Software Engineer, then Senior Software Engineer",
-        position = "Software Engineer",
+        position = "Software Engineer, then Senior Software Engineer",
         description = p $ do
           "As a Kaspersky OS and Kaspersky Security System "
           "development team member, "

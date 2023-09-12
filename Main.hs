@@ -72,8 +72,8 @@ cv = CV
           p "Various Python and Haskell projects.",
         toolsAndTechs =
           "C++, ClickHouse, Docker, Ed25519 cryptography\
-          \, Haskell (Servant, Yesod), HTTP, JSON, Python (Flask)\
-          \, Sqlite, Stellar blockchain, Telegram API, YTsaurus",
+          \, Haskell (Servant, Yesod), HTTP, Java, JSON, Python\
+          \, Scala, Sqlite, Stellar blockchain, Telegram API, YTsaurus",
         visible = True
         },
       Work{

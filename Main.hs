@@ -21,7 +21,7 @@ cv = CV
   { fullname = "Yuriy Syrovetskiy"
 
   , contactInfo =
-      [ Location "Montenegro (UTC+2), remote"
+      [ Location "Montenegro (UTC+1), remote"
       , EMail "job38@cblp.su"
       , LinkedIn "cblpsu"
       , GitHub "cblp"
@@ -55,9 +55,24 @@ cv = CV
 
   , workExperience = [
       Work{
-        start = (2022, Jun),
+        start = (2023, Oct),
         end = Nothing,
-        totalTime = "1 year",
+        totalTime = "2 months",
+        organization = At "Alar Studios / SQream",
+        location = "Montenegro",
+        position = "Senior Software Engineer",
+        description =
+          p "Working as an engineer in support of the SQream GPU-powered\
+            \ database engine.\
+            \ Fixing various bugs in C++ engine,\
+            \ Haskell query compiler and CUDA kernels.",
+        toolsAndTechs = "C++, Haskell, CUDA (GPU)",
+        visible = True
+        },
+      Work{
+        start = (2022, Jun),
+        end = Just (2023, Oct),
+        totalTime = "1⅓ year",
         organization = Freelance,
         location = "remote",
         position = "",
@@ -69,7 +84,11 @@ cv = CV
             \ and access management.\
             \ Telegram integration for control via chat.\
             \ Tooling to mint and trade NFT representing real estate ownership."
-          p "Various Python and Haskell projects.",
+          p "Various Python and Haskell projects."
+          p "Short-term contract with Generation Lambda.\
+            \ Built an automated NFT distribution service on Cardano network."
+          -- p "Short-term contract with Yandex. ???"
+          ,
         toolsAndTechs =
           "C++, ClickHouse, Docker, Ed25519 cryptography\
           \, Haskell (Servant, Yesod), HTTP, Java, JSON, Python\

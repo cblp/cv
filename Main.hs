@@ -57,7 +57,7 @@ cv = CV
       Work{
         start = (2023, Oct),
         end = Nothing,
-        totalTime = "2 months",
+        totalTime = "3 months",
         organization = At "Alar Studios / SQream",
         location = "Montenegro",
         position = "Senior Software Engineer",

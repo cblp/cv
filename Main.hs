@@ -64,7 +64,7 @@ cv =
             [ Work
                 { start = (2023, Oct)
                 , end = Nothing
-                , totalTime = "3 months"
+                , totalTime = "10 months"
                 , organization = At "Alar Studios / SQream"
                 , location = "Montenegro"
                 , position = "Senior Software Engineer"

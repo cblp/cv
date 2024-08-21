@@ -1,3 +1,5 @@
+import CV.Types
+
 import Data.ByteString.Lazy as BS (writeFile)
 import Data.Foldable (fold)
 import Data.List (intersperse)
@@ -9,15 +11,6 @@ import Text.Blaze.Html5 (a, p, (!))
 import Text.Blaze.Html5.Attributes (href)
 
 import CV.Render (renderCv)
-import CV.Types (
-    CV (CV),
-    ContactInfo (EMail, GitHub, LinkedIn, Location),
-    Education (Education),
-    Month (Apr, Aug, Dec, Feb, Jan, Jul, Jun, Mar, May, Nov, Oct, Sep),
-    Organization (At, Freelance),
-    Work (Work),
- )
-import CV.Types qualified
 import GitHubPages (deploy)
 
 cv :: CV
@@ -58,7 +51,11 @@ cv =
                 fold $
                     intersperse
                         ", "
-                        ["Software design", "Coding", "Deployment", "Staff training"]
+                        [ "Software design"
+                        , "Coding"
+                        , "Deployment"
+                        , "Staff training"
+                        ]
         , technologies = ["C++", "Haskell", "Java", "Python"]
         , workExperience =
             [ Work
@@ -183,7 +180,7 @@ cv =
                 , organization = At "Kaspersky Lab"
                 , location = moscow
                 , position = "Software Engineer, then Senior Software Engineer"
-                , description = p $ do
+                , description = p do
                     "As a Kaspersky OS and Kaspersky Security System "
                     "development team member, "
                     "I design DSLs, implement security configuration compiler "
@@ -204,10 +201,10 @@ cv =
                 , location = moscow
                 , position = "Student scientific projects mentor"
                 , description = do
-                    p $ do
+                    p do
                         "Some students presented their work at school science "
                         "project fairs. "
-                    p $ do
+                    p do
                         "In 2014, Polina Kirichenko won 1st prize with her work on "
                         "natural language-based programming at the Yandex "
                         "conference on programming for school students. "
@@ -216,7 +213,7 @@ cv =
                                 "https://academy.yandex.ru/events/school-conf/\
                                 \msk-apr-2014/#winners"
                             $ "academy.yandex.ru"
-                    p $ do
+                    p do
                         "In 2017, Nikolay Loginov presented his work on CRDT at "
                         "the industrial conference on functional programming "
                         "FPCONF (co-presented with me). "
@@ -232,7 +229,7 @@ cv =
                 , location = moscow
                 , position = "Software Engineer"
                 , description = do
-                    p $ do
+                    p do
                         "I was a backend developer of the keyword statistics "
                         "service "
                         a ! href "http://wordstat.yandex.com/" $
@@ -243,17 +240,17 @@ cv =
                         "capable of scanning over 1 billion records at a user request."
                     p "I worked with computer linguistics."
                     p "I developed microservices using HTTP JSON-API."
-                    p $ do
+                    p do
                         "My software successfully stands year-to-year growing "
                         "data and user traffic."
-                    p $ do
+                    p do
                         "One microservice rewritten by me from Python to C++, "
                         "got about 10 times boost in maximum request load. "
-                    p $ do
+                    p do
                         "Another one got 1.5 times decrease in memory consumption "
                         "without a visible performance penalty after introducing "
                         "internal compression."
-                    p $ do
+                    p do
                         "I gave talks at the company's local meetups "
                         "(internal and public) "
                         a ! href "https://events.yandex.ru/events/meetings/29-october-2015/" $
@@ -283,10 +280,10 @@ cv =
                 , location = moscow
                 , position = "Engineer, then Team Lead & Architect"
                 , description = do
-                    p $ do
+                    p do
                         "I was the lead developer in 3-people team working on "
                         "multi-component data transfer and processing system."
-                    p $ do
+                    p do
                         "I've been working on design and code, program and "
                         "user documentation, deploy and customer support."
                     p do
@@ -295,7 +292,7 @@ cv =
                         "C, C++ and Python languages, and Qt GUI framework. "
                         "I used static and dynamic program analysis tools "
                         "to detect and fix bugs such as memory leaks."
-                    p $ do
+                    p do
                         "In my department (~20 people), "
                         "I introduced usage of source control tools, "
                         "issue management, common knowledge system (wiki)."
@@ -310,7 +307,7 @@ cv =
                 , division =
                     "faculty of control systems and computer science in engineering"
                 , degree = "Master"
-                , description = p $ do
+                , description = p do
                     "Master's thesis: A distributed embedded database. "
                     "I've built a CRDT-based database-like application framework for "
                     "data synchronization and a distributed project management software "
@@ -357,15 +354,15 @@ cv =
                     "Organized RuHaskell community meetup in Moscow, Russia. "
                     "6 talks, 50+ attendees. "
              in
-                [ (2017, Apr) -: p $ do
+                [ (2017, Apr) -: p do
                     coLaboratoryRuhaskell
                     a ! href "https://events.kaspersky.com/event/ruhaskell2" $
                         "events.kaspersky.com/event/ruhaskell2"
-                , (2016, Aug) -: p $ do
+                , (2016, Aug) -: p do
                     coLaboratoryRuhaskell
                     a ! href "https://events.kaspersky.com/event/ruhaskell" $
                         "events.kaspersky.com/event/ruhaskell"
-                , (2015, Dec) -: p $ do
+                , (2015, Dec) -: p do
                     ruhaskellExtropolis
                     a
                         ! href
@@ -373,7 +370,7 @@ cv =
                             \meetup-winter-register.html"
                         $ "ruhaskell.org/posts/events/2015/11/05/\
                           \meetup-winter-register.html"
-                , (2015, Jun) -: p $ do
+                , (2015, Jun) -: p do
                     ruhaskellExtropolis
                     a
                         ! href
@@ -383,10 +380,10 @@ cv =
                           \/ruHaskell/ruhaskell/wiki/Meetup.2015.Summer"
                 ]
         , talks =
-            [ (2020, Jul) -: p $ do
+            [ (2020, Jul) -: p do
                 "“Property and fuzzy testing” at C++ Russia. "
                 a ! href "https://cppconf-moscow.ru" $ "cppconf-moscow.ru"
-            , (2019, May) -: p $ do
+            , (2019, May) -: p do
                 "“A purely functional approach to CRDT/RON-based "
                 "distributed systems” at FPURE. "
                 a ! href "https://www.fpure.events" $ "fpure.events"
@@ -404,11 +401,11 @@ cv =
               --             "CRDT/RON in distributed systems.” "
               --     a ! href "https://spb-fp-meetup.timepad.ru/event/857591/" $
               --         "spb-fp-meetup.timepad.ru/event/857591"
-              (2018, Sep) -: p $ do
+              (2018, Sep) -: p do
                 "“Purely functional programming and KasperskyOS” "
                 "in Information Security section at RIFTECH. "
                 a ! href "http://tech.rif.ru" $ "tech.rif.ru"
-            , (2017, Dec) -: p $ do
+            , (2017, Dec) -: p do
                 "(in collaboration with my student Nikolay Loginov) "
                 "“CRDT — correctly replicated data in Haskell” "
                 "at the functional programming conference FPCONF. "

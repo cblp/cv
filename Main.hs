@@ -67,8 +67,8 @@ cv =
                 , position = "Senior Software Engineer"
                 , description =
                     p
-                        "Working as an engineer in support of the SQream GPU-powered\
-                        \ database engine.\
+                        "Working as an engineer in support of\
+                        \ the SQream GPU-powered database engine.\
                         \ Fixing various bugs in C++ engine,\
                         \ Haskell query compiler and CUDA kernels."
                 , toolsAndTechs = "C++, Haskell, CUDA (GPU)"

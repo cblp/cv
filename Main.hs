@@ -345,16 +345,14 @@ cv =
                 }
             ]
         , publicActivity =
-            let
-                coLaboratoryRuhaskell = do
+            let coLaboratoryRuhaskell = do
                     "Co-organized RuHaskell community meetup "
                     "in Kaspersky, Moscow, Russia. "
                     "4 talks, 120+ attendees. "
                 ruhaskellExtropolis = do
                     "Organized RuHaskell community meetup in Moscow, Russia. "
                     "6 talks, 50+ attendees. "
-             in
-                [ (2017, Apr) -: p do
+             in [ (2017, Apr) -: p do
                     coLaboratoryRuhaskell
                     a ! href "https://events.kaspersky.com/event/ruhaskell2" $
                         "events.kaspersky.com/event/ruhaskell2"

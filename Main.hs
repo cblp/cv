@@ -60,11 +60,11 @@ cv =
         , workExperience =
             [ Work
                 { start = (2023, Oct)
-                , end = Nothing
-                , totalTime = "10 months"
+                , end = Just (2024, Sep)
+                , totalTime = "1 year"
                 , organization = At "SQream"
                 , location = "Montenegro/remote"
-                , position = "Senior Software Engineer"
+                , position = "Software Engineer"
                 , description =
                     p
                         "Working as an engineer in support of\

@@ -19,7 +19,7 @@ cv =
         { fullname = "Yuriy Syrovetskiy"
         , contactInfo =
             [ Location "Montenegro (UTC+1), remote"
-            , EMail "job38@cblp.su"
+            , EMail "job25@cblp.su"
             , LinkedIn "cblpsu"
             , GitHub "cblp"
             -- , Personal "cblp.github.io"
@@ -56,9 +56,21 @@ cv =
                         , "Deployment"
                         , "Staff training"
                         ]
-        , technologies = ["C++", "Haskell", "Java", "Python"]
+        , technologies = ["C++", "Haskell", "Rust"]
         , workExperience =
             [ Work
+                { start = (2024, Oct)
+                , end = Nothing
+                , totalTime = "6 months"
+                , organization = Freelance
+                , location = "remote"
+                , position = ""
+                , description = "Trading strategies depelopment."
+                , toolsAndTechs =
+                    "Rust, Solana blockchain (accounts, transactions, Anchor)"
+                , visible = True
+                }
+            , Work
                 { start = (2023, Oct)
                 , end = Just (2024, Sep)
                 , totalTime = "1 year"

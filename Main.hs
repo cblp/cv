@@ -65,9 +65,14 @@ cv =
                 , organization = Freelance
                 , location = "remote"
                 , position = ""
-                , description = "Trading strategies depelopment."
+                , description =
+                    p
+                        "Trading strategies depelopment.\
+                        \ Integration of various services via API."
                 , toolsAndTechs =
-                    "Rust, Solana blockchain (accounts, transactions, Anchor)"
+                    "Rust, Solana blockchain (accounts, transactions, Anchor),\
+                    \ also Clickhouse, Grafana, HTTP, JSON, Postgres,\
+                    \ Prometheus, SQL"
                 , visible = True
                 }
             , Work

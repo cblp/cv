@@ -2,7 +2,7 @@
 {-# LANGUAGE DisambiguateRecordFields #-}
 {-# LANGUAGE ImportQualifiedPost #-}
 {-# LANGUAGE LambdaCase #-}
-{-# LANGUAGE NamedFieldPuns #-}
+{-# LANGUAGE OverloadedRecordDot #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE QuasiQuotes #-}
 
@@ -21,39 +21,34 @@ import Text.Blaze.Html5 as T
 import Text.Blaze.Html5.Attributes as A hiding (start)
 import Text.Shakespeare.Text (st)
 
-import CV.Types (CV (CV),
-                 ContactInfo (Bitbucket, EMail, Facebook, GitHub, LinkedIn, Location, Personal, Skype, Telegram, Telephone, Twitter),
-                 Education (Education), Month, Organization (At, Freelance),
-                 Work (Work))
-import CV.Types qualified
+import CV.Types (
+    CV (..),
+    ContactInfo (..),
+    Education (..),
+    Month,
+    Organization (..),
+    Work (..),
+ )
 
 renderCv :: CV -> ByteString
-renderCv
-        CV
-        { competencies
-        , contactInfo
-        , education
-        , fullname
-        , publicActivity
-        , talks
-        , technologies
-        , workExperience
-        } =
-    renderHtml $
-    docTypeHtml do
-        head $ preamble fullname
+renderCv cv =
+    renderHtml . docTypeHtml $ do
+        head $ preamble cv.fullname
         body do
             div ! class_ "container" $ do
-                h1 $ toHtml fullname
-                renderContacts contactInfo
+                h1 do
+                    toHtml cv.fullname
+                    " "
+                    T.span ! A.title (toValue cv.fullnameInfo) $ "ℹ️"
+                renderContacts cv.contactInfo
                 hr
-                renderCompetencies competencies
-                renderTechnologies technologies
+                renderCompetencies cv.competencies
+                renderTechnologies cv.technologies
                 hr
-                renderWorkExperience workExperience
-                renderEducation education
-                renderPublicActivity publicActivity
-                renderTalks talks
+                renderWorkExperience cv.workExperience
+                renderEducation cv.education
+                renderPublicActivity cv.publicActivity
+                renderTalks cv.talks
 
 preamble :: Text -> Html
 preamble fullname = do
@@ -61,27 +56,19 @@ preamble fullname = do
     meta ! name "viewport" ! content "width=device-width, initial-scale=1"
     T.title $ toHtml fullname
     link
-        ! href
-            "https://cdn.jsdelivr.net\
-            \/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+        ! href "https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
         ! rel "stylesheet"
-        ! integrity
-            "sha384-\
-            \gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+        ! integrity "sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
         ! crossorigin "anonymous"
-    script  ! src
-                "https://cdn.jsdelivr.net\
-                \/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-            ! integrity
-                "sha384-\
-                \A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4\
-                \Xa"
-            ! crossorigin "anonymous"
+    script
+        ! src "https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        ! integrity "sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        ! crossorigin "anonymous"
         $ ""
     T.style styles
   where
     crossorigin = customAttribute "crossorigin"
-    integrity   = customAttribute "integrity"
+    integrity = customAttribute "integrity"
 
 renderContacts :: [ContactInfo] -> Html
 renderContacts contactInfo =
@@ -101,7 +88,7 @@ renderWorkExperience :: [Work] -> Html
 renderWorkExperience workExperience = do
     h3 "Work Experience"
     table ! class_ "table work" $
-        for_ workExperience
+        for_ workExperience $
             \Work
                 { description
                 , end = workEnd
@@ -113,40 +100,39 @@ renderWorkExperience workExperience = do
                 , totalTime
                 , visible
                 } ->
-            when visible $
-            tr do
-                td ! class_ "col-2" $
-                    p do
-                        case workEnd of
-                            Nothing -> "started " >> timeSpan start
-                            Just end -> do
-                                timeSpan start
-                                preEscapedString "&nbsp;— "
-                                timeSpan end
-                        br
-                        toHtml $ "(" <> totalTime <> ")"
-                td ! class_ "col-10" $ do
-                    p do
-                        toHtml position
-                        case organization of
-                            At org -> do
-                                " at "
-                                T.span ! class_ "place" $ toHtml org
-                            Freelance -> "freelance and short-time contracts"
-                        ", "
-                        toHtml location
-                    description
-                    unless (Text.null toolsAndTechs) $
-                        p do
-                            strong "Tools & Technologies:"
-                            " "
-                            toHtml toolsAndTechs
+                    when visible . tr $ do
+                        td ! class_ "col-2" $
+                            p do
+                                case workEnd of
+                                    Nothing -> "started " >> timeSpan start
+                                    Just end -> do
+                                        timeSpan start
+                                        preEscapedString "&nbsp;— "
+                                        timeSpan end
+                                br
+                                toHtml $ "(" <> totalTime <> ")"
+                        td ! class_ "col-10" $ do
+                            p do
+                                toHtml position
+                                case organization of
+                                    At org -> do
+                                        " at "
+                                        T.span ! class_ "place" $ toHtml org
+                                    Freelance -> "freelance and short-time contracts"
+                                ", "
+                                toHtml location
+                            description
+                            unless (Text.null toolsAndTechs) $
+                                p do
+                                    strong "Tools & Technologies:"
+                                    " "
+                                    toHtml toolsAndTechs
 
 renderEducation :: [Education] -> Html
 renderEducation education = do
     h3 "Education"
     table ! class_ "edu table" $
-        for_ education
+        for_ education $
             \Education
                 { degree
                 , description
@@ -155,22 +141,24 @@ renderEducation education = do
                 , school
                 , visible
                 } ->
-            when visible $
-            tr do
-                td ! class_ "col-2" $
-                    p $
-                    T.span ! class_ "time" $
-                        if graduated > 0 then
-                            toHtml graduated
-                        else
-                            toHtml $ "(" <> show (negate graduated) <> ")"
-                td ! class_ "col-8" $ do
-                    p do
-                        T.span ! class_ "place" $ toHtml school
-                        unless (Text.null division) $
-                            "," >> br >> toHtml division
-                    description
-                td ! class_ "col-2 degree" $ p $ toHtml degree
+                    when visible . tr $ do
+                        td ! class_ "col-2" $
+                            p $
+                                T.span ! class_ "time" $
+                                    if graduated > 0 then
+                                        toHtml graduated
+                                    else
+                                        toHtml $
+                                            "("
+                                                <> show (negate graduated)
+                                                <> ")"
+                        td ! class_ "col-8" $ do
+                            p do
+                                T.span ! class_ "place" $ toHtml school
+                                unless (Text.null division) $
+                                    "," >> br >> toHtml division
+                            description
+                        td ! class_ "col-2 degree" $ p $ toHtml degree
 
 renderPublicActivity :: [((Int, Month), Html)] -> Html
 renderPublicActivity publicActivity = do
@@ -216,16 +204,17 @@ styles =
 
 contactMarkup :: ContactInfo -> Html
 contactMarkup = \case
-    Bitbucket user    -> ahref "https://bitbucket.org/" user
-    EMail addr        -> ahref "mailto:" addr
-    Facebook user     -> ahref "https://" $ "fb.me/" <> user
-    GitHub user       -> ahref "https://" $ "github.com/" <> user
-    LinkedIn short    -> ahref "https://" $ "linkedin.com/in/" <> short
+    Bitbucket user -> ahref "https://bitbucket.org/" user
+    EMail addr -> ahref "mailto:" addr
+    Facebook user -> ahref' $ "fb.me/" <> user
+    GitHub user -> ahref' $ "github.com/" <> user
+    LinkedIn short -> ahref' $ "linkedin.com/in/" <> short
     Location location -> toHtml location
-    Personal url      -> ahref "https://" url
-    Skype user        -> ahref "callto:" user
-    Telegram user     -> ahref "https://t.me/" user
-    Telephone number  -> toHtml number
-    Twitter user      -> ahref "https://twitter.com/" user
+    Personal url -> ahref' url
+    Skype user -> ahref "callto:" user
+    Telegram user -> ahref "https://t.me/" user
+    Telephone number -> toHtml number
+    Twitter user -> ahref "https://twitter.com/" user
   where
     ahref prefix url = a ! href (toValue (prefix <> url)) $ toHtml url
+    ahref' = ahref "https://"

@@ -57,33 +57,34 @@ showRu Dec = "декабрь"
 data Organization = Freelance | At Text
 
 data Work = Work
-    { start         :: (Year, Month)
-    , end           :: Maybe (Year, Month)
-    , totalTime     :: Text
-    , organization  :: Organization
-    , location      :: Text
-    , position      :: Text
-    , description   :: Html
+    { start :: (Year, Month)
+    , end :: Maybe (Year, Month)
+    , totalTime :: Text
+    , organization :: Organization
+    , location :: Text
+    , position :: Text
+    , description :: Html
     , toolsAndTechs :: Text
-    , visible       :: Bool
+    , visible :: Bool
     }
 
 data Education = Education
-    { graduated   :: Year
-    , school      :: Text
-    , division    :: Text
-    , degree      :: Text
+    { graduated :: Year
+    , school :: Text
+    , division :: Text
+    , degree :: Text
     , description :: Html
-    , visible     :: Bool
+    , visible :: Bool
     }
 
 data CV = CV
-    { fullname       :: Text
-    , contactInfo    :: [ContactInfo]
-    , competencies   :: Html
-    , technologies   :: [Html]
+    { fullname :: Text
+    , fullnameInfo :: Text
+    , contactInfo :: [ContactInfo]
+    , competencies :: Html
+    , technologies :: [Html]
     , workExperience :: [Work]
-    , education      :: [Education]
+    , education :: [Education]
     , publicActivity :: [(Year, Month) :- Html]
-    , talks          :: [(Year, Month) :- Html]
+    , talks :: [(Year, Month) :- Html]
     }

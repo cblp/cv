@@ -1,7 +1,10 @@
+{-# LANGUAGE ImportQualifiedPost #-}
+
 import CV.Types
 
 import Data.ByteString.Lazy as BS (writeFile)
 import Data.List (intersperse)
+import Data.Text qualified as Text
 import Data.Tuple.X ((-:))
 import System.Directory (createDirectoryIfMissing)
 import System.Environment (getArgs)
@@ -15,7 +18,14 @@ import GitHubPages (deploy)
 cv :: CV
 cv =
     CV
-        { fullname = "Yury Seerovezky"
+        { fullname = "Yury Syrovetsky"
+        , fullnameInfo =
+            Text.unlines
+                [ "official: Yuriy Syrovetskiy"
+                , "POL: Jerzy Syrowiecki"
+                , "RUS: Юрий Сыровецкий"
+                , "UKR: Юрій Сировєцький"
+                ]
         , contactInfo =
             [ Location "Montenegro, remote (UTC+1/+2)"
             , EMail "job25@cblp.su"

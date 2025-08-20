@@ -8,6 +8,7 @@ common language
     , blaze-html
     , bytestring
     , directory
+    , text
 
   default-extensions:
     NoFieldSelectors
@@ -30,7 +31,6 @@ library
     , process
     , shakespeare
     , temporary
-    , text
 
 executable cv
   import:             language

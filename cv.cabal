@@ -9,8 +9,11 @@ common language
     , bytestring
     , directory
 
-  default-extensions: StrictData
-  default-language:   GHC2021
+  default-extensions:
+    NoFieldSelectors
+    StrictData
+
+  default-language:   GHC2024
   ghc-options:        -Wall -Werror
 
 library

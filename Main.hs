@@ -1,7 +1,6 @@
 import CV.Types
 
 import Data.ByteString.Lazy as BS (writeFile)
-import Data.Foldable (fold)
 import Data.List (intersperse)
 import Data.Tuple.X ((-:))
 import System.Directory (createDirectoryIfMissing)
@@ -34,28 +33,22 @@ cv =
             p
                 "Ability to work in a complex environment combining different\
                 \ technologies."
-            p $
-                fold $
-                    intersperse
-                        ", "
-                        [ "Distributed systems (CRDT)"
-                        , "Functional programming"
-                        , "Web backend"
-                        , "Compilers"
-                        , "Data analysis"
-                        , "Scalable services"
-                        , "Security"
-                        , "User interface"
-                        ]
-            p $
-                fold $
-                    intersperse
-                        ", "
-                        [ "Software design"
-                        , "Coding"
-                        , "Deployment"
-                        , "Staff training"
-                        ]
+            p . intercalate ", " $
+                [ "Distributed systems (CRDT)"
+                , "Functional programming"
+                , "Web backend"
+                , "Compilers"
+                , "Data analysis"
+                , "Scalable services"
+                , "Security"
+                , "User interface"
+                ]
+            p . intercalate ", " $
+                [ "Software design"
+                , "Coding"
+                , "Deployment"
+                , "Staff training"
+                ]
         , technologies = ["C++", "Haskell", "Rust"]
         , workExperience =
             [ Work
@@ -470,3 +463,6 @@ main = do
         createDirectoryIfMissing True target
         BS.writeFile (target </> "index.html") (renderCv cv)
         putStrLn $ "built site in " <> show target
+
+intercalate :: Monoid m => m -> [m] -> m
+intercalate s = mconcat . intersperse s

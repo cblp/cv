@@ -70,7 +70,8 @@ cv =
                 , position = "Technical Lead"
                 , description =
                     p
-                        "Within a team of 2 senior engineers,\
+                        "Short-term contract.\
+                        \ As a head of a team of 2 senior engineers,\
                         \ participated in design of Cardano Leios protocol and CIP,\
                         \ analyzing impact of various decisions\
                         \ onto Cardano core components and ecosystem.\

@@ -15,16 +15,16 @@ import GitHubPages (deploy)
 cv :: CV
 cv =
     CV
-        { fullname = "Yuriy Syrovetskiy"
+        { fullname = "Yury Seerovezky"
         , contactInfo =
-            [ Location "Montenegro (UTC+1), remote"
+            [ Location "Montenegro, remote (UTC+1/+2)"
             , EMail "job25@cblp.su"
             , LinkedIn "cblpsu"
             , GitHub "cblp"
             -- , Personal "cblp.github.io"
-            -- , Telephone "+7 905 547 11 98"
+            -- , Telephone "+382 68 216 739"
             -- , Skype "cblp.su"
-            -- , Telegram "cblp_su"
+            -- , Telegram "cblp_me"
             -- , Bitbucket "cblp"
             -- , Facebook "cblp.su"
             -- , Twitter "cblp_su"
@@ -52,9 +52,28 @@ cv =
         , technologies = ["C++", "Haskell", "Rust"]
         , workExperience =
             [ Work
+                { start = (2025, May)
+                , end = Just (2025, Aug)
+                , totalTime = "3 months"
+                , organization = At "Input-Output Global"
+                , location = "remote"
+                , position = "Technical Lead"
+                , description =
+                    p
+                        "Within a team of 2 senior engineers,\
+                        \ participated in design of Cardano Leios protocol and CIP,\
+                        \ analyzing impact of various decisions\
+                        \ onto Cardano core components and ecosystem.\
+                        \ Proposed several improvements to the protocol.\
+                        \ Gathered and analyzed feedback from the community."
+                , toolsAndTechs =
+                    "Cardano blockchain, Haskell, Markdown, e-mail"
+                , visible = True
+                }
+            , Work
                 { start = (2024, Oct)
-                , end = Nothing
-                , totalTime = "6 months"
+                , end = Just (2025, Apr)
+                , totalTime = "7 months"
                 , organization = Freelance
                 , location = "remote"
                 , position = ""
@@ -73,7 +92,7 @@ cv =
                 , end = Just (2024, Sep)
                 , totalTime = "1 year"
                 , organization = At "SQream"
-                , location = "Montenegro/remote"
+                , location = "remote"
                 , position = "Software Engineer"
                 , description =
                     p
@@ -464,5 +483,5 @@ main = do
         BS.writeFile (target </> "index.html") (renderCv cv)
         putStrLn $ "built site in " <> show target
 
-intercalate :: Monoid m => m -> [m] -> m
+intercalate :: (Monoid m) => m -> [m] -> m
 intercalate s = mconcat . intersperse s

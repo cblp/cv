@@ -90,7 +90,7 @@ cv =
                 , position = ""
                 , description =
                     p
-                        "Trading strategies depelopment.\
+                        "Trading strategies development.\
                         \ Integration of various services via API."
                 , toolsAndTechs =
                     "Rust, Solana blockchain (accounts, transactions, Anchor),\

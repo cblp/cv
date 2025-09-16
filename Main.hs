@@ -39,7 +39,7 @@ cv =
             -- , Facebook "cblp.su"
             -- , Twitter "cblp_su"
             ]
-        , competencies = do
+        , about = do
             p
                 "Ability to work in a complex environment combining different\
                 \ technologies."

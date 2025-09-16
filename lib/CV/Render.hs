@@ -42,7 +42,7 @@ renderCv cv =
                     T.span ! A.title (toValue cv.fullnameInfo) $ "ℹ️"
                 renderContacts cv.contactInfo
                 hr
-                renderCompetencies cv.competencies
+                renderAbout cv.about
                 renderTechnologies cv.technologies
                 hr
                 renderWorkExperience cv.workExperience
@@ -74,10 +74,10 @@ renderContacts :: [ContactInfo] -> Html
 renderContacts contactInfo =
     address $ mconcat $ intersperse br $ fmap contactMarkup contactInfo
 
-renderCompetencies :: Html -> Html
-renderCompetencies competencies = do
-    h3 "Competencies"
-    dl $ dd competencies
+renderAbout :: Html -> Html
+renderAbout about = do
+    h3 "About me"
+    dl $ dd about
 
 renderTechnologies :: [Html] -> Html
 renderTechnologies technologies = do

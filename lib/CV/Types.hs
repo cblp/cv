@@ -81,7 +81,7 @@ data CV = CV
     { fullname :: Text
     , fullnameInfo :: Text
     , contactInfo :: [ContactInfo]
-    , competencies :: Html
+    , about :: Html
     , technologies :: [Html]
     , workExperience :: [Work]
     , education :: [Education]

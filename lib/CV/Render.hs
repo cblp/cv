@@ -132,33 +132,26 @@ renderEducation :: [Education] -> Html
 renderEducation education = do
     h3 "Education"
     table ! class_ "edu table" $
-        for_ education $
-            \Education
-                { degree
-                , description
-                , division
-                , graduated
-                , school
-                , visible
-                } ->
-                    when visible . tr $ do
-                        td ! class_ "col-2" $
-                            p $
-                                T.span ! class_ "time" $
-                                    if graduated > 0 then
-                                        toHtml graduated
-                                    else
-                                        toHtml $
-                                            "("
-                                                <> show (negate graduated)
-                                                <> ")"
-                        td ! class_ "col-8" $ do
-                            p do
-                                T.span ! class_ "place" $ toHtml school
-                                unless (Text.null division) $
-                                    "," >> br >> toHtml division
-                            description
-                        td ! class_ "col-2 degree" $ p $ toHtml degree
+        for_ education \edu ->
+            when edu.visible $
+                tr do
+                    td ! class_ "col-2" $
+                        p $
+                            T.span ! class_ "time" $
+                                if edu.graduated > 0 then
+                                    toHtml edu.graduated
+                                else
+                                    toHtml $
+                                        "("
+                                            <> show (negate edu.graduated)
+                                            <> ")"
+                    td ! class_ "col-8" $ do
+                        p do
+                            T.span ! class_ "place" $ toHtml edu.school
+                            unless (Text.null edu.division) $
+                                "," >> br >> toHtml edu.division
+                        edu.description
+                    td ! class_ "col-2 degree" $ p $ toHtml edu.degree
 
 renderPublicActivity :: [((Int, Month), Html)] -> Html
 renderPublicActivity publicActivity = do

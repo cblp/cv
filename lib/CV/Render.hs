@@ -46,7 +46,7 @@ renderCv cv =
                 renderTechnologies cv.technologies
                 hr
                 renderWorkExperience cv.workExperience
-                renderEducation cv.education
+                renderEducations cv.education
                 renderPublicActivity cv.publicActivity
                 renderTalks cv.talks
 
@@ -128,30 +128,34 @@ renderWorkExperience workExperience = do
                                     " "
                                     toHtml toolsAndTechs
 
-renderEducation :: [Education] -> Html
-renderEducation education = do
+renderEducations :: [Education] -> Html
+renderEducations educations = do
     h3 "Education"
     table ! class_ "edu table" $
-        for_ education \edu ->
-            when edu.visible $
-                tr do
-                    td ! class_ "col-2" $
-                        p $
-                            T.span ! class_ "time" $
-                                if edu.graduated > 0 then
-                                    toHtml edu.graduated
-                                else
-                                    toHtml $
-                                        "("
-                                            <> show (negate edu.graduated)
-                                            <> ")"
-                    td ! class_ "col-8" $ do
-                        p do
-                            T.span ! class_ "place" $ toHtml edu.school
-                            unless (Text.null edu.division) $
-                                "," >> br >> toHtml edu.division
-                        edu.description
-                    td ! class_ "col-2 degree" $ p $ toHtml edu.degree
+        for_ educations \edu -> when edu.visible $ rEducation edu
+  where
+    rEducation edu =
+        tr do
+            td ! class_ "col-2" $ rGraduated edu.graduated
+            td ! class_ "col-8" $ rDescription edu
+            td ! class_ "col-2 degree" $ rDegree edu.degree
+
+    rGraduated g =
+        p $
+            T.span ! class_ "time" $
+                if g > 0 then
+                    toHtml g
+                else
+                    toHtml $ "(" <> show (negate g) <> ")"
+
+    rDescription edu = do
+        p do
+            T.span ! class_ "place" $ toHtml edu.school
+            unless (Text.null edu.division) $
+                "," >> br >> toHtml edu.division
+        edu.description
+
+    rDegree degree = p $ toHtml degree
 
 renderPublicActivity :: [((Int, Month), Html)] -> Html
 renderPublicActivity publicActivity = do

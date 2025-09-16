@@ -346,7 +346,7 @@ cv =
                 , school = "The Moscow Aviation Institute"
                 , division =
                     "faculty of control systems and computer science in engineering"
-                , degree = "Master"
+                , degree = "Master of Science in Computer Science"
                 , description = p do
                     "Master's thesis: A distributed embedded database. "
                     "I've built a CRDT-based database-like application framework for "

@@ -125,17 +125,19 @@ workExperience =
         , position = ""
         , description = do
             p
-                "Lead developer of internal system of issue tracking and decision\
-                \ making for a large DAO.\
+                "Lead developer of internal system of issue tracking and\
+                \ decision making for a large DAO.\
                 \ Web backend + frontend.\
-                \ Stellar blockchain integration for automatic payment processing\
-                \ and access management.\
+                \ Stellar blockchain integration for automatic payment\
+                \ processing and access management.\
                 \ Telegram integration for control via chat.\
-                \ Tooling to mint and trade NFT representing real estate ownership."
+                \ Tooling to mint and trade NFT representing real estate\
+                \ ownership."
             p "Various Python and Haskell projects."
             p
                 "Short-term contract with Generation Lambda.\
-                \ Built an automated NFT distribution service on Cardano network."
+                \ Built an automated NFT distribution service on Cardano\
+                \ network."
         , -- p "Short-term contract with Yandex. ???"
           toolsAndTechs =
             "C++, ClickHouse, Docker, Ed25519 cryptography\
@@ -165,8 +167,8 @@ workExperience =
         , position = "Senior Software Engineer"
         , description =
             p
-                "Developing Maladex — a distributed exchange based on the Cardano\
-                \ smart contracts.\
+                "Developing Maladex —\
+                \ a distributed exchange based on the Cardano smart contracts.\
                 \ Created an NFT distribution testing service.\
                 \ Designed internal infrastructure tools."
         , toolsAndTechs = "Cardano blockchain (NFT, tokens), Haskell, JSON"
@@ -208,7 +210,9 @@ workExperience =
         , position = "Software Engineer"
         , description = do
             p "Writing Java in Yandex.Disk cloud core."
-            p "Implemented cross-service file metadata synchronization machinery."
+            p
+                "Implemented cross-service file metadata synchronization\
+                \ machinery."
             p
                 "Working on a CRDT-based application state synchronization\
                 \ framework."
@@ -222,13 +226,15 @@ workExperience =
         , organization = At "Kaspersky Lab"
         , location = moscow
         , position = "Software Engineer, then Senior Software Engineer"
-        , description = p do
-            "As a Kaspersky OS and Kaspersky Security System "
-            "development team member, "
-            "I design DSLs, implement security configuration compiler "
-            "and various security policies "
-            "(including object-capability model), "
-            "using Haskell for high-level logic and generating code in C."
+        , description =
+            p
+                "As a Kaspersky OS and Kaspersky Security System development\
+                \ team member,\
+                \ I design DSLs,\
+                \ implement security configuration compiler and various\
+                \ security policies\
+                \ (including object-capability model),\
+                \ using Haskell for high-level logic and generating code in C."
         , -- TODO achievements in numbers?
           toolsAndTechs =
             "C (kernel level, hard realtime, lock-free data)\
@@ -243,22 +249,22 @@ workExperience =
         , location = moscow
         , position = "Student scientific projects mentor"
         , description = do
+            p
+                "Some students presented their work at school science project\
+                \ fairs."
             p do
-                "Some students presented their work at school science "
-                "project fairs. "
-            p do
-                "In 2014, Polina Kirichenko won 1st prize with her work on "
-                "natural language-based programming at the Yandex "
-                "conference on programming for school students. "
+                "In 2014, Polina Kirichenko won 1st prize with her work on\
+                \ natural language-based programming at the Yandex conference\
+                \ on programming for school students. "
                 a
                     ! href
                         "https://academy.yandex.ru/events/school-conf/\
                         \msk-apr-2014/#winners"
                     $ "academy.yandex.ru"
             p do
-                "In 2017, Nikolay Loginov presented his work on CRDT at "
-                "the industrial conference on functional programming "
-                "FPCONF (co-presented with me). "
+                "In 2017, Nikolay Loginov presented his work on CRDT at the\
+                \ industrial conference on functional programming FPCONF\
+                \ (co-presented with me). "
                 a ! href "http://fpconf.ru/2017.html" $ "fpconf.ru"
         , toolsAndTechs = ""
         , visible = False
@@ -272,31 +278,33 @@ workExperience =
         , position = "Software Engineer"
         , description = do
             p do
-                "I was a backend developer of the keyword statistics "
-                "service "
+                "I was a backend developer of the keyword statistics service "
                 a ! href "http://wordstat.yandex.com/" $
                     "Wordstat.yandex.com"
                 " and several internal Yandex services."
-            p do
-                "Wordstat is a search-oriented database "
-                "capable of scanning over 1 billion records at a user request."
+            p
+                "Wordstat is a search-oriented database capable of scanning\
+                \ over 1 billion records at a user request."
             p "I worked with computer linguistics."
             p "I developed microservices using HTTP JSON-API."
+            p
+                "My software successfully stands year-to-year growing data and\
+                \ user traffic."
+            p
+                "One microservice rewritten by me from Python to C++,\
+                \ got about 10 times boost in maximum request load. "
+            p
+                "Another one got 1.5 times decrease in memory consumption\
+                \ without a visible performance penalty after introducing\
+                \ internal compression."
             p do
-                "My software successfully stands year-to-year growing "
-                "data and user traffic."
-            p do
-                "One microservice rewritten by me from Python to C++, "
-                "got about 10 times boost in maximum request load. "
-            p do
-                "Another one got 1.5 times decrease in memory consumption "
-                "without a visible performance penalty after introducing "
-                "internal compression."
-            p do
-                "I gave talks at the company's local meetups "
-                "(internal and public) "
-                a ! href "https://events.yandex.ru/events/meetings/29-october-2015/" $
-                    "events.yandex.ru"
+                "I gave talks at the company's local meetups\
+                \ (internal and public) "
+                a
+                    ! href
+                        "https://events.yandex.ru/events/meetings/\
+                        \29-october-2015/"
+                    $ "events.yandex.ru"
         , toolsAndTechs =
             "Apache Thrift, BerkeleyDB, BitTorrent, C++, Cap'n'proto, Cython\
             \, Map/Reduce, PostgreSQL, Python, Yandex.Tank"
@@ -322,22 +330,22 @@ workExperience =
         , location = moscow
         , position = "Engineer, then Team Lead & Architect"
         , description = do
-            p do
-                "I was the lead developer in 3-people team working on "
-                "multi-component data transfer and processing system."
-            p do
-                "I've been working on design and code, program and "
-                "user documentation, deploy and customer support."
-            p do
-                "During the development process, "
-                "I designed and implemented software components using "
-                "C, C++ and Python languages, and Qt GUI framework. "
-                "I used static and dynamic program analysis tools "
-                "to detect and fix bugs such as memory leaks."
-            p do
-                "In my department (~20 people), "
-                "I introduced usage of source control tools, "
-                "issue management, common knowledge system (wiki)."
+            p
+                "I was the lead developer in 3-people team working on\
+                \ multi-component data transfer and processing system."
+            p
+                "I've been working on design and code, program and user\
+                \ documentation, deploy and customer support."
+            p
+                "During the development process,\
+                \ I designed and implemented software components using C,\
+                \ C++ and Python languages, and Qt GUI framework.\
+                \ I used static and dynamic program analysis tools to detect\
+                \ and fix bugs such as memory leaks."
+            p
+                "In my department (~20 people),\
+                \ I introduced usage of source control tools, issue management,\
+                \ common knowledge system (wiki)."
         , toolsAndTechs = "C, C++, Linux kernel, Python, Qt, Windows API, XML"
         , visible = True
         }
@@ -352,12 +360,11 @@ education =
         , degree = "Master of Science in Computer Science"
         , description =
             p do
-                "Master's thesis: A distributed embedded database. "
-                "I've built a CRDT-based database-like application framework for "
-                "data synchronization and a distributed project management software "
-                "on top of the framework. "
-                "Both in Haskell. "
-                "The source code is available at "
+                "Master's thesis: A distributed embedded database.\
+                \ I've built a CRDT-based database-like application framework\
+                \ for data synchronization and a distributed project management\
+                \ software on top of the framework.\
+                \ Both in Haskell. The source code is available at "
                 a ! href "https://github.com/ff-notes" $ "github.com/ff-notes"
                 "."
         , visible = True
@@ -389,46 +396,44 @@ education =
     ]
 
 publicActivity =
-    let coLaboratoryRuhaskell = do
-            "Co-organized RuHaskell community meetup "
-            "in Kaspersky, Moscow, Russia. "
-            "4 talks, 120+ attendees. "
-        ruhaskellExtropolis = do
-            "Organized RuHaskell community meetup in Moscow, Russia. "
-            "6 talks, 50+ attendees. "
-     in [ (2017, Apr) -: p do
-            coLaboratoryRuhaskell
-            a ! href "https://events.kaspersky.com/event/ruhaskell2" $
-                "events.kaspersky.com/event/ruhaskell2"
-        , (2016, Aug) -: p do
-            coLaboratoryRuhaskell
-            a ! href "https://events.kaspersky.com/event/ruhaskell" $
-                "events.kaspersky.com/event/ruhaskell"
-        , (2015, Dec) -: p do
-            ruhaskellExtropolis
-            a
-                ! href
-                    "http://ruhaskell.org/posts/events/2015/11/05/\
-                    \meetup-winter-register.html"
-                $ "ruhaskell.org/posts/events/2015/11/05/\
-                  \meetup-winter-register.html"
-        , (2015, Jun) -: p do
-            ruhaskellExtropolis
-            a
-                ! href
-                    "https://github.com\
-                    \/ruHaskell/ruhaskell/wiki/Meetup.2015.Summer"
-                $ "github.com\
-                  \/ruHaskell/ruhaskell/wiki/Meetup.2015.Summer"
-        ]
+    [ (2017, Apr) -: p do
+        coLaboratoryRuhaskell
+        a ! href "https://events.kaspersky.com/event/ruhaskell2" $
+            "events.kaspersky.com/event/ruhaskell2"
+    , (2016, Aug) -: p do
+        coLaboratoryRuhaskell
+        a ! href "https://events.kaspersky.com/event/ruhaskell" $
+            "events.kaspersky.com/event/ruhaskell"
+    , (2015, Dec) -: p do
+        ruhaskellExtropolis
+        a
+            ! href
+                "http://ruhaskell.org/posts/events/2015/11/05/\
+                \meetup-winter-register.html"
+            $ "ruhaskell.org/posts/events/2015/11/05/\
+              \meetup-winter-register.html"
+    , (2015, Jun) -: p do
+        ruhaskellExtropolis
+        a
+            ! href
+                "https://github.com/ruHaskell/ruhaskell/wiki/Meetup.2015.Summer"
+            $ "github.com/ruHaskell/ruhaskell/wiki/Meetup.2015.Summer"
+    ]
+  where
+    coLaboratoryRuhaskell =
+        "Co-organized RuHaskell community meetup in Kaspersky, Moscow, Russia.\
+        \ 4 talks, 120+ attendees. "
+    ruhaskellExtropolis =
+        "Organized RuHaskell community meetup in Moscow, Russia.\
+        \ 6 talks, 50+ attendees. "
 
 talks =
     [ (2020, Jul) -: p do
         "“Property and fuzzy testing” at C++ Russia. "
         a ! href "https://cppconf-moscow.ru" $ "cppconf-moscow.ru"
     , (2019, May) -: p do
-        "“A purely functional approach to CRDT/RON-based "
-        "distributed systems” at FPURE. "
+        "“A purely functional approach to CRDT/RON-based distributed systems”\
+        \ at FPURE. "
         a ! href "https://www.fpure.events" $ "fpure.events"
         ", video: "
         a ! href "https://youtu.be/2MKLWCh33wE" $ "youtu.be/2MKLWCh33wE"
@@ -445,14 +450,14 @@ talks =
       --     a ! href "https://spb-fp-meetup.timepad.ru/event/857591/" $
       --         "spb-fp-meetup.timepad.ru/event/857591"
       (2018, Sep) -: p do
-        "“Purely functional programming and KasperskyOS” "
-        "in Information Security section at RIFTECH. "
+        "“Purely functional programming and KasperskyOS”\
+        \ in Information Security section at RIFTECH. "
         a ! href "http://tech.rif.ru" $ "tech.rif.ru"
     , (2017, Dec) -: p do
-        "(in collaboration with my student Nikolay Loginov) "
-        "“CRDT — correctly replicated data in Haskell” "
-        "at the functional programming conference FPCONF. "
-        "Description: "
+        "(in collaboration with my student Nikolay Loginov)\
+        \ “CRDT — correctly replicated data in Haskell”\
+        \ at the functional programming conference FPCONF.\
+        \ Description: "
         a ! href "http://fpconf.ru/2017.html" $ "fpconf.ru/2017.html"
         ", video: "
         a ! href "https://youtu.be/VFx0H2p3g6c" $ "youtu.be/VFx0H2p3g6c"

@@ -46,7 +46,7 @@ renderCv cv =
                 renderTechnologies cv.technologies
                 hr
                 renderWorkExperience cv.workExperience
-                renderEducations cv.education
+                -- renderEducations cv.education
                 renderPublicActivity cv.publicActivity
                 renderTalks cv.talks
 

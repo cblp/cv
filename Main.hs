@@ -41,8 +41,9 @@ contactInfo =
     ]
 
 about = do
+    p "🎓 Master of Science in Computer Science (2020)"
     p
-        "Ability to work in a complex environment combining different\
+        "Able to work in a complex environment combining different\
         \ technologies."
     p . intercalate ", " $
         [ "Distributed systems (CRDT)"

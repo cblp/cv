@@ -80,8 +80,7 @@ workExperience =
                 \ onto Cardano core components and ecosystem.\
                 \ Proposed several improvements to the protocol.\
                 \ Gathered and analyzed feedback from the community."
-        , toolsAndTechs =
-            "Cardano blockchain, Haskell, Markdown, e-mail"
+        , toolsAndTechs = "Cardano blockchain, Haskell"
         , visible = True
         }
     , Work

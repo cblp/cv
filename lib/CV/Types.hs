@@ -83,7 +83,7 @@ data CV = CV
     , fullnameInfo :: Text
     , contactInfo :: [ContactInfo]
     , about :: Html
-    , technologies :: [Html]
+    , technologies :: Html
     , workExperience :: [Work]
     , education :: [Education]
     , publicActivity :: [(Year, Month) :- Html]

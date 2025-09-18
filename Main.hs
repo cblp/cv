@@ -1,11 +1,7 @@
-{-# LANGUAGE ImportQualifiedPost #-}
-
 {-# OPTIONS -Wno-missing-signatures #-}
 
 import CV.Types
 import Data.ByteString.Lazy as BS (writeFile)
-import Data.List (intersperse)
-import Data.Text qualified as Text
 import Data.Tuple.X ((-:))
 import System.Directory (createDirectoryIfMissing)
 import System.Environment (getArgs)
@@ -19,12 +15,10 @@ import GitHubPages (deploy)
 fullname = "Yury Syrovetsky"
 
 fullnameInfo =
-    Text.unlines
-        [ "official: Yuriy Syrovetskiy"
-        , "POL: Jerzy Syrowiecki"
-        , "RUS: Юрий Сыровецкий"
-        , "UKR: Юрій Сировєцький"
-        ]
+    "official: Yuriy Syrovetskiy\n\
+    \POL: Jerzy Syrowiecki\n\
+    \RUS: Юрий Сыровецкий\n\
+    \UKR: Юрій Сировєцький"
 
 contactInfo =
     [ Location "Montenegro, remote (UTC+1/+2)"
@@ -46,12 +40,14 @@ about = do
         "I'm able to work in a complex environment combining different\
         \ technologies."
     p
-        "Fields I have experience with: Distributed systems (CRDT),\
+        "Fields I have experience in: Distributed systems (CRDT),\
         \ Functional programming, Web backend, Compilers, Data analysis,\
         \ Scalable services, Security, User interface"
     p "My skills: Software design, Coding, Deployment, Staff training"
 
-technologies = ["C++", "Haskell", "Rust"]
+technologies = do
+    p "Languages of most commercial experience: C, C++, Haskell, Rust"
+    p "I'm also proficient in: Java, JavaScript & TypeScript, Python"
 
 workExperience =
     [ Work
@@ -499,6 +495,3 @@ main = do
         createDirectoryIfMissing True target
         BS.writeFile (target </> "index.html") (renderCv cv)
         putStrLn $ "built site in " <> show target
-
-intercalate :: (Monoid m) => m -> [m] -> m
-intercalate s = mconcat . intersperse s

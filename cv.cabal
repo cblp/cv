@@ -1,24 +1,25 @@
 cabal-version: 3.4
-name:          cv
-version:       2025
+name: cv
+version: 2025
 
 common language
   build-depends:
-    , base
-    , blaze-html
-    , bytestring
-    , directory
-    , text
+    base,
+    blaze-html,
+    bytestring,
+    directory,
 
   default-extensions:
     NoFieldSelectors
     StrictData
 
-  default-language:   GHC2024
-  ghc-options:        -Wall -Werror
+  default-language: GHC2024
+  ghc-options:
+    -Wall
+    -Werror
 
 library
-  import:          language
+  import: language
   exposed-modules:
     CV
     CV.Render
@@ -26,22 +27,26 @@ library
     Data.Tuple.X
     GitHubPages
 
-  hs-source-dirs:  lib
+  hs-source-dirs: lib
   build-depends:
-    , process
-    , shakespeare
-    , temporary
+    process,
+    shakespeare,
+    temporary,
+    text,
 
 executable cv
-  import:             language
+  import: language
   default-extensions:
     BlockArguments
     DisambiguateRecordFields
     ImportQualifiedPost
     OverloadedStrings
 
-  main-is:            Main.hs
-  ghc-options:        -Wall -Werror
+  main-is: Main.hs
+  ghc-options:
+    -Wall
+    -Werror
+
   build-depends:
-    , cv
-    , filepath
+    cv,
+    filepath,

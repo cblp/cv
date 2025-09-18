@@ -79,10 +79,10 @@ renderAbout about = do
     h3 "About me"
     dl $ dd about
 
-renderTechnologies :: [Html] -> Html
+renderTechnologies :: Html -> Html
 renderTechnologies technologies = do
-    h4 "Key Technologies"
-    dl $ dd $ toHtml $ intersperse ", " technologies
+    h4 "Technologies"
+    dl $ dd technologies
 
 renderWorkExperience :: [Work] -> Html
 renderWorkExperience workExperience = do

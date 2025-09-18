@@ -41,10 +41,8 @@ contactInfo =
     ]
 
 about = do
-    p "🎓 Master of Science in Computer Science (2020)"
-    p
-        "Able to work in a complex environment combining different\
-        \ technologies."
+    p "🎓 MS in Computer Science (2020)"
+    p "I'm able to work in a complex environment combining different technologies."
     p . intercalate ", " $
         [ "Distributed systems (CRDT)"
         , "Functional programming"
@@ -150,7 +148,7 @@ workExperience =
         { start = (2023, Apr)
         , end = Nothing
         , totalTime = "3 months"
-        , organization = yandex
+        , organization = At "Yandex"
         , location = "remote"
         , position = "Senior Software Engineer"
         , description =
@@ -195,7 +193,7 @@ workExperience =
         , end = Just (2021, Mar)
         , totalTime = "7 months"
         , organization = At "Higher School of Economics"
-        , location = moscow
+        , location = "Moscow, Russia"
         , position = "Haskell teacher"
         , description =
             p "Teaching programming in Haskell to 1—4th year students."
@@ -206,8 +204,8 @@ workExperience =
         { start = (2020, Mar)
         , end = Just (2020, Dec)
         , totalTime = "9 months"
-        , organization = yandex
-        , location = moscow
+        , organization = At "Yandex"
+        , location = "Moscow, Russia"
         , position = "Software Engineer"
         , description = do
             p "Writing Java in Yandex.Disk cloud core."
@@ -225,7 +223,7 @@ workExperience =
         , end = Just (2020, Mar)
         , totalTime = "4 years"
         , organization = At "Kaspersky Lab"
-        , location = moscow
+        , location = "Moscow, Russia"
         , position = "Software Engineer, then Senior Software Engineer"
         , description =
             p
@@ -246,8 +244,8 @@ workExperience =
         { start = (2012, Sep)
         , end = Just (2018, May)
         , totalTime = "6 years"
-        , organization = At moscowChemicalLyceum
-        , location = moscow
+        , organization = At "The Moscow Chemical Lyceum (School 1303)"
+        , location = "Moscow, Russia"
         , position = "Student scientific projects mentor"
         , description = do
             p
@@ -274,8 +272,8 @@ workExperience =
         { start = (2011, Dec)
         , end = Just (2016, Feb)
         , totalTime = "4 years"
-        , organization = yandex
-        , location = moscow
+        , organization = At "Yandex"
+        , location = "Moscow, Russia"
         , position = "Software Engineer"
         , description = do
             p do
@@ -315,8 +313,8 @@ workExperience =
         { start = (2015, Jan)
         , end = Just (2015, Jun)
         , totalTime = "1 semester"
-        , organization = At moscowChemicalLyceum
-        , location = moscow
+        , organization = At "The Moscow Chemical Lyceum (School 1303)"
+        , location = "Moscow, Russia"
         , position = "Teacher of functional programming (Haskell)"
         , description =
             p "Optional subject for 9th, 10th and 11th grade students."
@@ -328,7 +326,7 @@ workExperience =
         , end = Just (2011, Oct)
         , totalTime = "5 years"
         , organization = At "Institute of Information Technologies"
-        , location = moscow
+        , location = "Moscow, Russia"
         , position = "Engineer, then Team Lead & Architect"
         , description = do
             p
@@ -388,7 +386,7 @@ education =
         }
     , Education
         { graduated = 2002
-        , school = moscowChemicalLyceum
+        , school = "The Moscow Chemical Lyceum (School 1303)"
         , division = "faculty of physics and mathematics"
         , degree = "secondary"
         , description = ""
@@ -484,12 +482,6 @@ talks =
         --         $   "ruhaskell.org/posts/talks/2015/06/21/\
         --             \haskell-for-pythonista.html"
     ]
-
-moscow = "Moscow, Russia"
-
-moscowChemicalLyceum = "The Moscow Chemical Lyceum (School 1303)"
-
-yandex = At "Yandex"
 
 cv =
     CV

@@ -42,23 +42,14 @@ contactInfo =
 
 about = do
     p "🎓 MS in Computer Science (2020)"
-    p "I'm able to work in a complex environment combining different technologies."
-    p . intercalate ", " $
-        [ "Distributed systems (CRDT)"
-        , "Functional programming"
-        , "Web backend"
-        , "Compilers"
-        , "Data analysis"
-        , "Scalable services"
-        , "Security"
-        , "User interface"
-        ]
-    p . intercalate ", " $
-        [ "Software design"
-        , "Coding"
-        , "Deployment"
-        , "Staff training"
-        ]
+    p
+        "I'm able to work in a complex environment combining different\
+        \ technologies."
+    p
+        "Fields I have experience with: Distributed systems (CRDT),\
+        \ Functional programming, Web backend, Compilers, Data analysis,\
+        \ Scalable services, Security, User interface"
+    p "My skills: Software design, Coding, Deployment, Staff training"
 
 technologies = ["C++", "Haskell", "Rust"]
 

@@ -36,10 +36,7 @@ renderCv cv =
         head $ preamble cv.fullname
         body do
             div ! class_ "container" $ do
-                h1 do
-                    toHtml cv.fullname
-                    " "
-                    T.span ! A.title (toValue cv.fullnameInfo) $ "ℹ️"
+                h1 $ toHtml cv.fullname
                 renderContacts cv.contactInfo
                 hr
                 renderAbout cv.about
@@ -49,6 +46,7 @@ renderCv cv =
                 -- renderEducations cv.education
                 -- renderPublicActivity cv.publicActivity
                 -- renderTalks cv.talks
+                pure ()
 
 preamble :: Text -> Html
 preamble fullname = do

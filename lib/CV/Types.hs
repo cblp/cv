@@ -80,7 +80,6 @@ data Education = Education
 
 data CV = CV
     { fullname :: Text
-    , fullnameInfo :: Text
     , contactInfo :: [ContactInfo]
     , about :: Html
     , technologies :: Html

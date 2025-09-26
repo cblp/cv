@@ -14,11 +14,11 @@ import GitHubPages (deploy)
 
 fullname = "Yury Syrovetsky"
 
-fullnameInfo =
-    "official: Yuriy Syrovetskiy\n\
-    \POL: Jerzy Syrowiecki\n\
-    \RUS: Юрий Сыровецкий\n\
-    \UKR: Юрій Сировєцький"
+-- fullnameInfo =
+--     "official: Yuriy Syrovetskiy\n\
+--     \POL: Jerzy Syrowiecki\n\
+--     \RUS: Юрий Сыровецкий\n\
+--     \UKR: Юрій Сировєцький"
 
 contactInfo =
     [ Location "Montenegro, remote (UTC+1/+2)"
@@ -476,7 +476,6 @@ talks =
 cv =
     CV
         { fullname
-        , fullnameInfo
         , contactInfo
         , about
         , technologies

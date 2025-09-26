@@ -183,7 +183,7 @@ workExperience =
         , end = Just (2021, Mar)
         , totalTime = "7 months"
         , organization = At "Higher School of Economics"
-        , location = "Moscow, Russia"
+        , location = "" -- "Moscow, Russia"
         , position = "Haskell teacher"
         , description =
             p "Teaching programming in Haskell to 1—4th year students."
@@ -195,7 +195,7 @@ workExperience =
         , end = Just (2020, Dec)
         , totalTime = "9 months"
         , organization = At "Yandex"
-        , location = "Moscow, Russia"
+        , location = "" -- "Moscow, Russia"
         , position = "Software Engineer"
         , description = do
             p "Writing Java in Yandex.Disk cloud core."
@@ -213,7 +213,7 @@ workExperience =
         , end = Just (2020, Mar)
         , totalTime = "4 years"
         , organization = At "Kaspersky Lab"
-        , location = "Moscow, Russia"
+        , location = "" -- "Moscow, Russia"
         , position = "Software Engineer, then Senior Software Engineer"
         , description =
             p
@@ -235,7 +235,7 @@ workExperience =
         , end = Just (2018, May)
         , totalTime = "6 years"
         , organization = At "The Moscow Chemical Lyceum (School 1303)"
-        , location = "Moscow, Russia"
+        , location = "" -- "Moscow, Russia"
         , position = "Student scientific projects mentor"
         , description = do
             p
@@ -263,7 +263,7 @@ workExperience =
         , end = Just (2016, Feb)
         , totalTime = "4 years"
         , organization = At "Yandex"
-        , location = "Moscow, Russia"
+        , location = "" -- "Moscow, Russia"
         , position = "Software Engineer"
         , description = do
             p do
@@ -304,7 +304,7 @@ workExperience =
         , end = Just (2015, Jun)
         , totalTime = "1 semester"
         , organization = At "The Moscow Chemical Lyceum (School 1303)"
-        , location = "Moscow, Russia"
+        , location = "" -- "Moscow, Russia"
         , position = "Teacher of functional programming (Haskell)"
         , description =
             p "Optional subject for 9th, 10th and 11th grade students."
@@ -316,7 +316,7 @@ workExperience =
         , end = Just (2011, Oct)
         , totalTime = "5 years"
         , organization = At "Institute of Information Technologies"
-        , location = "Moscow, Russia"
+        , location = "" -- "Moscow, Russia"
         , position = "Engineer, then Team Lead & Architect"
         , description = do
             p

@@ -47,8 +47,8 @@ renderCv cv =
                 hr
                 renderWorkExperience cv.workExperience
                 -- renderEducations cv.education
-                renderPublicActivity cv.publicActivity
-                renderTalks cv.talks
+                -- renderPublicActivity cv.publicActivity
+                -- renderTalks cv.talks
 
 preamble :: Text -> Html
 preamble fullname = do
@@ -118,9 +118,11 @@ renderWorkExperience workExperience = do
                                     At org -> do
                                         " at "
                                         T.span ! class_ "place" $ toHtml org
-                                    Freelance -> "freelance and short-time contracts"
-                                ", "
-                                toHtml location
+                                    Freelance ->
+                                        "freelance and short-time contracts"
+                                unless (Text.null location) do
+                                    ", "
+                                    toHtml location
                             description
                             unless (Text.null toolsAndTechs) $
                                 p do

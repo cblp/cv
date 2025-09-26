@@ -34,7 +34,7 @@ renderCv :: CV -> ByteString
 renderCv cv =
     renderHtml . docTypeHtml $ do
         head $ preamble cv.fullname
-        body do
+        body $
             div ! class_ "container" $ do
                 h1 $ toHtml cv.fullname
                 renderContacts cv.contactInfo

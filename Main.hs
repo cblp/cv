@@ -57,7 +57,7 @@ workExperience =
         , organization = At "Input-Output Global"
         , location = "remote"
         , position = "Technical Lead"
-        , description =
+        , description = do
             p
                 "Short-term contract.\
                 \ As a head of a team of 2 senior engineers,\
@@ -66,6 +66,9 @@ workExperience =
                 \ onto Cardano core components and ecosystem.\
                 \ Proposed several improvements to the protocol.\
                 \ Gathered and analyzed feedback from the community."
+            p
+                "The customer received the impact report for several protocol\
+                \ design variants and decided on the final design."
         , toolsAndTechs = "Cardano blockchain, Haskell"
         , visible = True
         }

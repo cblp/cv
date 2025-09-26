@@ -40,9 +40,19 @@ about = do
         "I'm able to work in a complex environment combining different\
         \ technologies."
     p
-        "Fields I have experience in: Distributed systems (CRDT),\
-        \ Functional programming, Web backend, Compilers, Data analysis,\
-        \ Scalable services, Security, User interface"
+        "Fields I have experience in:\
+        \ Blockchains (Cardano, Solana, Stellar),\
+        \ Compilers,\
+        \ Data analysis tools,\
+        \ Database internals,\
+        \ Distributed systems (CRDT),\
+        \ Functional programming,\
+        \ GPU (CUDA),\
+        \ OS kernel,\
+        \ Scalable services,\
+        \ Security,\
+        \ User interface,\
+        \ Web backend"
     p "My skills: Software design, Coding, Deployment, Staff training"
 
 technologies = do
@@ -67,7 +77,7 @@ workExperience =
                 \ Proposed several improvements to the protocol.\
                 \ Gathered and analyzed feedback from the community."
             p
-                "The customer received the impact report for several protocol\
+                "The client received the impact report for several protocol\
                 \ design variants and decided on the final design."
         , toolsAndTechs = "Cardano blockchain, Haskell"
         , visible = True
@@ -85,8 +95,7 @@ workExperience =
                 \ Integration of various services via API."
         , toolsAndTechs =
             "Rust, Solana blockchain (accounts, transactions, Anchor),\
-            \ also Clickhouse, Grafana, HTTP, JSON, Postgres,\
-            \ Prometheus, SQL"
+            \ also Clickhouse, Grafana, Postgres, Prometheus"
         , visible = True
         }
     , Work

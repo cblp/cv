@@ -88,13 +88,19 @@ workExperience =
         , totalTime = "7 months"
         , organization = Freelance
         , location = "remote"
-        , position = ""
-        , description =
+        , position = "Software Engineer"
+        , description = do
+            -- the unnamed MEV startup
             p
-                "Trading strategies development.\
-                \ Integration of various services via API."
+                "One of the projects (3 months) was development of trading\
+                \ strategies on the Solana blockchain and integration of\
+                \ various services via HTTP and Protobuf API on the backend."
+            p
+                "I've successfully created and deployed a trading strategy\
+                \ service with database storage, logging and monitoring."
         , toolsAndTechs =
-            "Rust, Solana blockchain (accounts, transactions, Anchor),\
+            "Rust (serde, tokio),\
+            \ Solana blockchain (accounts, transactions, Anchor),\
             \ also Clickhouse, Grafana, Postgres, Prometheus"
         , visible = True
         }

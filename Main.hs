@@ -64,7 +64,7 @@ workExperience =
         { start = (2025, May)
         , end = Just (2025, Aug)
         , totalTime = "3 months"
-        , organization = At "Input-Output Global"
+        , organization = At "Input-Output Global" -- via Serokell
         , location = "remote"
         , position = "Technical Lead"
         , description = do
@@ -108,15 +108,18 @@ workExperience =
         { start = (2023, Oct)
         , end = Just (2024, Sep)
         , totalTime = "1 year"
-        , organization = At "SQream"
+        , organization = At "SQream" -- via Alar Studios
         , location = "remote"
         , position = "Software Engineer"
-        , description =
+        , description = do
             p
                 "Working as an engineer in support of\
                 \ the SQream GPU-powered database engine.\
                 \ Fixing various bugs in C++ engine,\
                 \ Haskell query compiler and CUDA kernels."
+            p
+                "I've fixed a lot of bugs and unexpected slowdowns,\
+                \ increasing customer satisfaction and the company's income."
         , toolsAndTechs = "C++, Haskell, CUDA (GPU)"
         , visible = True
         }

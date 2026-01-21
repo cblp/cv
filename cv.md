@@ -1,6 +1,6 @@
 # Yury Syrovetsky
 Montenegro (UTC+1/+2) • Remote • Open to relocation
-job32@cblp.su
+job32@cblp.su • +382-68-216-739
 linkedin.com/in/cblpsu • github.com/cblp
 
 ## Professional Summary
@@ -99,3 +99,11 @@ Technologies: C, C++, Python, Qt, Linux kernel modules, Windows API
 Master of Science in Computer Science
 Moscow Aviation Institute
 Graduated 2020
+
+<!--
+Should I?
+1. Move Education to the beginning?
+2. Add the master thesis topic? It's about CRDT.
+3. Add numbers?
+4. Add about mentoring juniors?
+-->

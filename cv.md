@@ -118,10 +118,15 @@ Master of Science in Computer Science \
 Moscow Aviation Institute             \
 Graduated 2020
 
-<!--
-Should I?
-2. Add the master thesis topic? It's about CRDT.
-3. Add numbers?
-4. Add about mentoring juniors?
-5. Remove some work items?
--->
+## Selected Talks & Publications
+
+- Jule 2020. “Property and fuzzy testing” at C++ Russia. cppconf-moscow.ru
+- May 2019. “A purely functional approach to CRDT/RON-based distributed systems” at FPURE. fpure.events, youtu.be/2MKLWCh33wE
+- September 2018. “Purely functional programming and KasperskyOS” in Information Security section at RIFTECH. tech.rif.ru
+- December 2017. “CRDT — correctly replicated data in Haskell” at the functional programming conference FPCONF in collaboration with my student Nikolay Loginov. Description: fpconf.ru/2017.html, video: youtu.be/VFx0H2p3g6c
+
+## Open Source Projects
+
+- Haskell implementation of RON-RDT, a CRDT-based format and a set of optimal distributed data synchronization algorithms. https://github.com/ff-notes/ron
+- FF — a CRDT-compliant distributed note taking application. https://github.com/ff-notes/ff
+- Multiple contributions into various open source projects.

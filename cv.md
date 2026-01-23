@@ -118,6 +118,8 @@ Master of Science in Computer Science \
 Moscow Aviation Institute             \
 Graduated 2020
 
+Thesis: “Development of a distributed embeddable database” (focused on CRDT-based data synchronization)
+
 ## Selected Talks & Publications
 
 - Jule 2020. “Property and fuzzy testing” at C++ Russia. cppconf-moscow.ru
@@ -127,6 +129,11 @@ Graduated 2020
 
 ## Open Source Projects
 
-- Haskell implementation of RON-RDT, a CRDT-based format and a set of optimal distributed data synchronization algorithms. https://github.com/ff-notes/ron
-- FF — a CRDT-compliant distributed note taking application. https://github.com/ff-notes/ff
+- Haskell implementation of RON-RDT, a CRDT-based format and a set of optimal distributed data synchronization algorithms. github.com/ff-notes/ron
+- FF — a CRDT-compliant distributed note taking application. github.com/ff-notes/ff
 - Multiple contributions into various open source projects.
+
+## Community Leadership
+
+- Organized 4 offline meetups for the Russian Haskell community (from 2015)
+- Administrator of the Russian Haskell community online resources (website haskellru.org, Telegram and other chats)

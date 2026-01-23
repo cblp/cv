@@ -1,3 +1,9 @@
+<style>
+  body {
+    font-size: 10pt;
+  }
+</style>
+
 # Yury Syrovetsky
 
 Montenegro (UTC+1/+2) • Remote • Open to relocation \
@@ -29,15 +35,6 @@ May 2025 – August 2025 (3-month contract)
 
 Technologies: Cardano blockchain, Haskell
 
-**Freelance / Contract Software Engineer** • Remote
-
-October 2024 – April 2025
-
-- Designed and deployed a high-performance trading strategy service on Solana, integrating multiple external services via HTTP and Protobuf APIs
-- Implemented persistent storage, logging, monitoring, and alerting for production reliability
-
-Technologies: Rust (tokio, serde), Solana (Anchor, accounts/transactions), ClickHouse, PostgreSQL, Prometheus, Grafana
-
 **Software Engineer** • SQream • Remote
 
 October 2023 – September 2024
@@ -47,16 +44,6 @@ October 2023 – September 2024
 
 Technologies: C++, Haskell, CUDA
 
-**Freelance / Contract Software Engineer** • Remote
-
-June 2022 – October 2023
-
-- Led development of a DAO governance system with Stellar blockchain integration for automated payments, access control, and real-estate NFT minting/trading, Telegram bot integration for chat-based control
-- Built Cardano-based automated NFT distribution service (Generation Lambda contract)
-- Delivered multiple Python and Haskell projects for various clients
-
-Technologies: Haskell (Servant, Yesod), Stellar and Cardano blockchains, Python, Java, ClickHouse, Docker, Elliptic curve cryptogaphy (Ed25519)
-
 **Software Engineer** • Input Output Global (IOG) • Remote
 
 February 2021 – May 2022
@@ -65,12 +52,6 @@ February 2021 – May 2022
 - Contributed to node, CLI, and API improvements
 
 Technologies: Haskell, Cardano node/CLI/API, CBOR, JSON
-
-**Haskell Instructor** • Higher School of Economics • Moscow, Russia
-
-September 2020 – March 2021
-
-- Taught functional programming in Haskell to undergraduate students (years 1–4)
 
 **Software Engineer** • Yandex • Moscow, Russia
 
@@ -102,16 +83,6 @@ December 2011 – February 2016
 - Presented technical talks at internal and public Yandex meetups
 
 Technologies: C++, Python, Cython, PostgreSQL, Yandex.Tank, Map/Reduce, MySQL
-
-**Engineer/Team Lead** • Institute of Information Technologies • Moscow, Russia
-
-November 2006 – October 2011
-
-- Led 3-person team building multi-component data transfer and processing system
-- Designed architecture, implemented core components in C/C++/Python, developed Qt GUI, wrote documentation, handled deployment and customer support
-- Introduced version control, issue tracking, and wiki to ~20-person department
-
-Technologies: C, C++, Python, Qt, Linux kernel modules, Windows API
 
 ## Education
 

@@ -17,7 +17,7 @@ Senior Software Engineer with 20+ years of experience building high-performance,
 
 ## Technical Skills
 
-**Languages**: C, C++ (expert), Rust (strong commercial), Haskell (expert), Java, Python, JavaScript/TypeScript
+**Languages**: C, C++ (expert), Rust (strong commercial), Haskell (expert), Python (expert), Java, JavaScript/TypeScript
 
 **Key Areas**: Systems programming, Blockchain (Cardano, Solana, Stellar), Compilers/DSLs, GPU (CUDA), Database engines, Distributed systems (CRDT), Kernel development, Scalable microservices
 
@@ -34,8 +34,6 @@ May 2025 – August 2025 (3-month contract)
 - Collected and synthesized community feedback to inform final design decisions
 - Delivered comprehensive impact reports that enabled leadership to select the optimal protocol variant
 
-Technologies: Cardano blockchain, Haskell
-
 **Software Engineer** • SQream • Remote
 
 October 2023 – September 2024
@@ -43,36 +41,28 @@ October 2023 – September 2024
 - Diagnosed and resolved complex bugs and performance bottlenecks in GPU-accelerated analytical database engine
 - Improved C++ core, Haskell query compiler, and CUDA kernels, resulting in higher customer satisfaction and increased revenue
 
-Technologies: C++, Haskell, CUDA
-
 **Software Engineer** • Input Output Global (IOG) • Remote
 
 February 2021 – May 2022
 
-- Implemented key features for Cardano’s Alonzo hard fork (smart contracts era)
+- Implemented key features for Cardano’s Alonzo hard fork (smart contracts era) in Haskell
 - Contributed to node, CLI, and API improvements
-
-Technologies: Haskell, Cardano node/CLI/API, CBOR, JSON
 
 **Software Engineer** • Yandex • Moscow, Russia
 
 March 2020 – December 2020
 
-- Developed cross-service file metadata synchronization for Yandex.Disk cloud storage
+- Developed cross-service file metadata synchronization for Yandex.Disk cloud storage in Java and Python, using PostgreSQL and ClickHouse storages
 - Designed and prototyped CRDT-based application state synchronization framework
-
-Technologies: Java, PostgreSQL, ClickHouse, Python
 
 **Senior Software Engineer** • Kaspersky Lab • Moscow, Russia
 
 February 2016 – March 2020
 
-- Designed domain-specific languages and implemented security policy compiler for Kaspersky OS
+- Designed domain-specific languages and implemented security policy compiler for Kaspersky OS in Haskell, targeted kernel-level hard real-time C code
 - Developed object-capability security model and other policies
 - Implemented high-level logic and C code generation using Haskell
 - Mentored junior engineers on functional programming techniques and secure systems design
-
-Technologies: C (kernel-level, lock-free, hard real-time), Haskell (Ivory, Megaparsec)
 
 **Software Engineer** • Yandex • Moscow, Russia
 
@@ -82,8 +72,6 @@ December 2011 – February 2016
 - Rewrote critical microservice from Python to C++, achieving ~10× higher request throughput
 - Optimized a microservice to reduce memory usage by 1.5× via internal compression with no performance regression
 - Presented technical talks at internal and public Yandex meetups
-
-Technologies: C++, Python, Cython, PostgreSQL, Yandex.Tank, Map/Reduce, MySQL
 
 ## Education
 

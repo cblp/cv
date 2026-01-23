@@ -6,7 +6,7 @@ linkedin.com/in/cblpsu • github.com/cblp
 
 ## Professional Summary
 
-Senior Software Engineer with 20 years of experience building high-performance, scalable systems in complex environments. Deep expertise in systems programming (C/C++/Rust), functional programming (Haskell), blockchain protocols (Cardano, Solana, Stellar), GPU acceleration (CUDA), database internals, and distributed systems (CRDTs). Proven track record of delivering impactful features, fixing critical performance issues, and leading protocol design efforts at companies like Input Output Global, SQream, Kaspersky Lab, and Yandex. Strong in software architecture, performance optimization, and cross-team collaboration. Seeking challenging systems/backend/distributed systems roles at innovative organizations like Google.
+Senior Software Engineer with 20+ years of experience building high-performance, scalable systems in complex environments. Deep expertise in systems programming (C/C++/Rust), functional programming (Haskell), blockchain protocols (Cardano, Solana, Stellar), GPU acceleration (CUDA), database internals, and distributed systems (CRDTs). Proven track record of delivering impactful features, fixing critical performance issues, and leading protocol design efforts at companies like Input Output Global, SQream, Kaspersky Lab, and Yandex. Strong in software architecture, performance optimization, and cross-team collaboration. Seeking challenging systems/backend/distributed systems roles at innovative organizations like Google.
 
 ## Technical Skills
 
@@ -88,6 +88,7 @@ February 2016 – March 2020
 - Designed domain-specific languages and implemented security policy compiler for Kaspersky OS
 - Developed object-capability security model and other policies
 - Implemented high-level logic and C code generation using Haskell
+- Mentored junior engineers on functional programming techniques and secure systems design
 
 Technologies: C (kernel-level, lock-free, hard real-time), Haskell (Ivory, Megaparsec)
 
@@ -118,7 +119,7 @@ Master of Science in Computer Science \
 Moscow Aviation Institute             \
 Graduated 2020
 
-Thesis: “Development of a distributed embeddable database” (focused on CRDT-based data synchronization)
+Master thesis: “Development of a distributed embeddable database” (focused on CRDT-based data synchronization)
 
 ## Selected Talks & Publications
 
@@ -127,13 +128,13 @@ Thesis: “Development of a distributed embeddable database” (focused on CRDT-
 - September 2018. “Purely functional programming and KasperskyOS” in Information Security section at RIFTECH. tech.rif.ru
 - December 2017. “CRDT — correctly replicated data in Haskell” at the functional programming conference FPCONF in collaboration with my student Nikolay Loginov. Description: fpconf.ru/2017.html, video: youtu.be/VFx0H2p3g6c
 
+## Community Leadership
+
+- Organized 4 offline meetups for the Russian Haskell community (from 2015)
+- Administrator of the Russian Haskell community online resources (website haskellru.org, Telegram and other chats)
+
 ## Open Source Projects
 
 - Haskell implementation of RON-RDT, a CRDT-based format and a set of optimal distributed data synchronization algorithms. github.com/ff-notes/ron
 - FF — a CRDT-compliant distributed note taking application. github.com/ff-notes/ff
 - Multiple contributions into various open source projects.
-
-## Community Leadership
-
-- Organized 4 offline meetups for the Russian Haskell community (from 2015)
-- Administrator of the Russian Haskell community online resources (website haskellru.org, Telegram and other chats)

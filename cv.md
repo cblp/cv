@@ -17,7 +17,7 @@ Senior Software Engineer with 20+ years of experience building high-performance,
 
 Proven track record of delivering impactful features, fixing critical performance issues, and leading protocol design efforts at companies like Input Output Global, SQream, Kaspersky Lab, and Yandex. Strong in software architecture, performance optimization, and cross-team collaboration.
 
-Seeking challenging systems/backend/distributed systems roles at innovative organizations like Google.
+Seeking compilers/backend/distributed systems roles.
 
 ## Technical Skills
 

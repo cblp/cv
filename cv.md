@@ -13,7 +13,11 @@ linkedin.com/in/cblpsu • github.com/cblp
 
 ## Professional Summary
 
-Senior Software Engineer with 20+ years of experience building high-performance, scalable systems in complex environments. Deep expertise in systems programming (C/C++/Rust), functional programming (Haskell), blockchain protocols (Cardano, Solana, Stellar), GPU acceleration (CUDA), database internals, and distributed systems (CRDTs). Proven track record of delivering impactful features, fixing critical performance issues, and leading protocol design efforts at companies like Input Output Global, SQream, Kaspersky Lab, and Yandex. Strong in software architecture, performance optimization, and cross-team collaboration. Seeking challenging systems/backend/distributed systems roles at innovative organizations like Google.
+Senior Software Engineer with 20+ years of experience building high-performance, scalable systems. Deep expertise in systems programming (C/C++/Rust), functional programming (Haskell), blockchain protocols (Cardano, Solana, Stellar), GPU acceleration (CUDA), database internals, and distributed systems (CRDT).
+
+Proven track record of delivering impactful features, fixing critical performance issues, and leading protocol design efforts at companies like Input Output Global, SQream, Kaspersky Lab, and Yandex. Strong in software architecture, performance optimization, and cross-team collaboration.
+
+Seeking challenging systems/backend/distributed systems roles at innovative organizations like Google.
 
 ## Technical Skills
 

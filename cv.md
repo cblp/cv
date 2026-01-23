@@ -21,11 +21,11 @@ Seeking compilers/backend/distributed systems roles.
 
 ## Technical Skills
 
-**Languages**: C, C++ (expert), Rust (strong commercial), Haskell (expert), Python (expert), Java, JavaScript/TypeScript
+**Languages**: C/C++ (expert), Haskell (expert), Python (expert), Rust, Java, JavaScript/TypeScript
 
 **Key Areas**: Systems programming, Blockchain (Cardano, Solana, Stellar), Compilers/DSLs, GPU (CUDA), Database engines, Distributed systems (CRDT), Kernel development, Scalable microservices
 
-**Tools & Technologies**: Tokio, Servant, Yesod, ClickHouse, PostgreSQL, SQLite, Prometheus, Grafana, Docker, Qt
+**Tools & Technologies**: ClickHouse, PostgreSQL, Qt, Servant, SQLite, Tokio, Yesod
 
 ## Professional Experience
 

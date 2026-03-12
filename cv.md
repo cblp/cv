@@ -29,6 +29,14 @@ Seeking compilers/backend/distributed systems roles.
 
 ## Professional Experience
 
+**Senior Software Engineer** • Wallarm • Remote
+
+December 2025 – March 2026
+
+- Fixed security and performance-related bugs.
+- Added means to reduce traffic costs.
+- Used AI-aided coding extensively.
+
 **Technical Lead** • Input Output Global (IOG) • Remote
 
 May 2025 – August 2025 (3-month contract)
@@ -38,21 +46,21 @@ May 2025 – August 2025 (3-month contract)
 - Collected and synthesized community feedback to inform final design decisions
 - Delivered comprehensive impact reports that enabled leadership to select the optimal protocol variant
 
-**Software Engineer** • SQream • Remote
+**Senior Software Engineer** • SQream • Remote
 
 October 2023 – September 2024
 
 - Diagnosed and resolved complex bugs and performance bottlenecks in GPU-accelerated analytical database engine
 - Improved C++ core, Haskell query compiler, and CUDA kernels, resulting in higher customer satisfaction and increased revenue
 
-**Software Engineer** • Input Output Global (IOG) • Remote
+**Senior Software Engineer** • Input Output Global (IOG) • Remote
 
 February 2021 – May 2022
 
 - Implemented key features for Cardano’s Alonzo hard fork (smart contracts era) in Haskell
 - Contributed to node, CLI, and API improvements
 
-**Software Engineer** • Yandex • Moscow, Russia
+**Senior Software Engineer** • Yandex • Moscow, Russia
 
 March 2020 – December 2020
 

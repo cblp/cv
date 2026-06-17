@@ -39,7 +39,7 @@ renderCv cv =
                 h1 $ toHtml cv.fullname
                 renderContacts cv.contactInfo
                 hr
-                renderAbout cv.about
+                renderProfessionalSummary cv.professionalSummary
                 renderTechnologies cv.technologies
                 hr
                 renderWorkExperience cv.workExperience
@@ -72,10 +72,10 @@ renderContacts :: [ContactInfo] -> Html
 renderContacts contactInfo =
     address $ mconcat $ intersperse br $ fmap contactMarkup contactInfo
 
-renderAbout :: Html -> Html
-renderAbout about = do
-    h3 "About me"
-    dl $ dd about
+renderProfessionalSummary :: Html -> Html
+renderProfessionalSummary professionalSummary = do
+    h3 "Professional Summary"
+    dl $ dd professionalSummary
 
 renderTechnologies :: Html -> Html
 renderTechnologies technologies = do

@@ -1,6 +1,5 @@
 {-# OPTIONS -Wno-missing-signatures #-}
 
-import CV.Types
 import Data.ByteString.Lazy as BS (writeFile)
 import Data.Tuple.X ((-:))
 import System.Directory (createDirectoryIfMissing)
@@ -10,6 +9,7 @@ import Text.Blaze.Html5 (a, p, (!))
 import Text.Blaze.Html5.Attributes (href)
 
 import CV.Render (renderCv)
+import CV.Types
 import GitHubPages (deploy)
 
 fullname = "Yury Syrovetsky"
@@ -21,20 +21,20 @@ fullname = "Yury Syrovetsky"
 --     \UKR: Юрій Сировєцький"
 
 contactInfo =
-    [ Location "Montenegro, remote (UTC+1/+2)"
+    [ Location "Montenegro (UTC+1/+2) • Remote • Open to relocation"
     , EMail "job25@cblp.su"
     , LinkedIn "cblpsu"
     , GitHub "cblp"
-    -- , Personal "cblp.github.io"
-    -- , Telephone "+382 68 216 739"
-    -- , Skype "cblp.su"
-    -- , Telegram "cblp_me"
-    -- , Bitbucket "cblp"
-    -- , Facebook "cblp.su"
-    -- , Twitter "cblp_su"
+    , -- , Personal "cblp.github.io"
+      Telephone "+382 68 216 739"
+      -- , Skype "cblp.su"
+      -- , Telegram "cblp_me"
+      -- , Bitbucket "cblp"
+      -- , Facebook "cblp.su"
+      -- , Twitter "cblp_su"
     ]
 
-about = do
+professionalSummary = do
     p "🎓 MS in Computer Science (2020)"
     p
         "I'm able to work in a complex environment combining different\
@@ -495,7 +495,7 @@ cv =
     CV
         { fullname
         , contactInfo
-        , about
+        , professionalSummary
         , technologies
         , workExperience
         , education

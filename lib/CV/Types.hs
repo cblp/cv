@@ -81,7 +81,7 @@ data Education = Education
 data CV = CV
     { fullname :: Text
     , contactInfo :: [ContactInfo]
-    , about :: Html
+    , professionalSummary :: Html
     , technologies :: Html
     , workExperience :: [Work]
     , education :: [Education]

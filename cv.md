@@ -34,8 +34,7 @@ Seeking compilers/backend/distributed systems roles.
 December 2025 – March 2026
 
 - Fixed security and performance-related bugs.
-- Added means to reduce traffic costs.
-- Used AI-aided coding extensively.
+- Added means to measure and reduce traffic costs.
 
 **Technical Lead** • Input Output Global (IOG) • Remote
 
@@ -50,14 +49,14 @@ May 2025 – August 2025 (3-month contract)
 
 October 2023 – September 2024
 
-- Diagnosed and resolved complex bugs and performance bottlenecks in GPU-accelerated analytical database engine
+- Diagnosed and resolved complex bugs and performance bottlenecks in GPU-accelerated analytical database engine; sped up some requests from 30 hours to 30 minutes
 - Improved C++ core, Haskell query compiler, and CUDA kernels, resulting in higher customer satisfaction and increased revenue
 
 **Senior Software Engineer** • Input Output Global (IOG) • Remote
 
 February 2021 – May 2022
 
-- Implemented key features for Cardano’s Alonzo hard fork (smart contracts era) in Haskell
+- Implemented key features for Cardano’s Alonzo hard fork (smart contracts era) in Haskell: token minting and sending via CLI
 - Contributed to node, CLI, and API improvements
 
 **Senior Software Engineer** • Yandex • Moscow, Russia

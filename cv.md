@@ -33,8 +33,8 @@ Seeking compilers/backend/distributed systems roles.
 
 December 2025 – March 2026
 
-- Fixed security and performance-related bugs.
-- Added means to measure and reduce traffic costs.
+- Fixed security and performance-related bugs in the C/C++ core library and nginx module, improving latency by up to 5% in a mature, heavily-optimized codebase
+- Built instrumentation to measure and reduce traffic costs in the core library
 
 **Technical Lead** • Input Output Global (IOG) • Remote
 
@@ -50,7 +50,7 @@ May 2025 – August 2025 (3-month contract)
 October 2023 – September 2024
 
 - Diagnosed and resolved complex bugs and performance bottlenecks in GPU-accelerated analytical database engine; sped up some requests from 30 hours to 30 minutes
-- Improved C++ core, Haskell query compiler, and CUDA kernels, resulting in higher customer satisfaction and increased revenue
+- Fixed ~30 functional bugs in C++ core, Haskell query compiler, and CUDA kernels, resolving customer-blocking issues in a GPU-accelerated analytical database
 
 **Senior Software Engineer** • Input Output Global (IOG) • Remote
 
@@ -70,10 +70,10 @@ March 2020 – December 2020
 
 February 2016 – March 2020
 
-- Designed domain-specific languages and implemented security policy compiler for Kaspersky OS in Haskell, targeted kernel-level hard real-time C code
+- Designed domain-specific languages and implemented security policy compiler for Kaspersky OS in Haskell (~ 50 kloc), targeted kernel-level hard real-time C code (guaranteed latency < 10 ms)
 - Developed object-capability security model and other policies
 - Implemented high-level logic and C code generation using Haskell
-- Mentored junior engineers on functional programming techniques and secure systems design
+- Mentored 5 junior engineers on functional programming techniques and secure systems design
 
 **Software Engineer** • Yandex • Moscow, Russia
 
@@ -102,7 +102,7 @@ Master thesis: “Development of a distributed embeddable database” (focused o
 ## Community Leadership
 
 - Organized 4 offline meetups for the Russian Haskell community (from 2015)
-- Administrator of the Russian Haskell community online resources (website haskellru.org, Telegram and other chats)
+- Administrator of the Russian Haskell community online resources (website haskellru.org, Telegram and other chats, 1600+ members)
 
 ## Open Source Projects
 
